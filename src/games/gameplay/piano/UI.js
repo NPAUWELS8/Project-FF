@@ -7,8 +7,12 @@ export class UI {
         this.fontSize = 30;
         this.fontFamily = 'Bangers';
         this.margin = 20;
-        this.lives = new Lives(this.margin, 95, new Image(lives))
-        this.honeyPots = new HoneyPots(this.margin, 120, new Image(honeypot));
+        this.livesImage = new Image();
+        this.livesImage.src = lives;
+        this.honeypotImage = new Image();
+        this.honeypotImage.src = honeypot;
+        this.lives = new Lives(this.margin, 95, this.livesImage)
+        this.honeyPots = new HoneyPots(this.margin, 120, this.honeypotImage);
         this.score = new TextObject(this.game, this, 1, 50, 'Score');
         this.time = new TextObject(this.game, this, 1, 80, 'Time');
         this.energyBar = new EnergyBar(this.game, this.margin, 150);

@@ -10,7 +10,7 @@ import { TurningImage } from './turningImage.js'
 import { PlatformA, PlatformB } from './platforms.js'
 import { Bird, Fish } from './ornaments.js'
 
-export function playPiano(canvas){
+export function playPiano(canvas,setGameOver, setWon){
     // const container = document.getElementById('game-container')
     // container.innerHTML = "";
     // const canvas = document.createElement('canvas');
@@ -224,6 +224,14 @@ export function playPiano(canvas){
         game.update(deltaTime);
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate);
+        else {
+            if(game.won()){
+                setGameOver(true);
+                setWon(true);
+            } else{
+                setGameOver(true);
+            }
+        }
         // else{
         //     const button = document.createElement('button');
         //     button.innerText = 'Retry';
