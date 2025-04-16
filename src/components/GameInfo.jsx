@@ -6,10 +6,6 @@ import { games } from 'constants/GamesConstant'
 const GameInfo = ({title, introText, controls, game}) => {
   const [gameStarted, setGameStarted] = useState(false)
 
-  const test = {
-    1: (<PianoGame/>)
-  }
-
   const handleButtonClick = ()=>{
     setGameStarted(true)
   }

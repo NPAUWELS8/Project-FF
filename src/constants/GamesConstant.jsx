@@ -92,7 +92,7 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox
             text="Game 1 is nice game that you have to play because it's very nice and all."
-            link="/about"
+            link="/piano"
             btnText="Learn More"
         />
     ),
@@ -100,9 +100,8 @@ infoBoxes.addGame({
     element: (<PianoGame/>)
 })
 
-infoBoxes.addRadialDivision();
 
+infoBoxes.addRadialDivision();
 export const games = infoBoxes.games;
 export const boxes = infoBoxes.boxes;
-console.log(boxes);
 
