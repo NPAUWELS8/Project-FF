@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { arrow } from '../assets/icons';
 
+import { boxes } from 'constants/GamesConstant'
+
 const InfoBox = ({text, link, btnText})=>(
     <div className="info-box neo-brutalism-blue">
         <p className="font-medium sm:text-xl text-center">{text}</p>
@@ -44,7 +46,10 @@ const renderContent = {
 }
 
 const HomeInfo = ({currentStage}) => {
-  return renderContent[currentStage] || null;
+    const box = boxes.find(box=>box.index === currentStage)
+    const info = box.infoBox
+    console.log(info);
+    return info || null;
 }
 
 export default HomeInfo

@@ -10,7 +10,6 @@ import HomeInfo from '../components/HomeInfo'
 
 import sakura from '../assets/sakura.mp3'
 import { soundoff, soundon } from '../assets/icons'
-import { AppContextProvider } from 'contexts/AppContext'
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));

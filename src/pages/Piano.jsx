@@ -1,15 +1,16 @@
 import React from 'react'
-import GameInfo from '../components/GameInfo'
+import GameInfo from 'components/GameInfo'
+import { games } from 'constants/GamesConstant'
+
+const {title, introText, controls, element} = games.find((el)=> el.title === "Piano");
 
 const Piano = () => {
   return (
     <GameInfo
-    title="Piano"
-    introText="This is the pianogame."
-    controls={`Use following keys...
-        Key 1:
-        Key 2:
-        blabla bla`}
+      title={title}
+      introText={introText}
+      controls={controls}
+      game={element}
     />
   )
 }

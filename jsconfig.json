@@ -5,7 +5,9 @@
         "/*": ["src/*"],
         "components/*": ["src/components/*"],
         "assets/*": ["src/assets/*"],
-        "contexts/*": ["src/contexts/*"]
+        "contexts/*": ["src/contexts/*"],
+        "constants/*": ["src/constants/*"],
+        "games/*": ["src/games/*"]
       },
     }
   }

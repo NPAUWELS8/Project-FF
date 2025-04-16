@@ -1,23 +1,20 @@
 import {useState} from 'react'
 
 import { PianoGame } from '../games'
+import { games } from 'constants/GamesConstant'
 
-const GameInfo = ({title, introText, controls,game}) => {
+const GameInfo = ({title, introText, controls, game}) => {
   const [gameStarted, setGameStarted] = useState(false)
-  const [gameOver, setGameOver] = useState(false)
 
   const test = {
-    1: (<PianoGame
-      gameOver={gameOver}
-      setGameOver={setGameOver}
-    />)
+    1: (<PianoGame/>)
   }
 
   const handleButtonClick = ()=>{
     setGameStarted(true)
   }
   if(gameStarted){
-    return test[1];
+    return game;
   } else{
     return (
       <section className="max-container">
