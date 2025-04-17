@@ -5,8 +5,10 @@ export class Background {
         this.game = game;
         this.width = 3360;
         this.height = 1920;
-        this.backGroundImage = backGroundImage;
-        this.foreGroundImage = foreGroundImage
+        this.backGroundImage = new Image();
+        this.backGroundImage.src = backGroundImage;
+        this.foreGroundImage = new Image();
+        this.foreGroundImage.src = foreGroundImage;
         this.x = game.backgroundOffset.x
         this.y = game.backgroundOffset.y
         this.tilesX = 70;

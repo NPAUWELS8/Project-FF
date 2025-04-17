@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Home, About, Projects, Contact, Piano } from './pages'
+import { Home, About, Projects, Contact, Piano, Rpg } from './pages'
 import Navbar from './components/Navbar';
 import { AppContextProvider } from './contexts/AppContext';
 
@@ -15,6 +15,7 @@ const App = () => {
                         <Route path="/about" element={<About/>} />
                         <Route path="/projects" element={<Projects/>} />
                         <Route path="/contact" element={<Contact/>} />
+                        <Route path="/rpg" element={<Rpg/>}/>
                     </Routes>
                 </AppContextProvider>
             </Router>

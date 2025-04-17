@@ -13,8 +13,8 @@ const PianoGame = () => {
   return (
     <div>
       <canvas ref={pianoRef} className="h-[500px] w-[1333px]">PianoGame</canvas>
-      {gameOver && won && <button className="btn">Continue</button> }
-      {gameOver && !won && <button className="btn">Retry</button> }
+      {gameOver && won && <button className="btn-magic mt-12">Continue</button> }
+      {gameOver && !won && <button className="btn-magic mt-12">Retry</button> }
     </div>
   )
 }

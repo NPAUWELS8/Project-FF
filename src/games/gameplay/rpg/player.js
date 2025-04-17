@@ -1,10 +1,13 @@
 import { states, RunUp, StandUp, RunDown, StandDown, RunLeft, StandLeft, RunRight, StandRight } from './playerStates.js'
 import { MovementObject } from './input.js'
 
+import { playerSheet } from 'assets/rpg'
+
 export class Player {
     constructor(game){
         this.game = game;
-        this.image = rpgPlayer;
+        this.image = new Image();
+        this.image.src = playerSheet;
         this.width = 48;
         this.height = 68;
         this.topMargin = 30;

@@ -13,9 +13,9 @@ const GameInfo = ({title, introText, controls, game}) => {
     return game;
   } else{
     return (
-      <section className="max-container">
-        <h1 className="head-text">
-          <span className="blue-gradient_text font-semibold drop-shadow">{title}</span>
+      <section className="bg-slate-950 max-container">
+        <h1 className="head-text-magic">
+          <span className="magic-text font-semibold drop-shadow">{title}</span>
         </h1>
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p>
@@ -23,8 +23,8 @@ const GameInfo = ({title, introText, controls, game}) => {
           </p>
         </div>
         <div className="mt-5">
-          <h3 className="subhead-text">
-            <span className="blue-gradient_text font-semibold drop-shadow">Controls</span>
+          <h3 className="subhead-text-magic">
+            <span className="magic-text font-semibold drop-shadow">Controls</span>
           </h3>
           <div className="mt-5 flex flex-col gap-3 text-slate-500">
             <p>
@@ -32,7 +32,7 @@ const GameInfo = ({title, introText, controls, game}) => {
             </p>
           </div>
         </div>
-        <button className="btn mt-12" onClick={handleButtonClick}>Continue</button>
+        <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
       </section>
     )
   }

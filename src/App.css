@@ -4,6 +4,7 @@
 @theme {
   --font-poppins: "Poppins", "sans-serif";
   --shadow-card: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)";
+  --font-cinzel: "Cinzel", "sans-serif";
 }
 
 :root {
@@ -32,8 +33,20 @@ body:has(.card[data-color="green"]:hover) {
     @apply font-poppins text-3xl font-semibold sm:text-5xl sm:leading-snug;
   }
 
+  .head-text-magic{
+    @apply font-poppins text-3xl font-semibold sm:text-5xl sm:leading-snug;
+  }
+
+  .magic-text{
+    @apply bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 bg-clip-text text-transparent;
+  }
+
   .subhead-text {
     @apply font-poppins relative text-xl font-semibold sm:text-3xl;
+  }
+
+  .subhead-text-magic{
+    @apply font-poppins relative text-xl font-semibold sm:text-3xl
   }
 
   .blue-gradient_text {
@@ -52,6 +65,9 @@ body:has(.card[data-color="green"]:hover) {
     @apply w-full rounded-lg bg-gradient-to-r from-[#00c6ff] to-[#0072ff] px-5 py-2.5 text-center text-sm font-medium text-white focus:ring-4 focus:ring-blue-300 focus:outline-none sm:w-auto;
   }
 
+  .btn-magic {
+    @apply font-cinzel text-xl w-full rounded-lg bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 shadow-amber-200 shadow-md px-5 py-2.5 text-center font-semibold text-white hover:scale-110 hover:from-amber-500  hover:via-orange-500 hover:to-red-500 hover:text-yellow-50 hover:shadow-lg active:scale-95 active:shadow-md focus:ring-4 focus:ring-yellow-400 focus:outline-none sm:w-auto;
+  }
   .header {
     @apply absolute top-0 right-0 left-0 z-10 mx-auto flex max-w-5xl items-center justify-between bg-transparent px-8 py-4 sm:px-16;
   }
@@ -191,4 +207,251 @@ body:has(.card[data-color="green"]:hover) {
     1vmin 1vmin #d2e4ff,
     0.65vmin 1vmin #d2e4ff,
     1vmin 0.65vmin #d2e4ff;
+}
+
+
+/*recycled from original project*/
+
+@font-face{
+  font-family: monogram;
+  src: url('monogram.ttf')
+}
+:root{
+  --primaryMagic: #ffd700;
+  --secondaryMagic: #ff8c00;
+  --tertiaryMagic: #ff4500;
+}
+.app-background{
+  background-color:rgb(41, 31, 3) !important;
+}
+.magic-button {
+  font-family: 'Cinzel', serif; /* Matches the title font */
+  font-size: 1.5rem; /* Adjust button text size */
+  color: #fff; /* White text for contrast */
+  background: linear-gradient(90deg, var(--primaryMagic), var(--secondaryMagic), var(--tertiaryMagic)); /* A magical gradient */
+  background-size: 200%; /* Smooth gradient animation */
+  border: 2px solid var(--primaryMagic); /* Golden border */
+  border-radius: 15px; /* Soft edges for a magical feel */
+  padding: 10px 20px; /* Button size */
+  margin: 1vw;
+  text-shadow: 
+      0 0 5px var(--primaryMagic),
+      0 0 10px var(--secondaryMagic),
+      0 0 20px var(--tertiaryMagic);
+  box-shadow: 
+      0 0 10px var(--primaryMagic),
+      0 0 20px var(--secondaryMagic),
+      0 0 30px var(--tertiaryMagic);
+  cursor: pointer;
+  text-transform: uppercase; /* Adds an epic feel */
+  transition: all 0.4s ease-in-out; /* Smooth animations */
+  animation: glow 3s infinite alternate; /* Glow animation (reuse from the title) */
+}
+
+/* Hover effect for more interactivity */
+.magic-button:hover {
+  background-position: right; /* Shift the gradient */
+  color: #ffffe0; /* lighter, glowing text */
+  box-shadow: 
+      0 0 20px var(--primaryMagic),
+      0 0 30px var(--tertiaryMagic),
+      0 0 40px var(--secondaryMagic);
+  transform: scale(1.1); /* Button enlarges slightly */
+}
+
+/* Active state for a magical "press" effect */
+.magic-button:active {
+  transform: scale(0.95); /* Shrink slightly */
+  box-shadow: 
+      0 0 5px var(--primaryMagic),
+      0 0 10px var(--secondaryMagic);
+}
+
+.magic-title {
+  font-family: 'Cinzel', serif; /* A magical serif font */
+  font-size: 3rem; /* Adjust size as needed */
+  color: var(--primaryMagic); /* Golden text, reminiscent of magic */
+  text-shadow: 
+      0 0 5px var(--primaryMagic), /* Soft gold glow */
+      0 0 10px var(--secondaryMagic), /* Deeper glow */
+      0 0 20px var(--tertiaryMagic), /* Warm fiery glow */
+      0 0 40px var(--primaryMagic); /* Outer magical effect */
+  animation: glow 3s infinite alternate, float 5s ease-in-out infinite;
+  text-align: center; /* Center the title */
+  margin-top: 20px;
+}
+
+/* Glow effect animation */
+@keyframes glow {
+  from {
+      text-shadow: 
+          0 0 5px var(--primaryMagic), 
+          0 0 10px var(--secondaryMagic), 
+          0 0 20px var(--tertiaryMagic), 
+          0 0 40px var(--primaryMagic);
+  }
+  to {
+      text-shadow: 
+          0 0 10px #fffacd, 
+          0 0 20px #ff6347, 
+          0 0 30px var(--tertiaryMagic), 
+          0 0 50px #ffffe0;
+  }
+}
+
+/* Floating effect */
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/*memory game*/
+:root {
+  --primaryCard: #FFCE00;
+  --secondaryCard: #FE4880;
+  --tertiaryCard: #b36c10;
+  --darkCard: #212121;
+  --lightCard: #F3F3F3;
+}
+.deck{
+  margin-left: 15vw;
+  margin-right: 15vw;
+  position: absolute;
+}
+.memory-card {
+  /* margin: 100px auto 0; */
+  margin: auto;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  z-index: 1;
+}
+.memory-card.is-flipped{
+  z-index: 2 !important;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg) translateX(-10vw);
+  position: relative;
+}
+.card__inner.is-gone{
+  transform: translateZ(100vw) translateX(-100vw);
+  position: relative;
+} 
+
+.card__face {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front {
+  background-image: linear-gradient(to bottom right, var(--primaryCard), var(--secondaryCard));
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.card__face--front h2 {
+  color: #FFF;
+  font-size: 32px;
+}
+
+.card__face--back {
+  background-color: var(--lightCard);
+  transform: rotateY(180deg);
+}
+.top-bar{
+  font-family: 'Cinzel', serif; /* Matches the title font */
+  font-size: 1.5rem; /* Adjust button text size */
+  color: #fff; /* White text for contrast */
+  background: linear-gradient(90deg, var(--primaryMagic), var(--secondaryMagic), var(--tertiaryMagic)); /* A magical gradient */
+  background-size: 200%; /* Smooth gradient animation */
+  border: 2px solid var(--primaryMagic); /* Golden border */
+  border-radius: 15px; /* Soft edges for a magical feel */
+  padding: 10px 20px;
+  width: 75%;
+  margin: 1vw;
+  opacity: 0.75;
+  text-shadow: 
+      0 0 5px var(--primaryMagic),
+      0 0 10px var(--secondaryMagic),
+      0 0 20px var(--tertiaryMagic);
+  box-shadow: 
+      0 0 10px var(--primaryMagic),
+      0 0 20px var(--secondaryMagic),
+      0 0 30px var(--tertiaryMagic);
+  text-transform: uppercase; /* Adds an epic feel */
+  transition: all 0.4s ease-in-out; /* Smooth animations */
+  animation: glow 3s infinite alternate; /* Glow animation (reuse from the title) */
+}
+
+/*Piano + RPG game*/
+#canvas1{
+  border: 5px solid black;
+  position: flex;
+  max-width:100%;
+  max-height: 100%;
+}
+#preload-images{
+  display: none;
+}
+#overlay{
+  border: 5px solid black;
+  max-width:100%;
+  max-height: 100%;
+  background-color: black;
+  opacity:0;
+  transition: opacity 1s ease-in-out;
+}
+.showing{
+  opacity: 1!important;
+}
+#dialogue{
+  font-family: monogram, monospace;
+  font-size: 2rem;
+  overflow: hidden;
+}
+.rpg{
+  position: relative;
+}
+.textbox{
+  position: 10%;
+  left:10%;
+  right: 10%;
+  bottom: 2vh;
+  min-height: 10vh;
+  background: white;
+  border-radius: 3px;
+  outline-style: solid;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  word-spacing: 0.2rem;
+  filter: drop-shadow(0 0 0 0.75rem rgb(112,112,112))
+}
+.ui-text{
+  margin: 0;
+  user-select: none;
+
 }

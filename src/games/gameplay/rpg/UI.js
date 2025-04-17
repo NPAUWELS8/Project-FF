@@ -36,25 +36,25 @@ export class InteractButton extends TextBox{
 }
 
 export class Dialogue{
-    constructor(game, container, element){
+    constructor(game, handleUpdateText, handleDisplayText){
         this.game = game;
-        this.container = container;
-        this.element = element;
         this.intervalRef;
         this.time = 0;
         this.hideTime = 0;
         this.shown = false;
+        this.handleUpdateText = handleUpdateText
+        this.handleDisplayText = handleDisplayText
     }
     displayText(text){
         this.hideTime = 0;
         this.shown = true;
-        this.container.style.display = "block";
+        this.handleDisplayText(true);
         let currentText = "";
         let index = 0;
         const intervalRef = setInterval(()=>{
             if(index < text.length){
                 currentText += text[index];
-                this.element.innerHTML = currentText;
+                this.handleUpdateText(currentText);
                 index++;
                 return;
             }
@@ -65,8 +65,8 @@ export class Dialogue{
     hideText(){
         this.shown = false;
         this.time = 0;
-        this.container.style.display = "none";
-        this.element.innerHTML = "";
+        this.handleDisplayText(false);
+        this.handleUpdateText("")
         this.index = 0;
         clearInterval(this.intervalRef);
     }
