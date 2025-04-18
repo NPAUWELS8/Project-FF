@@ -41,7 +41,7 @@ const RpgGame = () => {
     },[])
 
   return (
-    <div className="max-container">
+    <div className="mx-auto min-h-[calc(100vh-80px)] max-w-5xl px-8 !pt-[75px] pb-12 sm:p-16">
         <FadingDiv
             overlay={overlay}
             gameSize={gameSize}

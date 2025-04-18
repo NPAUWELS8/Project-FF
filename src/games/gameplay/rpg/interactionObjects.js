@@ -126,12 +126,16 @@ export class Interaction extends InteractionObject{
         if(this.#isPlayerCollision(input)) this.game.player.currentInteraction = this;
         else if(!this.#isPlayerCollision(input) && this.game.player.currentInteraction === this) this.game.player.currentInteraction = null;
         if(this.game.player.currentInteraction === this){
-            if(otherInput.includes("Enter") && !this.game.dialogue.shown && this.game.dialogue.hideTime > 1000) this.showText();
+            if(otherInput.includes("Enter") && !this.game.dialogue.shown && this.game.dialogue.hideTime > 1000) {
+                this.showText();
+                this.game.player.frozen = true;
+            }
             else if(otherInput.includes("Enter") && this.game.dialogue.shown && this.game.dialogue.time > 2000){
                 this.hideText();
                 if(this.key && !this.keyFound){
                     this.showKeyText("You found the key!");
                 }
+                else this.game.player.frozen = false;
             }
         }
     }

@@ -5,6 +5,7 @@
   --font-poppins: "Poppins", "sans-serif";
   --shadow-card: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)";
   --font-cinzel: "Cinzel", "sans-serif";
+  --font-monogram: "monogram", "monospace";
 }
 
 :root {
@@ -209,6 +210,9 @@ body:has(.card[data-color="green"]:hover) {
     1vmin 0.65vmin #d2e4ff;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /*recycled from original project*/
 

@@ -5,6 +5,7 @@ export class InputHandler{
         this.movementKeys = [];
         this.otherKeys = [];
         window.addEventListener('keydown',e =>{
+            if(this.game.isValidKey(e.code) || this.game.isValidOtherKey(e.code)) e.preventDefault()
             if(this.game.isValidKey(e.code) && !this.movementKeys.includes(e.code)){
                 this.movementKeys.push(e.code);
             } else if(this.game.isValidOtherKey(e.code) && !this.otherKeys.includes(e.code)){
