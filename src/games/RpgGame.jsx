@@ -4,24 +4,29 @@ import { playRpg } from './gameplay/rpg/rpg';
 import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
 
-const GameCanvas = ({setGameOver,setWon, handleUpdateText, handleDisplayText}) => {
+const GameCanvas = ({setGameOver,setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
 
     useEffect(()=>{
-        playRpg(rpgRef.current, setGameOver, setWon, handleUpdateText, handleDisplayText);
+        playRpg(rpgRef.current, setGameOver, setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize);
     },[])
 
+    const [gameWidth, gameHeight] = gameSize;
+
     return (
-        <canvas ref={rpgRef} className="h-[480px] w-[840px]"></canvas>
+        <canvas ref={rpgRef} className={`"h-[${gameWidth}px] w-[${gameHeight}px]"`}></canvas>
     )
 }
 
 
 const RpgGame = () => {
     const [won, setWon] = useState(false);
-    const [gameOver, setGameOver] = useState(false)
+    const [gameOver, setGameOver] = useState(false);
     const [gameText, setGameText] = useState([]);
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
+    const [overlay, setOverlay] = useState(false);
+
+    const gameSize = [840,480]
 
     const handleUpdateText = useCallback((text) => {
         setGameText(text);
@@ -31,18 +36,30 @@ const RpgGame = () => {
         setGameTextDisplay(isDisplayed);
     },[])
 
+    const handleOverlay = useCallback((overlay)=>{
+        setOverlay(overlay);
+    },[])
+
   return (
-    <div>
-        <FadingDiv/>
+    <div className="max-container">
+        <FadingDiv
+            overlay={overlay}
+            gameSize={gameSize}
+        />
         <GameCanvas 
             setGameOver={setGameOver}
             setWon={setWon}
             handleUpdateText={handleUpdateText}
             handleDisplayText={handleDisplayText}
+            handleOverlay={handleOverlay}
+            gameSize={gameSize}
         />
         {gameOver && won && <button className="btn-magic mt-12">Continue</button> }
         {gameOver && !won && <button className="btn-magic mt-12">Retry</button> }
-        <TextBoxContainer/>
+        <TextBoxContainer
+            gameText={gameText}
+            gameTextDisplay={gameTextDisplay}
+        />
     </div>
   )
 }

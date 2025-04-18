@@ -44,16 +44,14 @@ export class Boundary extends InteractionObject{
 }
 
 export class EnterBoundary extends Boundary{
-    constructor(game, background, tileX, tileY, tilePx, zoomLevel, {enter}){
+    constructor(game, background, tileX, tileY, tilePx, zoomLevel, {enter,handleOverlay}){
         super(game, background, tileX, tileY, tilePx, zoomLevel)
         this.enter = enter;
-        this.toggleOverlay = ()=>{
-            this.game.fadingDiv.classList.toggle("showing");
-        }
+        this.handleOverlay = handleOverlay
     }
     #switchBackground(){
         this.game.player.frozen = true;
-        this.toggleOverlay()
+        this.handleOverlay(true);
         setTimeout(()=>{
             this.game.background = this.enter
             this.game.backgroundOffset = this.enter.enterOffset
@@ -62,7 +60,7 @@ export class EnterBoundary extends Boundary{
             this.game.boundaries = this.enter.boundaries;
             this.game.enterBoundary = this.enter.enterBoundaries;
             setTimeout(()=>{
-                this.toggleOverlay();
+                this.handleOverlay(false);
                 this.game.player.frozen = false;
             },1000)
         },1000)

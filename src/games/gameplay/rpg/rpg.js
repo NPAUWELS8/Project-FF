@@ -8,7 +8,7 @@ import * as data2 from './collisions/interior_boundary.json' with {type: "json"}
 
 import { intBgMap, intFgMap, outBgMap, outFgMap } from 'assets/rpg'
 
-export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDisplayText){
+export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize){
     // const title = document.getElementById('title');
     // title.style.display = "none";
     // const container = document.getElementById('game-container')
@@ -27,8 +27,9 @@ export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDis
     // const dialogue = document.createElement('p');
     // dialogue.id = "dialogue";
     // dialogue.classList.add("ui-text");
-    const gameWidth = 840;
-    const gameHeight = 480;
+    const [gameWidth, gameHeight] = gameSize
+    // const gameWidth = 840;
+    // const gameHeight = 480;
     // textBox.append(dialogue);
     // textBoxContainer.append(textBox)
     // rpgContainer.append(fadingDiv);
@@ -96,7 +97,8 @@ export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDis
                     enter: this.islandBackground,
                     tileCheck: 1210,
                     object: EnterBoundary,
-                    pushArray: "enterBoundaries"
+                    pushArray: "enterBoundaries",
+                    handleOverlay: handleOverlay
                 },
                 {
                     name: "Collision",
@@ -112,7 +114,8 @@ export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDis
                     enter: this.houseBackground,
                     tileCheck: 1025,
                     object: EnterBoundary,
-                    pushArray: "enterBoundaries"
+                    pushArray: "enterBoundaries",
+                    handleOverlay: handleOverlay
                 },
                 {
                     name: "Collision",

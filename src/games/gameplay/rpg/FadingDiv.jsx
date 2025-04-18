@@ -1,8 +1,12 @@
 import React from 'react'
 
-const FadingDiv = () => {
+const FadingDiv = ({overlay, gameSize}) => {
+  const [gameWidth, gameHeight] = gameSize
+
   return (
-    <div id="overlay"></div>
+    <div
+      className={`${overlay ? 'opacity-100' : 'opacity-0'} w-[${gameWidth}px] h-[${gameHeight}px] bg-black absolute transition-opacity duration-1000`}
+    ></div>
   )
 }
 
