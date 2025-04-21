@@ -54,7 +54,7 @@ export class EnterBoundary extends Boundary{
         this.handleOverlay(true);
         setTimeout(()=>{
             this.game.background = this.enter
-            this.game.backgroundOffset = this.enter.enterOffset
+            this.game.backgroundOffset = {...this.enter.enterOffset}
             this.game.player.setState(states[this.enter.enterState])
             this.game.player.topMargin = this.enter.playerTopMargin;
             this.game.boundaries = this.enter.boundaries;

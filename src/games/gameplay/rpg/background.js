@@ -21,9 +21,12 @@ export class Background {
         this.keys = [];
         this.interactionArrays = [this.boundaries, this.enterBoundaries, this.interactions, this.keys];
         this.allBoundaries = []
-        this.enterOffset = enterOffset
+        this._enterOffset = enterOffset
         this.enterState = enterState
         this.playerTopMargin  = playerTopMargin;
+    }
+    get enterOffset(){
+        return this._enterOffset;
     }
     update({x,y}, input, otherInput){
         this.x = x;

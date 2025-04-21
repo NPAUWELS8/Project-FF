@@ -5,7 +5,7 @@ const FadingDiv = ({overlay, gameSize}) => {
 
   return (
     <div
-      className={`${overlay ? 'opacity-100' : 'opacity-0'} w-[${gameWidth}px] h-[${gameHeight}px] bg-black absolute transition-opacity duration-1000`}
+      className={`${overlay ? 'opacity-100' : 'opacity-0'} w-[${gameWidth}px] h-[480px] bg-black absolute transition-opacity duration-1000`}
     ></div>
   )
 }

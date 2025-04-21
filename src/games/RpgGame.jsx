@@ -14,7 +14,7 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
     const [gameWidth, gameHeight] = gameSize;
 
     return (
-        <canvas ref={rpgRef} className={`"h-[${gameWidth}px] w-[${gameHeight}px]"`}></canvas>
+        <canvas ref={rpgRef} className={`"w-[${gameWidth}px] h-[${gameHeight}px]"`}></canvas>
     )
 }
 

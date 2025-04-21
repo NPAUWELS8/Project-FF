@@ -8,7 +8,6 @@ import { boxes } from 'constants/GamesConstant'
 const HomeInfo = ({currentStage}) => {
     const box = boxes.find(box=>box.index === currentStage)
     const info = box.infoBox
-    console.log(info);
     return info || null;
 }
 

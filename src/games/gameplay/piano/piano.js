@@ -212,7 +212,6 @@ export function playPiano(canvas,setGameOver, setWon){
         }
     }
     const game =  new PianoGame(canvas.width, canvas.height);
-    console.log(game);
 
     let lastTime = 0;
 

@@ -46,7 +46,6 @@ const Contact = () => {
     }).catch((error)=>{
       setIsLoading(false);
       setCurrentAnimation('idle');
-      console.log(error);
       showAlert({show:true, text:"I didn't receive your message...", type:'danger'})
     })
   }

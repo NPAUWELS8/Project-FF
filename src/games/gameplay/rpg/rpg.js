@@ -111,7 +111,7 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
             this.houseBackground.createInteractionObjects(this.house);
             this.input = new InputHandler(this);
             this.gameOver = false;
-            this.dialogue = new Dialogue(this.game, handleUpdateText, handleDisplayText)
+            this.dialogue = new Dialogue(this, handleUpdateText, handleDisplayText)
             this.keyFound = false;
         }
         update(deltaTime){

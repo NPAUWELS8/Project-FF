@@ -41,7 +41,6 @@ class Character{
     updateFrame(animation){
        const {startFrameX, startFrameY, frameCount,soundPlay} = animation[this.name];
        this.soundPlay = soundPlay;
-       console.log(this.soundPlay);
        this.frameX = startFrameX;
        this.frameY = startFrameY;
        this.frameCount = frameCount;
