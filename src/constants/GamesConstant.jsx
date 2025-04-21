@@ -1,4 +1,4 @@
-import { PianoGame, RpgGame } from "games"
+import { PianoGame, RpgGame, SudokuGame  } from "games"
 
 import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
@@ -112,6 +112,20 @@ infoBoxes.addGame({
     ),
     controls:"Do this, then do the next thing and so on!",
     element: (<RpgGame/>)
+})
+
+infoBoxes.addGame({
+    title: "Sudoku",
+    introText:"This is a Sudoku game.",
+    infoBox:(
+        <InfoBox 
+        text="Game 3 is crazy. You will love it!"
+        link="/sudoku"
+        btnText="Sudoku away!"
+        />
+    ),
+    controls:"Do this, then do the next thing and so on!",
+    element: (<SudokuGame/>)
 })
 
 

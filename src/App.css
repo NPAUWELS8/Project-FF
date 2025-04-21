@@ -54,6 +54,10 @@ body:has(.card[data-color="green"]:hover) {
     @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff] bg-clip-text text-transparent;
   }
 
+  .magic-gradient_text {
+    @apply bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 bg-clip-text text-transparent;
+  }
+
   .input {
     @apply shadow-card mt-2.5 block w-full rounded-lg border border-gray-200 bg-white p-2.5 text-sm font-normal text-gray-900 focus:border-blue-500 focus:ring-blue-500;
   }
