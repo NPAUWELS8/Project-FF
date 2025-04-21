@@ -8,45 +8,16 @@ import * as data2 from './collisions/interior_boundary.json' with {type: "json"}
 
 import { intBgMap, intFgMap, outBgMap, outFgMap } from 'assets/rpg'
 
-export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize){
-    // const title = document.getElementById('title');
-    // title.style.display = "none";
-    // const container = document.getElementById('game-container')
-    // container.innerHTML = "";
-    // const rpgContainer = document.createElement('div');
-    // rpgContainer.classList.add("rpg");
-    // const canvas = document.createElement('canvas');
-    // canvas.id = "canvas1";
-    // const fadingDiv = document.createElement('div');
-    // fadingDiv.id = "overlay"
-    // const textBoxContainer = document.createElement('div');
-    // textBoxContainer.id = "textbox-container";
-    // textBoxContainer.style = "display: none;"
-    // const textBox = document.createElement('div');
-    // textBox.classList.add("textbox");
-    // const dialogue = document.createElement('p');
-    // dialogue.id = "dialogue";
-    // dialogue.classList.add("ui-text");
+export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize){
     const [gameWidth, gameHeight] = gameSize
-    // const gameWidth = 840;
-    // const gameHeight = 480;
-    // textBox.append(dialogue);
-    // textBoxContainer.append(textBox)
-    // rpgContainer.append(fadingDiv);
-    // rpgContainer.append(canvas);
-    // rpgContainer.append(textBoxContainer);
-    // container.append(rpgContainer);
-    // fadingDiv.style =  `position:absolute; width: ${gameWidth+10}px;height:${gameHeight+10}px;`
     const ctx = canvas.getContext('2d');
     canvas.width = gameWidth;
     canvas.height = gameHeight;
-    // textBox.style = `width: ${gameWidth+200}px;`
     const dataObject = data.default
     const dataObject2 = data2.default
 
     class RPGGame{
         constructor(width, height){
-            // this.fadingDiv = fadingDiv;
             this.width = width;
             this.height = height;
             this.keys = new Set();
@@ -175,11 +146,7 @@ export function playRpg(canvas, setGameOver, setWon, handleUpdateText, handleDis
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate)
         else{
-            const button = document.createElement('button');
-            button.classList.add('magic-button');
-            button.innerText = 'Continue';
-            button.id = 'continue'
-            container.append(button);
+            setGameOver(true);
         }
     }
     requestAnimationFrame(animate);

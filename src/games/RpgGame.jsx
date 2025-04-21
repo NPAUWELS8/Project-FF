@@ -4,11 +4,11 @@ import { playRpg } from './gameplay/rpg/rpg';
 import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
 
-const GameCanvas = ({setGameOver,setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
+const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
 
     useEffect(()=>{
-        playRpg(rpgRef.current, setGameOver, setWon, handleUpdateText, handleDisplayText, handleOverlay, gameSize);
+        playRpg(rpgRef.current, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize);
     },[])
 
     const [gameWidth, gameHeight] = gameSize;
@@ -20,7 +20,6 @@ const GameCanvas = ({setGameOver,setWon, handleUpdateText, handleDisplayText, ha
 
 
 const RpgGame = () => {
-    const [won, setWon] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [gameText, setGameText] = useState([]);
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
@@ -48,14 +47,12 @@ const RpgGame = () => {
         />
         <GameCanvas 
             setGameOver={setGameOver}
-            setWon={setWon}
             handleUpdateText={handleUpdateText}
             handleDisplayText={handleDisplayText}
             handleOverlay={handleOverlay}
             gameSize={gameSize}
         />
-        {gameOver && won && <button className="btn-magic mt-12">Continue</button> }
-        {gameOver && !won && <button className="btn-magic mt-12">Retry</button> }
+        {gameOver && <button className="btn-magic mt-12">Continue</button> }
         <TextBoxContainer
             gameText={gameText}
             gameTextDisplay={gameTextDisplay}
