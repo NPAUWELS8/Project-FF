@@ -15,7 +15,9 @@ const SudokuGame = () => {
     sudoku(containerRef.current, checkRef.current, solveRef.current, resetRef.current, regenRef.current)
   },[])
   return (
-    <>
+    <div
+    className="mt-24"
+    >
       <Modal
         isSuccess = {isSuccess}
       />
@@ -42,7 +44,7 @@ const SudokuGame = () => {
         ref={solveRef}
         style={{display:"none"}}
       >Solve</button>
-    </>
+    </div>
   )
 }
 

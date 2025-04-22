@@ -174,6 +174,7 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
             setBackFunction(arr){
                 try{
                     if(this.setBackValue !== this.maxSetBackValue){
+                        console.log(this.setBackValue);
                         const setBack = this.setBackValue;
                         const setBackCells = this.completedCells.splice(-setBack,setBack);
                         setBackCells.forEach((cell)=>{
