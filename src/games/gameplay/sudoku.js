@@ -38,7 +38,7 @@ export function generateRandomSudoku(){
         scrambleSudoku(){
             this.cells.forEach((cell)=>{
                 const random = Math.random();
-                const prob =  0.6;
+                const prob =  0.5;
                 if(random < prob){
                     cell.shownValue = "";
                 } else{
