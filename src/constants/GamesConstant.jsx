@@ -1,4 +1,4 @@
-import { PianoGame, RpgGame, SudokuGame  } from "games"
+import { PianoGame, RpgGame, SudokuGame, MemoryGame  } from "games"
 
 import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
@@ -92,7 +92,7 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox
             text="Game 1 is nice game that you have to play because it's very nice and all."
-            link="/piano"
+            link="/games/Piano"
             btnText="Learn More"
         />
     ),
@@ -106,7 +106,7 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox 
         text="Game 2 is even nicer, believe me!"
-        link="/rpg"
+        link="/games/RPG"
         btnText="Play it bassie!"
         />
     ),
@@ -120,12 +120,25 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox 
         text="Game 3 is crazy. You will love it!"
-        link="/sudoku"
+        link="/games/Sudoku"
         btnText="Sudoku away!"
         />
     ),
     controls:"Do this, then do the next thing and so on!",
     element: (<SudokuGame/>)
+})
+infoBoxes.addGame({
+    title: "Memory",
+    introText:"This is a Memory game.",
+    infoBox:(
+        <InfoBox 
+        text="Game 4 brings back old memories, you'll see!"
+        link="/games/Memory"
+        btnText="Let's memorize!"
+        />
+    ),
+    controls:"Do this, then do the next thing and so on!",
+    element: (<MemoryGame/>)
 })
 
 

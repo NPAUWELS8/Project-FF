@@ -1,8 +1,7 @@
-//TODO: create dynamic path for the games instead of all different pages.
 //TODO: Add memorycard game
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Home, About, Projects, Contact, Piano, Rpg, Sudoku } from './pages'
+import { Home, About, Projects, Contact, Games } from './pages'
 import Navbar from './components/Navbar';
 import { AppContextProvider } from './contexts/AppContext';
 
@@ -14,12 +13,10 @@ const App = () => {
                 <AppContextProvider>
                     <Routes>
                         <Route path="/" element={<Home/>} />
-                        <Route path="/piano" element={<Piano/>} />
                         <Route path="/about" element={<About/>} />
                         <Route path="/projects" element={<Projects/>} />
                         <Route path="/contact" element={<Contact/>} />
-                        <Route path="/rpg" element={<Rpg/>}/>
-                        <Route path="/sudoku" element={<Sudoku/>}/>
+                        <Route path="/games/:game" element={<Games/>}/>
                     </Routes>
                 </AppContextProvider>
             </Router>

@@ -1,10 +1,13 @@
 import React from 'react'
 import GameInfo from 'components/GameInfo'
 import { games } from 'constants/GamesConstant'
+import { useParams } from 'react-router-dom';
 
-const {title, introText, controls, element} = games.find((el)=> el.title === "Piano");
+const Game = () => {
+    const params = useParams();
+    const {title, introText, controls, element} = games.find((el)=> el.title === params.game);
 
-const Piano = () => {
+
   return (
     <GameInfo
       title={title}
@@ -15,4 +18,4 @@ const Piano = () => {
   )
 }
 
-export default Piano
+export default Game
