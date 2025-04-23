@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { sudoku } from './gameplay/sudoku'
 import { generateRandomSudoku } from './gameplay/sudoku'
 
 import Modal from 'components/Modal'
@@ -49,7 +48,7 @@ const SudokuGame = () => {
 
   return (
     <div
-    className="mt-24"
+    className="mt-24 ml-12"
     >
       <Modal
         open={open}
