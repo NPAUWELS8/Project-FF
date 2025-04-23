@@ -5,11 +5,6 @@ import Modal from 'components/Modal'
 
 const SudokuGame = () => {
   const [open, setOpen] = useState(false)
-  const containerRef = useRef(null)
-  const checkRef = useRef(null)
-  const resetRef = useRef(null)
-  const regenRef = useRef(null)
-  const solveRef = useRef(null)
   const [isSuccess, setIsSuccess] = useState(false)
 
   const obj = generateRandomSudoku()
@@ -57,7 +52,6 @@ const SudokuGame = () => {
       />
       <h1>Sudoku Challenge</h1>
       <div
-        ref={containerRef}
         className={`grid grid-cols-9 grid-rows-9 justify-center items-center w-[576px] h-[576px]`}
       >
         {values.map((value, index) => (
@@ -71,22 +65,18 @@ const SudokuGame = () => {
       </div>
       <button
         className="btn-magic m-12"
-        ref={checkRef}
         onClick={checkValues}
       >Check</button>
       <button
         className="btn-magic m-12"
-        ref={resetRef}
         onClick={resetValues}
       >Reset</button>
       <button
         className="btn-magic m-12"
-        ref={regenRef}
         onClick={regenerateSudoku}
       >Regenerate</button>
       <button
         className="btn-magic m-12"
-        ref={solveRef}
         onClick={solveSudoku}
         style={{display:"none"}}
       >Solve</button>
