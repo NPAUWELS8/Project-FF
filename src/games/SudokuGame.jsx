@@ -4,6 +4,7 @@ import { sudoku } from './gameplay/sudoku'
 import Modal from 'components/Modal'
 
 const SudokuGame = () => {
+  const [open, setOpen] = useState(false)
   const containerRef = useRef(null)
   const checkRef = useRef(null)
   const resetRef = useRef(null)
@@ -12,13 +13,15 @@ const SudokuGame = () => {
   const [isSuccess, setIsSuccess] = useState(false)
 
   useEffect(()=>{
-    sudoku(containerRef.current, checkRef.current, solveRef.current, resetRef.current, regenRef.current)
+    sudoku(containerRef.current, checkRef.current, solveRef.current, resetRef.current, regenRef.current, setOpen, setIsSuccess)
   },[])
   return (
     <div
     className="mt-24"
     >
       <Modal
+        open={open}
+        setOpen={setOpen}
         isSuccess = {isSuccess}
       />
       <h1>Sudoku Challenge</h1>

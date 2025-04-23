@@ -1,3 +1,6 @@
+//TODO: create dynamic path for the games instead of all different pages.
+//TODO: Add memorycard game
+
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Home, About, Projects, Contact, Piano, Rpg, Sudoku } from './pages'
 import Navbar from './components/Navbar';

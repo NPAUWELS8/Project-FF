@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon, CheckIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -36,20 +37,18 @@ const Fail = ({setOpen}) => {
               >
                 Try Again.
               </button>
-              {/* <button
-                type="button"
-                data-autofocus
-                onClick={() => setOpen(false)}
-                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
-              >
-                Cancel
-              </button> */}
             </div>
           </DialogPanel>
   )
 }
 
 const Success = ({setOpen}) => {
+  const navigate = useNavigate()
+
+  function onSuccess(){
+    //update the game state to have this game finished
+    navigate('/');
+  }
 
   return (
     <DialogPanel
@@ -76,8 +75,8 @@ const Success = ({setOpen}) => {
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               <button
                 type="button"
-                onClick={() => setOpen(false)}
-                className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
+                onClick={() => onSuccess()}
+                className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-500 sm:ml-3 sm:w-auto"
               >
                 Continue.
               </button>
@@ -86,8 +85,7 @@ const Success = ({setOpen}) => {
   )
 }
 
-const Modal = ({isSuccess}) => {
-  const [open, setOpen] = useState(false)
+const Modal = ({isSuccess, open, setOpen}) => {
   console.log(isSuccess);
 
   return (

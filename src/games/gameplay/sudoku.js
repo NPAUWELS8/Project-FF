@@ -1,4 +1,4 @@
-export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
+export function sudoku(container, checkRef, solveRef, resetRef, regenRef, setOpen, setIsSuccess){
     generateRandomSudoku();
 
     
@@ -17,7 +17,7 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 this.completedCells = [];
                 this.setBackCount = 0;
                 this.setBackValue = 10;
-                this.maxSetBackValue = 10;
+                this.maxSetBackCount = 10;
                 this.regenCount = 0;
                 this.maxRegen = 5;
             }
@@ -44,12 +44,13 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 })
             }
             check(){
-                this.solve();
+                // this.solve();
                 const check = this.cells.every((cell)=>cell.value == cell.cellElement.value);
                 if(check){
-                    //use the setOpen function of the modal component
+                    setIsSuccess(true);
+                    setOpen(true);
                 } else{
-                    //use a callback function for the popup but avoid interrupting the game
+                    setOpen(true);
                 }
             }
             scrambleSudoku(){
@@ -67,7 +68,6 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
             createMatrix(){
                 this.initialize();
                 this.fill();
-                // const rows = this.rows;
                 this.scrambleSudoku();
             }
             initialize(){
@@ -75,7 +75,6 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 this.createRows();
                 this.createSquares();
                 this.createCells();
-                // this.container.innerHTML = "";
                 const tailwindCells = []
                 this.rows.forEach((row)=>{
                     const cellsInRow = row.cells;
@@ -84,7 +83,6 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                     })
                 })
                 tailwindCells.forEach((cell)=>{
-                    console.log(cell)
                     this.container.appendChild(cell.cellElement);
                 })
             }
@@ -148,13 +146,14 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 })
             } 
             fillOtherSquares(){
-                const allCells = this.cells;
-                const cells = allCells.filter((cell)=> cell.isOtherSquare);
+                const cells = this.cells.filter((cell)=> cell.isOtherSquare);
                 //sort cells from those with least options to those with most options
                 let sortedCells = [...this.sortOptions(cells)];
                 const length = sortedCells.length;
                 //loop through sorted cells and set random value from options array, next sort again
                 for(let i = 0;i <length;i++){
+                    console.log(i)
+                    console.log(sortedCells);
                     const cell = sortedCells[0];
                     if(cell.options.length !== 0){
                         const options = cell.options;
@@ -165,29 +164,31 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                         sortedCells.shift()
                         cell.updateDependencies(randomOption);
                     } else{
-                        sortedCells = this.setBackFunction(sortedCells);
-                        
+                        this.setBackFunction(sortedCells, i);
+                        i = Math.max(i - this.setBackValue -1, -1)
                     }
                     if(sortedCells) this.sortOptions(sortedCells);
                 }
             }
-            setBackFunction(arr){
+            setBackFunction(arr, i){
                 try{
-                    if(this.setBackValue !== this.maxSetBackValue){
-                        console.log(this.setBackValue);
-                        const setBack = this.setBackValue;
+                    if(this.setBackCount <= this.maxSetBackCount){
+                        const setBack = Math.min(this.setBackValue,  i);
                         const setBackCells = this.completedCells.splice(-setBack,setBack);
                         setBackCells.forEach((cell)=>{
                             cell.value = 0;
                         })
-                        arr.concat(setBackCells);
+                        setBackCells.forEach((cell)=>{
+                            cell.updateDependenciesAfterSetback()
+                        })
+
+                        arr.push(...setBackCells);
                         this.setBackCount++
-                        i = i - setBack
-                        return arr;
                     } else{
                         throw new Error('Max set back number reached!');
                     }
                 } catch (e){
+                    console.log(e);
                     if(this.regenCount<this.maxRegen){
                         this.regenerate();
                         this.regenCount++
@@ -234,7 +235,6 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 this.isOtherSquare = false;
                 this.cellElement = document.createElement('input');
                 this.initialElementValue = "";
-                // this.cellElement.classList.add('col','text-center','line');
                 this.cellElement.classList.add('border-1','aspect-square', 'text-center', 'w-[64px]')
                 if(this.col.id === 2 || this.col.id === 5) {
                     this.cellElement.classList.add('border-r-3')
@@ -255,7 +255,7 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 const colValues = col.map((cell)=>cell.value);
                 const values = rowValues.concat(colValues).concat(squareValues);
                 const rawOptions = [1,2,3,4,5,6,7,8,9];
-                const options = rawOptions.filter((cell)=>!values.includes(cell));
+                const options = rawOptions.filter((option)=>!values.includes(option));
                 this.options = options;
                 if(isFirst){
                     this.originalOptions = [...options];
@@ -268,12 +268,19 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
                 })
 
             }
+            updateDependenciesAfterSetback(){
+                const dependentCells = this.getDependentCells();
+                dependentCells.forEach((cell) => {
+                    cell.checkOptions();
+                })
+            }
             getDependentCells(){
                 const squareCells = this.square.cells;
                 const colCells = this.col.cells;
                 const rowCells = this.row.cells;
                 const allCells = squareCells.concat(colCells).concat(rowCells);
                 const cells = allCells.filter((cell,index, array)=>{
+                    //last findindex part will filter out any duplicates (since row and col will have some common cells with square)
                     const result = cell.id === this.id ? false : (array.findIndex((c)=>c.id === cell.id) === index);
                     return result
                 })
@@ -284,12 +291,9 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
             constructor(id){
                 this.id = id;
                 this.cells = [];
-                // this.rowElement = document.createElement('div');
-                // this.rowElement.classList.add('row','row-cols-9','m-0','p-0');
             }
             addCell(cell){
                 this.cells.push(cell);
-                // this.rowElement.appendChild(cell.cellElement);
             }
         }
         class Column{
@@ -315,21 +319,7 @@ export function sudoku(container, checkRef, solveRef, resetRef, regenRef){
             } else if (target == solveRef){
                 matrix.solve()
             }
-            // const tag = target.tagName;
-            // const targetId = target.id;
-            // if (tag === 'BUTTON' && targetId === 'checkButton') {
-            //     matrix.check();
-            // } else if (tag === 'BUTTON' && targetId === 'regenButton') {
-            //     matrix.regenerate();
-            // } else if (tag === 'BUTTON' && targetId === 'resetButton') {
-            //     matrix.reset();
-            // } else if (tag === 'BUTTON' && targetId === 'solveButton'){
-            //     matrix.solve();
-            // }
         })
         matrix.createMatrix();
-
-        // const result = matrix.createMatrix();
-        // return result;
     }
 }
