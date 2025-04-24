@@ -1,6 +1,6 @@
 import { PianoGame, RpgGame, SudokuGame, MemoryGame  } from "games"
 import { AppContext } from "contexts/AppContext";
-import { LockOpenIcon } from '@heroicons/react/24/solid'
+import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon, TrophyIcon } from '@heroicons/react/24/solid'
 
 import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
@@ -12,13 +12,22 @@ const InfoBox = ({text, link, btnText})=>{
     function onClickHandle(){
         context.setIsAfterGameComplete(false);
     }
+
+    const iconArray = [
+        (<LockOpenIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        (<SparklesIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        (<PlayIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        (<RocketLaunchIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        (<TrophyIcon aria-hidden="true" className="size-6 text-amber-600" />)
+    ]
     
     return (
     <div className="info-box neo-brutalism-magic">
         <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
         <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn-magic">
             {btnText}
-            <LockOpenIcon aria-hidden="true" className="size-6 text-amber-600" />
+            {iconArray[Math.floor(Math.random()*iconArray.length + 1)]}
         </Link>
     </div>
     )
