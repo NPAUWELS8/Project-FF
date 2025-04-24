@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const Game = () => {
     const params = useParams();
-    const {title, introText, controls, element} = games.find((el)=> el.title === params.game);
+    const {title, introText, controls, element} = games.find((el)=> el.url === params.game);
 
 
   return (

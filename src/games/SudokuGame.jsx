@@ -4,7 +4,7 @@ import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
 
-const SudokuGame = () => {
+const SudokuGame = ({title}) => {
   const context = useContext(AppContext);
   const onGameFinished = context.onGameFinished
 
@@ -54,7 +54,7 @@ const SudokuGame = () => {
         setOpen={setOpen}
         isSuccess = {isSuccess}
         onGameFinished={onGameFinished}
-        gameTitle="Sudoku"
+        gameTitle={title}
       />
       <h1 className="head-text-magic">
           <span className="magic-text font-semibold drop-shadow">Sudoku Challenge</span>

@@ -17,7 +17,7 @@ class InfoBoxes{
     constructor(){
         this.boxCount = 0;
         this.firstRadial = 4.25;
-        this.areaPercentage = 0.25;
+        this.areaPercentage = 0.35; //the percentage of the radial area that the box will be shown
         this.boxes = [];
         this.games = [];
         this.maxRadial = 2 * Math.PI;
@@ -67,12 +67,13 @@ class Box {
 }
 
 class Game{
-    constructor({title, introText, infoBox, controls, element}){
+    constructor({title, introText, infoBox, controls, element, url}){
         this.title = title;
         this.introText = introText;
         this.infoBox= infoBox;
         this.controls = controls;
         this.element = element;
+        this.url = url
     }
 }
 
@@ -92,12 +93,13 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox
             text="Game 1 is nice game that you have to play because it's very nice and all."
-            link="/games/Piano"
+            link="/games/piano"
             btnText="Learn More"
         />
     ),
     controls: 'do this, then that, blaaa blaaa blaaa',
-    element: (<PianoGame/>)
+    element: (<PianoGame title="Piano"/>),
+    url: "piano"
 })
 
 infoBoxes.addGame({
@@ -106,12 +108,13 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox 
         text="Game 2 is even nicer, believe me!"
-        link="/games/RPG"
+        link="/games/rpg"
         btnText="Play it bassie!"
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<RpgGame/>)
+    element: (<RpgGame title="RPG"/>),
+    url: "rpg"
 })
 
 infoBoxes.addGame({
@@ -120,12 +123,13 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox 
         text="Game 3 is crazy. You will love it!"
-        link="/games/Sudoku"
+        link="/games/sudoku"
         btnText="Sudoku away!"
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<SudokuGame/>)
+    element: (<SudokuGame title="Sudoku"/>),
+    url:"sudoku"
 })
 infoBoxes.addGame({
     title: "Memory",
@@ -133,12 +137,13 @@ infoBoxes.addGame({
     infoBox:(
         <InfoBox 
         text="Game 4 brings back old memories, you'll see!"
-        link="/games/Memory"
+        link="/games/memory"
         btnText="Let's memorize!"
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<MemoryGame/>)
+    element: (<MemoryGame title="Memory"/>),
+    url:"memory"
 })
 
 
