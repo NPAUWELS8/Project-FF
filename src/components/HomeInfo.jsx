@@ -6,22 +6,31 @@ import { AppContext } from 'contexts/AppContext';
 
 import { boxes } from 'constants/GamesConstant'
 
-const WelcomeBack = () =>{
+const WelcomeBack = ({text}) =>{
 
-    return (<div>Welcome Back</div>)
+    return (
+        <div className="info-box neo-brutalism-magic">
+            <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
+            🚀
+        </div>
+    )
 }
 
-const GameCompletion = () =>{
+const GameCompletion = ({text}) =>{
 
-    return (<div>Congrats on completing the game!</div>)
+    return (
+        <div className="info-box neo-brutalism-magic">
+            <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
+        </div>
+    )
 }
 
 const HomeInfo = ({currentStage}) => {
     const context = useContext(AppContext);
     if(currentStage === 1 && context.isAfterGameComplete){
-        return (<GameCompletion/>)
+        return (<GameCompletion text="Congrats on completing game X!"/>)
     } else if(currentStage === 1 && !context.isFirstTime){
-        return (<WelcomeBack/>)
+        return (<WelcomeBack text="Welcome Back!"/>)
     } else {
         const box = boxes.find(box=>box.index === currentStage)
         const info = box.infoBox

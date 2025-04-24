@@ -1,5 +1,6 @@
 import { PianoGame, RpgGame, SudokuGame, MemoryGame  } from "games"
 import { AppContext } from "contexts/AppContext";
+import { LockOpenIcon } from '@heroicons/react/24/solid'
 
 import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
@@ -13,11 +14,11 @@ const InfoBox = ({text, link, btnText})=>{
     }
     
     return (
-    <div className="info-box neo-brutalism-blue">
+    <div className="info-box neo-brutalism-magic">
         <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
-        <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn">
+        <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn-magic">
             {btnText}
-            <img src={arrow} className="w-4 h-4 object-contain"/>
+            <LockOpenIcon aria-hidden="true" className="size-6 text-amber-600" />
         </Link>
     </div>
     )
@@ -90,7 +91,7 @@ class Game{
 const infoBoxes = new InfoBoxes();
 infoBoxes.addBox({
     infoBox: (
-        <h1 className="hover:cursor-default sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
+        <h1 className="hover:cursor-default sm:text-xl sm:leading-snug text-center neo-brutalism-magic py-4 px-8 text-white mx-5">
             Hi, I am <span className="font-semibold">Niels</span> 🧹
             <br/>
             An Awesome React developer?

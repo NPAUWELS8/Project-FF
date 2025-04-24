@@ -1,8 +1,5 @@
 import {useState} from 'react'
 
-import { PianoGame } from '../games'
-import { games } from 'constants/GamesConstant'
-
 const GameInfo = ({title, introText, controls, game}) => {
   const [gameStarted, setGameStarted] = useState(false)
 

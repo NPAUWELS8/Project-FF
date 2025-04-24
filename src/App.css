@@ -93,6 +93,10 @@ body:has(.card[data-color="green"]:hover) {
     @apply absolute right-0 -bottom-5 left-0 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-blue-500 sm:w-1/2;
   }
 
+  .neo-btn-magic {
+    @apply absolute right-0 -bottom-5 left-0 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-amber-500 sm:w-1/2;
+  }
+
   .cta {
     @apply mt-8 flex w-full flex-col items-center gap-7 sm:mt-16 md:flex-row;
   }
@@ -190,6 +194,7 @@ body:has(.card[data-color="green"]:hover) {
 }
 
 /* Neo Brutalism */
+
 .neo-brutalism-blue {
   background: #2b77e7;
   position: relative;
@@ -229,6 +234,20 @@ body::-webkit-scrollbar {
   --secondaryMagic: #ff8c00;
   --tertiaryMagic: #ff4500;
 }
+
+.neo-brutalism-magic {
+  background: linear-gradient(90deg, var(--primaryMagic), var(--secondaryMagic), var(--tertiaryMagic));
+  position: relative;
+  border-radius: 10px;
+  border: #caa915;
+  box-shadow:
+    0.6vmin 0.6vmin #caa915,
+    1vmin 1vmin #e79410,
+    1vmin 1vmin #e79410,
+    0.65vmin 1vmin #e64717,
+    1vmin 0.65vmin #e64717;
+}
+
 .app-background{
   background-color:rgb(41, 31, 3) !important;
 }
