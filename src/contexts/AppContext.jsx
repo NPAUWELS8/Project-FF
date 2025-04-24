@@ -45,7 +45,8 @@ export const AppContextProvider = (props)=>{
     }
 
     function onGameFinished(game){
-        const newGamesFinished = gamesFinished.set(game, true);
+        const newGamesFinished = new Map(gamesFinished);
+        newGamesFinished.set(game, true);
         setGamesFinished(newGamesFinished);
         const obj = Object.fromEntries(newGamesFinished);
         const json = JSON.stringify(obj);

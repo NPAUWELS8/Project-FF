@@ -35,6 +35,18 @@ export function generateRandomSudoku(){
 
             return array
         }
+        regenerate(){
+            this.completedCells = [];
+            this.setBackCount = 0;
+            this.regenCount = 0;
+            this.cells.forEach((cell)=>{
+                cell.value = 0;
+                cell.options = [];
+                cell.originalOptions = [];
+            })
+            this.fill();
+            this.scrambleSudoku();
+        }
         scrambleSudoku(){
             this.cells.forEach((cell)=>{
                 const random = Math.random();

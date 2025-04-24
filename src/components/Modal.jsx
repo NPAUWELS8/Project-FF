@@ -42,11 +42,11 @@ const Fail = ({setOpen}) => {
   )
 }
 
-const Success = ({setOpen}) => {
+const Success = ({onGameFinished, gameTitle}) => {
   const navigate = useNavigate()
 
   function onSuccess(){
-    //update the game state to have this game finished
+    onGameFinished(gameTitle);
     navigate('/');
   }
 
@@ -85,7 +85,7 @@ const Success = ({setOpen}) => {
   )
 }
 
-const Modal = ({isSuccess, open, setOpen}) => {
+const Modal = ({isSuccess, open, setOpen, onGameFinished, gameTitle}) => {
   console.log(isSuccess);
 
   return (
@@ -97,7 +97,7 @@ const Modal = ({isSuccess, open, setOpen}) => {
 
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          {isSuccess ? <Success setOpen={setOpen}/> : <Fail setOpen={setOpen}/>}
+          {isSuccess ? <Success onGameFinished={onGameFinished} gameTitle={gameTitle}/> : <Fail setOpen={setOpen}/>}
         </div>
       </div>
     </Dialog>

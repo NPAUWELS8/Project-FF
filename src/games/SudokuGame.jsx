@@ -1,9 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import { generateRandomSudoku } from './gameplay/sudoku'
+import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
 
 const SudokuGame = () => {
+  const context = useContext(AppContext);
+  const onGameFinished = context.onGameFinished
+
   const [open, setOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
@@ -49,6 +53,8 @@ const SudokuGame = () => {
         open={open}
         setOpen={setOpen}
         isSuccess = {isSuccess}
+        onGameFinished={onGameFinished}
+        gameTitle="Sudoku"
       />
       <h1 className="head-text-magic">
           <span className="magic-text font-semibold drop-shadow">Sudoku Challenge</span>
