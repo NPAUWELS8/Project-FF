@@ -6,31 +6,33 @@ export const AppContext = createContext();
 
 const localStorageName = "gamemap"
 
-function getGames(){
-    const storedGameObj = localStorage.getItem(localStorageName)
-    if(storedGameObj){
-        const parsedGameObj = JSON.parse(storedGameObj)
-        const parsedGameMap = new Map(Object.entries(parsedGameObj))
-        return parsedGameMap
-    } else{
-        const gameMap = new Map();
-        games.forEach(game=>{
-            gameMap.set(game.title,false)
-        })
-
-        const obj = Object.fromEntries(gameMap);
-        const json = JSON.stringify(obj);
-
-        localStorage.setItem(localStorageName, json)
-
-        return gameMap
-    }
-}
-
-const gameMap = getGames();
-
 export const AppContextProvider = (props)=>{
+
+    function getGames(){
+        const storedGameObj = localStorage.getItem(localStorageName)
+        if(storedGameObj){
+            const parsedGameObj = JSON.parse(storedGameObj)
+            const gameMap = new Map(Object.entries(parsedGameObj))
+            return {gameMap, isFirstTime:false}
+        } else{
+            const gameMap = new Map();
+            games.forEach(game=>{
+                gameMap.set(game.title,false)
+            })
+    
+            const obj = Object.fromEntries(gameMap);
+            const json = JSON.stringify(obj);
+    
+            localStorage.setItem(localStorageName, json)
+    
+            return {gameMap, isFirstTime:true}
+        }
+    }
+    const {gameMap, isFirstTime} = getGames();
+    console.log(isFirstTime)
+
     const [gamesFinished, setGamesFinished] = useState(gameMap);
+    const [isAfterGameComplete, setIsAfterGameComplete] = useState(false);
 
     function getGameFinishedCount(){
         const total = gamesFinished.size
@@ -45,6 +47,8 @@ export const AppContextProvider = (props)=>{
     }
 
     function onGameFinished(game){
+        setIsAfterGameComplete(true);
+
         const newGamesFinished = new Map(gamesFinished);
         newGamesFinished.set(game, true);
         setGamesFinished(newGamesFinished);
@@ -58,7 +62,10 @@ export const AppContextProvider = (props)=>{
         <AppContext.Provider 
             value={{
                 getGameFinishedCount,
-                onGameFinished
+                onGameFinished,
+                isFirstTime,
+                isAfterGameComplete,
+                setIsAfterGameComplete
             }}
         >
             {props.children}

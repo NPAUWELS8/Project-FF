@@ -19,7 +19,7 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
 }
 
 
-const RpgGame = () => {
+const RpgGame = ({title}) => {
     const [gameOver, setGameOver] = useState(false);
     const [gameText, setGameText] = useState([]);
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
@@ -38,6 +38,10 @@ const RpgGame = () => {
     const handleOverlay = useCallback((overlay)=>{
         setOverlay(overlay);
     },[])
+
+    function onSuccess(){
+        
+    }
 
   return (
     <div className="mx-auto min-h-[calc(100vh-80px)] max-w-5xl px-8 !pt-[75px] pb-12 sm:p-16">
