@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, useContext } from 'react'
+import { AppContext } from 'contexts/AppContext'
 import { playRpg } from './gameplay/rpg/rpg';
 
 import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
+import { useNavigate } from 'react-router-dom';
 
 const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
@@ -20,6 +22,10 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
 
 
 const RpgGame = ({title}) => {
+    const navigate = useNavigate()
+    
+    const context = useContext(AppContext);
+    
     const [gameOver, setGameOver] = useState(false);
     const [gameText, setGameText] = useState([]);
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
@@ -40,7 +46,8 @@ const RpgGame = ({title}) => {
     },[])
 
     function onSuccess(){
-        
+        context.onGameFinished(title)
+        navigate('/');
     }
 
   return (
@@ -56,7 +63,7 @@ const RpgGame = ({title}) => {
             handleOverlay={handleOverlay}
             gameSize={gameSize}
         />
-        {gameOver && <button className="btn-magic mt-12">Continue</button> }
+        {gameOver && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }
         <TextBoxContainer
             gameText={gameText}
             gameTextDisplay={gameTextDisplay}
