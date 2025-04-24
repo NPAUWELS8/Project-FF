@@ -5,7 +5,7 @@ import { arrow } from 'assets/icons';
 
 const InfoBox = ({text, link, btnText})=>(
     <div className="info-box neo-brutalism-blue">
-        <p className="font-medium sm:text-xl text-center">{text}</p>
+        <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
         <Link to={link} className="neo-brutalism-white neo-btn">
             {btnText}
             <img src={arrow} className="w-4 h-4 object-contain"/>
@@ -79,7 +79,7 @@ class Game{
 const infoBoxes = new InfoBoxes();
 infoBoxes.addBox({
     infoBox: (
-        <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
+        <h1 className="hover:cursor-default sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
             Hi, I am <span className="font-semibold">Niels</span> 🧹
             <br/>
             A Floorie Lover.

@@ -1,23 +1,31 @@
-import React from 'react'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AppContext } from 'contexts/AppContext'
 
 const Navbar = () => {
-  return (
-    <header className="header">
-        <NavLink to="/" className="w-10 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md">
-            <p className="magic-gradient_text">NP</p>
-        </NavLink>
-        {/* <nav className="flex text-lg gap-7 font-medium">
-            <NavLink to="/about" className={({isActive})=> isActive ? 'text-blue-500' : 'text-black'}>
-                About
+    const context = useContext(AppContext);
+    const countObj = context.getGameFinishedCount();
+    return (
+        <header className="header">
+            <NavLink to="/" className="px-2 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md">
+                <p className="magic-gradient_text">Home</p>
             </NavLink>
-            <NavLink to="/projects" className={({isActive})=> isActive ? 'text-blue-500' : 'text-black'}>
-                Projects
-            </NavLink>
-        </nav> */}
-        
-    </header>
-  )
+            <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">
+                <h1 className="magic-gradient_text hover:cursor-default">
+                    {`Games finished: ${countObj.count} / ${countObj.total}`}
+                </h1>
+            </div>
+            {/* <nav className="flex text-lg gap-7 font-medium">
+                <NavLink to="/about" className={({isActive})=> isActive ? 'text-blue-500' : 'text-black'}>
+                    About
+                </NavLink>
+                <NavLink to="/projects" className={({isActive})=> isActive ? 'text-blue-500' : 'text-black'}>
+                    Projects
+                </NavLink>
+            </nav> */}
+            
+        </header>
+    )
 }
 
 export default Navbar

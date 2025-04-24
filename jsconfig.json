@@ -7,7 +7,9 @@
         "assets/*": ["src/assets/*"],
         "contexts/*": ["src/contexts/*"],
         "constants/*": ["src/constants/*"],
-        "games/*": ["src/games/*"]
+        "games/*": ["src/games/*"],
+        "/models/*": ["src/models/*"],
+        "/contexts/*": ["src/contexts/*"]
       },
     }
   }
