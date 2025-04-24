@@ -1,5 +1,3 @@
-//TODO: implement this context in the games for when they are finished.
-
 import React, {createContext, useState } from 'react';
 import { games } from 'constants/GamesConstant'
 
