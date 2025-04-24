@@ -29,8 +29,6 @@ function getGames(){
 
 const gameMap = getGames();
 
-console.log(gameMap);
-
 export const AppContextProvider = (props)=>{
     const [gamesFinished, setGamesFinished] = useState(gameMap);
 
