@@ -6,7 +6,7 @@ import { a } from '@react-spring/three'
 import { boxes } from 'constants/GamesConstant'
 
 
-import islandScene from '../assets/3d/island.glb'
+import islandScene from 'assets/3d/island.glb'
 
 const Island = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
     const islandRef = useRef();

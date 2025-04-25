@@ -3,10 +3,11 @@ import { Canvas } from '@react-three/fiber'
 import Loader from 'components/Loader'
 
 import Island from 'models/Island'
-import  Sky  from 'models/Sky'
+import NightSky from 'models/NightSky'
 import Bird from 'models/Bird'
-import Plane from 'models/Plane'
+import Broomstick from 'models/Broomstick'
 import HomeInfo from 'components/HomeInfo'
+
 
 import sakura from 'assets/sakura.mp3'
 import { soundoff, soundon } from 'assets/icons'
@@ -39,19 +40,19 @@ const Home = () => {
     }
     return [screenScale,screenPosition,rotation];
   }
-  const adjustPlaneForScreenSize = ()=>{
+  const adjustBroomForScreenSize = ()=>{
     let screenScale, screenPosition;
     if(window.innerWidth < 768){
-      screenScale = [1.5,1.5,1.5];
-      screenPosition = [0,-1.5,0]
+      screenScale = [0.5,0.5,0.5];
+      screenPosition = [0,1,-15]
     } else {
-      screenScale = [3,3,3];
-      screenPosition = [0,-4,-4];
+      screenScale = [1,1,1];
+      screenPosition = [0,1,-15];
     }
     return [screenScale,screenPosition];
   }
   const [islandScale, islandPosition,islandRotation] = adjustIslandForScreenSize();
-  const [planeScale, planePosition] = adjustPlaneForScreenSize();
+  const [broomScale, broomPosition] = adjustBroomForScreenSize();
   return (
     <section className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
@@ -66,8 +67,9 @@ const Home = () => {
         <ambientLight intensity={0.5}/>
         <hemisphereLight skyColor="#b1eff" groundColor="#000000"/>
         <Bird/>
-        <Sky
+        <NightSky
           isRotating={isRotating}
+          position={[0,0,-5]}
         />
         <Island
           position={islandPosition}
@@ -77,10 +79,10 @@ const Home = () => {
           setIsRotating={setIsRotating}
           setCurrentStage={setCurrentStage}
         />
-        <Plane
+        <Broomstick
           isRotating={isRotating}
-          position={planePosition}
-          scale={planeScale}
+          position={broomPosition}
+          scale={broomScale}
           rotation={[0, 20, 0]}
         />
         </Suspense>
