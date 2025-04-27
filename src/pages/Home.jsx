@@ -2,10 +2,11 @@ import { Suspense, useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Loader from 'components/Loader'
 
-import Island from 'models/Island'
-import NightSky from 'models/NightSky'
-import Bird from 'models/Bird'
-import Broomstick from 'models/Broomstick'
+// import Island from 'models/Island'
+// import NightSky from 'models/NightSky'
+// import Bird from 'models/Bird'
+// import Broomstick from 'models/Broomstick'
+import ModelWrapper from 'models/ModelWrapper'
 import HomeInfo from 'components/HomeInfo'
 
 
@@ -66,24 +67,15 @@ const Home = () => {
         <directionalLight position = {[1,1,1]} intensity={2}/>
         <ambientLight intensity={0.5}/>
         <hemisphereLight skyColor="#b1eff" groundColor="#000000"/>
-        <Bird/>
-        <NightSky
+        <ModelWrapper
           isRotating={isRotating}
-          position={[0,0,-5]}
-        />
-        <Island
-          position={islandPosition}
-          scale={islandScale}
-          rotation={islandRotation}
-          isRotating={isRotating}
+          islandPosition={islandPosition}
+          islandScale={islandScale}
+          islandRotation={islandRotation}
           setIsRotating={setIsRotating}
           setCurrentStage={setCurrentStage}
-        />
-        <Broomstick
-          isRotating={isRotating}
-          position={broomPosition}
-          scale={broomScale}
-          rotation={[0, 20, 0]}
+          broomPosition={broomPosition}
+          broomScale={broomScale}
         />
         </Suspense>
       </Canvas>
