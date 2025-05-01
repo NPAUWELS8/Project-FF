@@ -18,7 +18,6 @@ export default defineConfig({
       'constants':path.resolve(__dirname, 'src/constants'),
       'games':path.resolve(__dirname, 'src/games'),
       'models': path.resolve(__dirname, 'src/models'),
-      'contexts': path.resolve(__dirname, 'src/contexts')
     }
   },
   assetsInclude: ['**/*.glb']
