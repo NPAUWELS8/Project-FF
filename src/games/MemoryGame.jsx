@@ -1,4 +1,7 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { AppContext } from 'contexts/AppContext'
+
+import Modal from 'components/Modal'
 
 class MemoryGrid {
   constructor(){
@@ -6,6 +9,11 @@ class MemoryGrid {
   }
   addImage(src, doubleKey){
     this.images.push(new MemoryImage(src, doubleKey))
+  }
+  shuffle(){
+    this.images.sort(()=>{
+        return 1/2 - Math.random();
+    })
   }
 }
 
@@ -25,9 +33,10 @@ for(let i = 2; i <=16;i++){
   memoryGrid.addImage(imageSrc,i);
   memoryGrid.addImage(imageSrc,i);
 }
+memoryGrid.shuffle();
 
 
-const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards}, ref) => {
+const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards, setIsSuccess, setOpen}, ref) => {
     const [turned, setTurned] = useState(false)
     const [isGone, setIsGone] = useState(false);
     const [isDisplayed, setIsDisplayed] = useState(display);
@@ -66,6 +75,10 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
       setTimeout(()=>{
         removeCards(doubleKey);
       },1000)
+      if(count - 2 <= 0){
+        setIsSuccess(true)
+        setOpen(true)
+      }
     }
 
     function doubleNotFound(){
@@ -96,6 +109,7 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
  })
 
 const MemoryGame = ({title}) => {
+  const context = useContext(AppContext);
   const cardRefs = useRef(null)
   if(cardRefs.current === null){
     cardRefs.current = new Array()
@@ -104,6 +118,10 @@ const MemoryGame = ({title}) => {
   const [turnedDoubleKey, setTurnedDoubleKey] = useState(null);
   const [count, setCount] = useState(30)
   const [images, setImages] = useState(memoryGrid.images)
+  const [open, setOpen] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  const onGameFinished = context.onGameFinished
 
   function removeCards(doubleKey){
     cardRefs.current.forEach((card)=>{
@@ -123,6 +141,13 @@ const MemoryGame = ({title}) => {
 
   return (
     <div className="mt-24 overflow-hidden">
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        isSuccess = {isSuccess}
+        onGameFinished={onGameFinished}
+        gameTitle={title}
+      />
       <div id="cardCount"  className="top-bar">
         <p>Memory cards left</p>
         <p id="count">{count}</p>
@@ -141,6 +166,8 @@ const MemoryGame = ({title}) => {
             turnedDoubleKey={turnedDoubleKey}
             removeCards={removeCards}
             returnCards={returnCards}
+            setIsSuccess={setIsSuccess}
+            setOpen={setOpen}
           />
         ))}
       </div>
