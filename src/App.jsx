@@ -1,5 +1,3 @@
-//TODO: Add memorycard game
-
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Home, About, Projects, Contact, Games } from './pages'
 import Navbar from './components/Navbar';
