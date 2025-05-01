@@ -1,7 +1,5 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
-//TODO: Check if you can ensure rerendering the page doesn't put you back on top of the page again (when finding a double)
-
 class MemoryGrid {
   constructor(){
     this.images = []
@@ -78,7 +76,6 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
       }, 1000)
     }
 
-    //TODO: Fix proper width for the images
     return (
       <div className={`memory-card ${turned ? "is-flipped" : ""}`}>
         <div
