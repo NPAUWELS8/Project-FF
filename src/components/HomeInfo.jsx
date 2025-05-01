@@ -24,7 +24,8 @@ const GameCompletion = ({text}) =>{
         </div>
     )
 }
-
+//TODO: update the game completion text to include the actual game.
+//TODO: add different texts from which one will be selected at random.
 const HomeInfo = ({currentStage}) => {
     const context = useContext(AppContext);
     if(currentStage === 1 && context.isAfterGameComplete){
