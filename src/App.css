@@ -356,9 +356,11 @@ body::-webkit-scrollbar {
   height: 300px;
   perspective: 1000px;
   z-index: 1;
+  transition: z-index 1s;
 }
 .memory-card.is-flipped{
   z-index: 2 !important;
+  transition-duration: 0s;
 }
 
 .card__inner {
@@ -371,13 +373,17 @@ body::-webkit-scrollbar {
 }
 
 .card__inner.is-flipped {
-  transform: rotateY(180deg) translateX(-10vw);
+  transform: rotateY(180deg);
   position: relative;
 }
 .card__inner.is-gone{
   transform: translateZ(100vw) translateX(-100vw);
   position: relative;
-} 
+}
+.card__inner.is-not-displayed{
+  opacity:0;
+  visibility: hidden;
+}
 
 .card__face {
   position: absolute;

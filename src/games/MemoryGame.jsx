@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 //TODO: Check if you can ensure rerendering the page doesn't put you back on top of the page again (when finding a double)
 
@@ -32,7 +32,7 @@ for(let i = 2; i <=16;i++){
 const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards}, ref) => {
     const [turned, setTurned] = useState(false)
     const [isGone, setIsGone] = useState(false);
-    const [displayed, setDisplayed] = useState(display);
+    const [isDisplayed, setIsDisplayed] = useState(display);
 
     useImperativeHandle(ref, () => {
       return {
@@ -42,7 +42,7 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
         handleDisplayed(){
           setIsGone(true);
           setTimeout(()=>{
-            setDisplayed(false);
+            setIsDisplayed(false);
           }, 1000)
         }
       };
@@ -82,7 +82,7 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
     return (
       <div className={`memory-card ${turned ? "is-flipped" : ""}`}>
         <div
-          className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${!displayed ? "hidden" : ""}`}
+          className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${isDisplayed ? "": "is-not-displayed"}`}
           onClick={onClickHandle}
         >
           <div className="card__face card__face--front">
@@ -99,7 +99,10 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
  })
 
 const MemoryGame = ({title}) => {
-  const cardRefs = useRef(new Array())
+  const cardRefs = useRef(null)
+  if(cardRefs.current === null){
+    cardRefs.current = new Array()
+  }
 
   const [turnedDoubleKey, setTurnedDoubleKey] = useState(null);
   const [count, setCount] = useState(30)
@@ -116,24 +119,22 @@ const MemoryGame = ({title}) => {
   function returnCards(doubleKey, turnedDoubleKey){
     cardRefs.current.forEach((card)=>{
       if(card[1]===doubleKey || card[1] === turnedDoubleKey){
-        console.log(cardRefs)
         card[0].handleTurned()
       }
     })
   }
 
   return (
-    <div className="mt-24 ml-12 mr-24">
+    <div className="mt-24 overflow-hidden">
       <div id="cardCount"  className="top-bar">
         <p>Memory cards left</p>
         <p id="count">{count}</p>
       </div>
-      <div className="grid grid-cols-5" id="container">
+      <div className="grid grid-cols-5 mr-24 ml-12" id="container">
         {images.map((image, index)=>(
           <MemoryCard
             key={index}
-            //TODO: Fix the duplication that occurs in the statement below and causes error in returncards and removecards function
-            ref={(element) => cardRefs.current.push([element, image.doubleKey])}
+            ref={(element) => cardRefs.current[index] = [element, image.doubleKey]}
             display = {image.display}
             imgSource={image.src}
             doubleKey={image.doubleKey}
