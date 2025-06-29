@@ -91,7 +91,6 @@ export function playPiano(canvas,setGameOver, setWon){
             this.ambientMusic.autoplay = true;
         }
         update(deltaTime){
-            console.log(this.ambientMusic.ended);
             if(this.ambientMusic.ended){
                 this.ambientMusic.currentTime = this.currentTime;
                 this.ambientMusic.play();

@@ -1,5 +1,5 @@
 import { Background } from "./background.js"
-import{epic_journey} from 'assets/piano'
+import{ inn_music } from 'assets/rpg'
 import { Player } from "./player.js"
 import { Dialogue } from "./UI.js"
 import { InputHandler } from './input.js'
@@ -115,10 +115,17 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
             this.dialogue = new Dialogue(this, handleUpdateText, handleDisplayText)
             this.keyFound = false;
             this.ambientMusic = new Audio();
-            this.ambientMusic.src = epic_journey;
-            this.ambientMusic.volume = 0.2;
+            this.ambientMusic.src = inn_music;
+            this.ambientMusic.volume = 0.5;
+            this.currentTime = 0;
+            this.ambientMusic.currentTime = this.currentTime
+            this.ambientMusic.autoplay = true;
         }
         update(deltaTime){
+            if(this.ambientMusic.ended){
+                this.ambientMusic.currentTime = this.currentTime;
+                this.ambientMusic.play();
+            }
             this.time += deltaTime;
             this.player.update(this.input.movementKeys, deltaTime, this.input.otherKeys)
             this.background.update(this.backgroundOffset, this.input.movementKeys, this.input.otherKeys);
