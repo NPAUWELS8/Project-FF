@@ -1,4 +1,4 @@
-import{jump, landing, dizzy, hit} from 'assets/piano'
+import{jump, landing, dizzy, hit, air_move, dive_land, rolling, melee} from 'assets/piano'
 
 import { Dust, Fire, Splash } from './particles.js'
 import { animations } from './characterAnimations.js'
@@ -30,10 +30,31 @@ class State {
     }
     enter(){
         this.game.player.character.updateFrame(this.animation);
-        if(this.enterSound) this.enterSound.play();
+        if(this.enterSound) {
+            if(this.enterSound.ended) {
+                if(this.currentTime) this.enterSound.currentTime = this.currentTime;
+                this.enterSound.play();
+            }
+            else {
+                this.enterSound.load();
+                if(this.currentTime) this.enterSound.currentTime = this.currentTime;
+                this.enterSound.play();
+            }
+        }
+        if(this.recurringSound) this.recurringSound.play();
     }
     exit(){
-        if(this.exitSound) this.exitSound.play();
+        if(this.exitSound) {
+            if(this.exitSound.ended) this.exitSound.play();
+            else {
+                this.exitSound.load();
+                this.exitSound.play();
+            }
+        }
+        if (this.recurringSound) {
+            this.recurringSound.load();
+            this.recurringSound.currentTime = this.currentTime;
+        }
     }
     handleInput(input){
         if(this.game.standStill){
@@ -90,7 +111,7 @@ export class Jumping extends State {
         this.animation = game.characterAnimations[animations.JUMP];
         this.key = "ArrowUp"
         this.enterSound = new Audio();
-        this.enterSound.src = jump
+        this.enterSound.src = jump;
     }
     enter(){
         if(this.game.player.onGround() || this.game.player.onPlatform()) this.game.player.vy -= 27;
@@ -118,7 +139,6 @@ export class Falling extends State {
     handleInput(input){
         if(this.game.player.onGround() || this.game.player.onPlatform()){
             this.game.player.setState(states.RUNNING);
-            super.exit();
         } else if (input.includes(keyMap.DIVING)){
             this.game.player.setState(states.DIVING);
         }
@@ -136,6 +156,12 @@ export class Rolling extends State {
         this.continuousDrain = true;
         this.drainSpeed = 5;
         this.minEnergy = 20;
+        this.recurringSound = new Audio();
+        this.recurringSound.src = rolling;
+        this.recurringSound.loop = true;
+        this.recurringSound.volume = 0.2;
+        this.currentTime = 0.2;
+        this.recurringSound.currentTime = this.currentTime;
     }
     handleInput(input){
         super.handleInput(input);
@@ -163,6 +189,12 @@ export class Diving extends State {
         this.invincible = true;
         this.drain = true;
         this.drainSpeed = 10;
+        this.exitSound = new Audio();
+        this.exitSound.src = dive_land;
+        this.exitSound.volume = 0.5;
+        this.enterSound = new Audio();
+        this.enterSound.src = air_move;
+        this.enterSound.volume = 0.2;
     }
     enter(){
         super.enter();
@@ -198,17 +230,15 @@ export class Hit extends State {
     handleInput(input){
         if(this.game.player.character.animationOver() && this.game.standStill){
             this.game.player.setState(states.IDLE);
-            this.exit();
         } else if(this.game.player.character.animationOver() && this.game.player.onGround()){
             this.game.player.setState(states.RUNNING);
-            this.exit()
         } else if(this.game.player.character.animationOver() && !this.game.player.onGround()){
             this.game.player.setState(states.FALLING);
-            this.exit();
         }
     }
     exit(){
         this.enterSound.pause();
+        super.exit();
     }
 }
 
@@ -249,6 +279,8 @@ export class Attacking extends State {
         this.invincible = true;
         this.drain = true;
         this.drainSpeed = 10;
+        this.enterSound = new Audio();
+        this.enterSound.src = melee;
     }
     handleInput(input){
         super.handleInput(input);
@@ -267,6 +299,12 @@ export class Dashing extends State {
         this.speedModifier = 3;
         this.drain = true;
         this.drainSpeed = 10;
+        this.enterSound = new Audio();
+        this.enterSound.src = air_move;
+        this.enterSound.playbackRate = 0.5;
+        this.enterSound.volume = 0.1;
+        this.currentTime = 0.05;
+        this.enterSound.currentTime = this.currentTime;
     }
     handleInput(input){
         super.handleInput(input);

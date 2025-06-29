@@ -22,5 +22,10 @@ import hit from './sounds/player/hit.wav';
 import jump from './sounds/player/jump.wav';
 import landing from './sounds/player/landing.wav';
 import running from './sounds/player/running.wav';
+import air_move from './sounds/player/air_move.wav';
+import dive_land from './sounds/player/dive_land.wav';
+import rolling from './sounds/player/rolling.mp3';
+import epic_journey from './sounds/epic_journey.mp3'
+import melee from './sounds/player/melee.wav';
 
-export {boom, player, player2, layer1, layer2, layer3, layer4, layer5, layer6, fish, bird, bee, floorie2, honeypot, lives, fire, platform1, platform2,attack, dizzy, hit, jump, landing, running}
+export {boom, player, player2, layer1, layer2, layer3, layer4, layer5, layer6, fish, bird, bee, floorie2, honeypot, lives, fire, platform1, platform2,attack, dizzy, hit, jump, landing, running,air_move,dive_land,rolling,epic_journey, melee}

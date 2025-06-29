@@ -1,5 +1,6 @@
 /**@type {htmlCanvasElement} */
 import { Player } from './player.js'
+import { epic_journey } from 'assets/piano'
 import { InputHandler } from './input.js'
 import { Background } from './background.js'
 import { Bee } from './enemies.js'
@@ -9,6 +10,7 @@ import { states } from './playerStates.js'
 import { TurningImage } from './turningImage.js'
 import { PlatformA, PlatformB } from './platforms.js'
 import { Bird, Fish } from './ornaments.js'
+import { TrailTexture } from '@react-three/drei'
 
 export function playPiano(canvas,setGameOver, setWon){
     // const container = document.getElementById('game-container')
@@ -86,8 +88,19 @@ export function playPiano(canvas,setGameOver, setWon){
                 this.honeyPots >= this.maxHoneyPots,
                 this.score >= this.winningScore,
             ]
+            this.ambientMusic = new Audio();
+            this.ambientMusic.src = epic_journey;
+            this.ambientMusic.volume = 0.05;
+            this.currentTime = 19;
+            this.ambientMusic.currentTime = this.currentTime
+            this.ambientMusic.autoplay = true;
         }
         update(deltaTime){
+            console.log(this.ambientMusic.ended);
+            if(this.ambientMusic.ended){
+                this.ambientMusic.currentTime = this.currentTime;
+                this.ambientMusic.play();
+            }
             this.time += deltaTime;
             if(this.time > this.maxTime || this.honeyPots >= this.maxHoneyPots) this.gameOver = true;
             this.background.update();

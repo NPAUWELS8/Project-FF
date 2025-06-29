@@ -87,6 +87,7 @@ export class Player{
         //check if animation for state exists for this character
         const isExisting = this.states[state].animation[this.character.name];
         if(isExisting && this.states[state].minEnergy < this.energy){
+            this.currentState.exit();
             this.currentState = this.states[state]
             this.game.speed = this.game.maxSpeed * this.currentState.speedModifier;
             this.currentState.enter();
