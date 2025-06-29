@@ -237,6 +237,8 @@ export function playPiano(canvas,setGameOver, setWon){
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate);
         else {
+            console.log(game);
+            game.ambientMusic.pause();
             if(game.won()){
                 setGameOver(true);
                 setWon(true);
