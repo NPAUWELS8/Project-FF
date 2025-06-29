@@ -46,6 +46,11 @@ export const AppContextProvider = (props)=>{
         return {count, total}
     }
 
+    function isAllGamesFinished(){
+        const {count, total} = getGameFinishedCount();
+        return count === total;
+    }
+
     function getIsGameFinished(title){
         return gamesFinished.get(title)
     }
@@ -67,6 +72,7 @@ export const AppContextProvider = (props)=>{
             value={{
                 getGameFinishedCount,
                 getIsGameFinished,
+                isAllGamesFinished,
                 onGameFinished,
                 isFirstTime,
                 isAfterGameComplete,

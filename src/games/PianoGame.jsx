@@ -14,7 +14,10 @@ const PianoGame = ({title}) => {
     function onSuccess(){
       context.onGameFinished(title)
       navigate('/');
-  }
+    }
+    function onRetry(){
+      playPiano(pianoRef.current, setGameOver, setWon);
+    }
 
     useEffect(()=>{
         playPiano(pianoRef.current, setGameOver, setWon);
@@ -23,7 +26,7 @@ const PianoGame = ({title}) => {
     <div>
       <canvas ref={pianoRef} className="h-[500px] w-[1333px]">PianoGame</canvas>
       {gameOver && won && <button onClick={onSuccess} className="btn-magic m-12">Continue</button> }
-      {gameOver && !won && <button className="btn-magic m-12">Retry</button> }
+      {gameOver && !won && <button onClick={onRetry} className="btn-magic m-12">Retry</button> }
     </div>
   )
 }
