@@ -40,13 +40,11 @@ const GameCompletion = ({text}) =>{
         </div>
     )
 }
-//TODO: update the game completion text to include the actual game.
-//TODO: add different texts from which one will be selected at random.
 const HomeInfo = ({currentStage}) => {
     const context = useContext(AppContext);
     if(currentStage === 1 && context.isAfterGameComplete){
         return (
-                <GameCompletion text={`Congrats on completing game X! ${context.isAllGamesFinished ? "You have completed all games!" : "X Games remaining."}`}/>
+                <GameCompletion text={`${generateText(context.lastGameFinished)} ${context.isAllGamesFinished ? "You have completed all games!" : "X Games remaining."}`}/>
         );
     } else if(currentStage === 1 && !context.isFirstTime){
         return (
@@ -57,6 +55,16 @@ const HomeInfo = ({currentStage}) => {
         const info = box.infoBox
         return info || null;
     }
+}
+
+function generateText(name){
+    const texts = [
+        `You have completed game "${name}"! Nice.`,
+        `Congrats on completing game "${name}"!`,
+        `That's another game checked off: "${name}". Keep it up!`
+    ]
+
+    return texts[Math.floor(Math.random() * texts.length)]
 }
 
 export default HomeInfo

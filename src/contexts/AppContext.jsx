@@ -33,6 +33,7 @@ export const AppContextProvider = (props)=>{
 
     const [gamesFinished, setGamesFinished] = useState(gameMap);
     const [isAfterGameComplete, setIsAfterGameComplete] = useState(false);
+    const [lastGameFinished, setLastGameFinished] = useState();
 
     function getGameFinishedCount(){
         const total = gamesFinished.size
@@ -57,7 +58,8 @@ export const AppContextProvider = (props)=>{
 
     function onGameFinished(game){
         setIsAfterGameComplete(true);
-
+        setLastGameFinished(game);
+        
         const newGamesFinished = new Map(gamesFinished);
         newGamesFinished.set(game, true);
         setGamesFinished(newGamesFinished);
@@ -74,6 +76,7 @@ export const AppContextProvider = (props)=>{
                 getIsGameFinished,
                 isAllGamesFinished,
                 onGameFinished,
+                lastGameFinished,
                 isFirstTime,
                 isAfterGameComplete,
                 setIsAfterGameComplete
