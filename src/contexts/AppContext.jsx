@@ -46,6 +46,10 @@ export const AppContextProvider = (props)=>{
         return {count, total}
     }
 
+    function getIsGameFinished(title){
+        return gamesFinished.get(title)
+    }
+
     function onGameFinished(game){
         setIsAfterGameComplete(true);
 
@@ -62,6 +66,7 @@ export const AppContextProvider = (props)=>{
         <AppContext.Provider 
             value={{
                 getGameFinishedCount,
+                getIsGameFinished,
                 onGameFinished,
                 isFirstTime,
                 isAfterGameComplete,

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
 import { useContext } from "react";
 
-const InfoBox = ({text, link, btnText})=>{
+const InfoBox = ({text, link, btnText, title})=>{
     const context = useContext(AppContext);
     
     function onClickHandle(){
@@ -25,6 +25,7 @@ const InfoBox = ({text, link, btnText})=>{
     return (
     <div className="info-box neo-brutalism-magic">
         <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
+        {context.getIsGameFinished(title) && <p>COMPLETED!</p>}
         <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn-magic">
             {btnText}
             {iconArray[Math.floor(Math.random()*iconArray.length + 1)]}
@@ -90,9 +91,9 @@ class Game{
     constructor({title, introText, infoBox, controls, element, url}){
         this.title = title;
         this.introText = introText;
-        this.infoBox= infoBox;
+        this.infoBox= infoBox(this.title);
         this.controls = controls;
-        this.element = element;
+        this.element = element(this.title);
         this.url = url
     }
 }
@@ -101,68 +102,72 @@ const infoBoxes = new InfoBoxes();
 infoBoxes.addBox({
     infoBox: (
         <h1 className="hover:cursor-default sm:text-xl sm:leading-snug text-center neo-brutalism-magic py-4 px-8 text-white mx-5">
-            Hi, I am <span className="font-semibold">Niels</span> 🧹
+            Hi, Welcome to <span className="font-semibold">FF</span> 🧹
             <br/>
-            An Awesome React developer?
+            An Awesome Game!
         </h1>
     )
 })
 infoBoxes.addGame({
     title: "Piano",
     introText: 'This is a pianogame',
-    infoBox:(
+    infoBox: (title) => (
         <InfoBox
             text="Game 1 is nice game that you have to play because it's very nice and all."
             link="/games/piano"
             btnText="Learn More"
+            title={title}
         />
     ),
     controls: 'do this, then that, blaaa blaaa blaaa',
-    element: (<PianoGame title="Piano"/>),
+    element: (title) => (<PianoGame title={title}/>),
     url: "piano"
 })
 
 infoBoxes.addGame({
     title: "RPG",
     introText:"This is an RPG game.",
-    infoBox:(
+    infoBox:(title) => (
         <InfoBox 
         text="Game 2 is even nicer, believe me!"
         link="/games/rpg"
         btnText="Play it bassie!"
+        title={title}
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<RpgGame title="RPG"/>),
+    element: (title) => (<RpgGame title={title}/>),
     url: "rpg"
 })
 
 infoBoxes.addGame({
     title: "Sudoku",
     introText:"This is a Sudoku game.",
-    infoBox:(
+    infoBox:(title) => (
         <InfoBox 
         text="Game 3 is crazy. You will love it!"
         link="/games/sudoku"
         btnText="Sudoku away!"
+        title={title}
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<SudokuGame title="Sudoku"/>),
+    element: (title) => (<SudokuGame title={title}/>),
     url:"sudoku"
 })
 infoBoxes.addGame({
     title: "Memory",
     introText:"This is a Memory game.",
-    infoBox:(
+    infoBox:(title) => (
         <InfoBox 
         text="Game 4 brings back old memories, you'll see!"
         link="/games/memory"
         btnText="Let's memorize!"
+        title={title}
         />
     ),
     controls:"Do this, then do the next thing and so on!",
-    element: (<MemoryGame title="Memory"/>),
+    element: (title) => (<MemoryGame title={title}/>),
     url:"memory"
 })
 
