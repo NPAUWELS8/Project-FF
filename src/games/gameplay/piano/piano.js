@@ -13,11 +13,6 @@ import { Bird, Fish } from './ornaments.js'
 import { TrailTexture } from '@react-three/drei'
 
 export function playPiano(canvas,setGameOver, setWon){
-    // const container = document.getElementById('game-container')
-    // container.innerHTML = "";
-    // const canvas = document.createElement('canvas');
-    // canvas.id = "canvas1";
-    // container.append(canvas);
     const ctx = canvas.getContext('2d');
     canvas.width = 1333;
     canvas.height = 500;
@@ -246,20 +241,6 @@ export function playPiano(canvas,setGameOver, setWon){
                 setGameOver(true);
             }
         }
-        // else{
-        //     const button = document.createElement('button');
-        //     button.innerText = 'Retry';
-        //     button.classList.add('magic-button');
-        //     if(game.won()) {
-        //         button.innerText = 'Continue';
-        //         button.id = 'continue'
-        //     }
-        //     else {
-        //         button.id = 'retry-game'
-        //         button.innerText = 'Retry';
-        //     }
-        //     container.append(button);
-        // }
     }
     requestAnimationFrame(animate);
 }
