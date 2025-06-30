@@ -4,7 +4,7 @@ import { AppContext } from 'contexts/AppContext'
 
 const Navbar = () => {
     const context = useContext(AppContext);
-    const countObj = context.getGameFinishedCount();
+    const {count, total} = context.getGameFinishedCount();
     return (
         <header className="header">
             <NavLink to="/" className="px-2 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md">
@@ -12,7 +12,7 @@ const Navbar = () => {
             </NavLink>
             <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">
                 <h1 className="magic-gradient_text hover:cursor-default">
-                    {`Games finished: ${countObj.count} / ${countObj.total}`}
+                    {`Games finished: ${count} / ${total}`}
                 </h1>
             </div>
             {/* <nav className="flex text-lg gap-7 font-medium">

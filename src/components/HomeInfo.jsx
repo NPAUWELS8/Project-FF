@@ -27,13 +27,14 @@ const WelcomeBack = ({text}) =>{
     )
 }
 
-const GameCompletion = ({text}) =>{
+const GameCompletion = ({text,isShown}) =>{
     const context = useContext(AppContext);
+
     return (
         <div className="info-box neo-brutalism-magic">
             <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
             {
-                context.isAllGamesFinished
+                isShown
                 && 
                 <Link 
                     to="/reveal"
@@ -47,13 +48,18 @@ const GameCompletion = ({text}) =>{
 }
 const HomeInfo = ({currentStage}) => {
     const context = useContext(AppContext);
+    const {count, total} = context.getGameFinishedCount();
+
     if(currentStage === 1 && context.isAfterGameComplete){
         return (
-                <GameCompletion text={`${generateText(context.lastGameFinished)} ${context.isAllGamesFinished ? "You have completed all games!" : "X Games remaining."}`}/>
+                <GameCompletion 
+                    text={`${generateText(context.lastGameFinished)} ${count === total ? "You have completed all games!" : (total-count) + " games remaining."}`}
+                    isShown={count === total}
+                />
         );
     } else if(currentStage === 1 && !context.isFirstTime){
         return (
-                <WelcomeBack text={`Welcome Back! ${context.isAllGamesFinished ?  "You have already completed all games!" : "X more games are waiting for you!"}`}/>
+                <WelcomeBack text={`Welcome Back! ${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}/>
         );
     } else {
         const box = boxes.find(box=>box.index === currentStage)
