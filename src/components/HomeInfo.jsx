@@ -7,14 +7,14 @@ import { AppContext } from 'contexts/AppContext';
 
 import { boxes } from 'constants/GamesConstant'
 
-const WelcomeBack = ({text}) =>{
+const WelcomeBack = ({text, isShown}) =>{
     const context = useContext(AppContext);
     return (
         <div className="info-box neo-brutalism-magic">
             <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
             🚀
             {
-                context.isAllGamesFinished
+                isShown
                 && 
                 <Link 
                     to="/reveal"
@@ -59,7 +59,10 @@ const HomeInfo = ({currentStage}) => {
         );
     } else if(currentStage === 1 && !context.isFirstTime){
         return (
-                <WelcomeBack text={`Welcome Back! ${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}/>
+                <WelcomeBack
+                    text={`Welcome Back! ${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}
+                    isShown={count ===  total}    
+                />
         );
     } else {
         const box = boxes.find(box=>box.index === currentStage)
