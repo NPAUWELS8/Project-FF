@@ -10,6 +10,7 @@ const App = () => {
                 <AppContextProvider>
                     <Navbar/>
                     <Routes>
+                        //TODO: delete unnecessary pages and their related jsx component(s) from the project
                         <Route path="/" element={<Home/>} />
                         <Route path="/about" element={<About/>} />
                         <Route path="/reveal" element={<Reveal/>}/>

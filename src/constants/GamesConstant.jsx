@@ -124,7 +124,7 @@ infoBoxes.addGame({
     introText: (<p>Collect honey pots whilst avoiding bees and the turning picture.</p>),
     infoBox: (title) => (
         <InfoBox
-            text="This game is a twist on the '1,2,3 piano' game."
+            text="This game is a twist on the '1, 2, 3 piano' game."
             link="/games/piano"
             btnText="1, 2, 3, let's play!"
             title={title}
