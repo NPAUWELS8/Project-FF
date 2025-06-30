@@ -12,9 +12,13 @@
   --blue-rgb: 237 245 255;
   --green-rgb: 125 161 35;
 }
+#root{
+   height: 100%;
+}
 
 body {
   font-family: "Work Sans", sans-serif;
+  height: 100vh;
 }
 
 body:has(.card[data-color="blue"]:hover) {
