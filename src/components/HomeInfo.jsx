@@ -7,12 +7,24 @@ import { AppContext } from 'contexts/AppContext';
 
 import { boxes } from 'constants/GamesConstant'
 
-const WelcomeBack = ({text, isShown}) =>{
+const WelcomeBack = ({header, text, isShown}) =>{
     const context = useContext(AppContext);
     return (
         <div className="info-box neo-brutalism-magic">
-            <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
-            🚀
+            <div className="font-medium sm:text-xl hover:cursor-default">
+                <h1 className="text-center bg-white text-amber-500 rounded-xl">{header}</h1>
+                <br/>
+                <p>{text}</p>
+            </div>
+            <br/>
+            To fly around the house:
+            <br/>
+            1. Drag the screen with your mouse
+            <br/>
+            2. Or use the left and right arrows.
+            <br/>
+            <br/>
+            You'll find games along the way. 🧹
             {
                 isShown
                 && 
@@ -27,12 +39,24 @@ const WelcomeBack = ({text, isShown}) =>{
     )
 }
 
-const GameCompletion = ({text,isShown}) =>{
+const GameCompletion = ({header, text,isShown}) =>{
     const context = useContext(AppContext);
 
     return (
         <div className="info-box neo-brutalism-magic">
-            <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
+            <div className="font-medium sm:text-xl hover:cursor-default">
+                <h1 className="text-center bg-white text-amber-500 rounded-xl">{header}</h1>
+                <p>{text}</p>
+            </div>
+            <br/>
+            To fly around the house:
+            <br/>
+            1. Drag the screen with your mouse
+            <br/>
+            2. Or use the left and right arrows.
+            <br/>
+            <br/>
+            You'll find games along the way. 🧹
             {
                 isShown
                 && 
@@ -53,14 +77,16 @@ const HomeInfo = ({currentStage}) => {
     if(currentStage === 1 && context.isAfterGameComplete){
         return (
                 <GameCompletion 
-                    text={`${generateText(context.lastGameFinished)} ${count === total ? "You have completed all games!" : (total-count) + " games remaining."}`}
+                    header={`${generateText(context.lastGameFinished)}`}
+                    text= {`${count === total ? "You have completed all games!" : (total-count) + " games remaining."}`}
                     isShown={count === total}
                 />
         );
     } else if(currentStage === 1 && !context.isFirstTime){
         return (
                 <WelcomeBack
-                    text={`Welcome Back! ${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}
+                    header={`Welcome Back!`}
+                    text={`${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}
                     isShown={count ===  total}    
                 />
         );

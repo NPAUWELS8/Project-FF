@@ -112,11 +112,22 @@ class Game{
 const infoBoxes = new InfoBoxes();
 infoBoxes.addBox({
     infoBox: (
-        <h1 className="hover:cursor-default sm:text-xl sm:leading-snug text-center neo-brutalism-magic py-4 px-8 text-white mx-5">
-            Hi, Welcome to <span className="font-semibold">FF</span> 🧹
+        <div className="hover:cursor-default neo-brutalism-magic py-4 px-8 text-white mx-5">
+            <div className="sm:text-xl sm:leading-snug text-center">
+                <h1>
+                Hi, Welcome to <span className="font-semibold">FF</span> 🧹
+                </h1>
+            </div>
             <br/>
-            An Awesome Game!
-        </h1>
+            To fly around the house:
+            <br/>
+            1. Drag the screen with your mouse
+            <br/>
+            2. Or use the left and right arrows.
+            <br/>
+            <br/>
+            You'll find games along the way. 🧹
+        </div>
     )
 })
 infoBoxes.addGame({
