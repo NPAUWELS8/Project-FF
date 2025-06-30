@@ -79,6 +79,7 @@ const Home = () => {
         />
         </Suspense>
       </Canvas>
+      //TODO: change music to new soundtrack and make it so it starts playing automatically but can be turned off with button.
       <div className="absolute bottom-2 left-2">
         <img 
           src={!isPlayingMusic ? soundoff : soundon}
