@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  base: "Project-FF",
   resolve: {
     alias: {
       'src': path.resolve(__dirname, 'src'),
