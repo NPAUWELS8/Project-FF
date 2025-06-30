@@ -147,6 +147,7 @@ export class BoatInteraction extends Interaction {
         this.congratsText = congratsText;
     }
     showText(){
+        this.toggleButton();
         if(!this.game.keyFound){
             this.game.dialogue.displayText(this.text);
         } else{

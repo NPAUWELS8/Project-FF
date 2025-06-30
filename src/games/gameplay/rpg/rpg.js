@@ -31,35 +31,35 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
                 //TODO: add proper text blocks to the house map
                 {
                     name: "Tv",
-                    text: "Test tv Test tv Test tv Test tv Test tv Test tv Test tv Test tv Test tv Test tv Test tv ",
+                    text: "The TV is where Floor and Niels love to watch netflix series together. If Floor can stay awake that is...",
                     tileCheck: 1210,
                     object: Interaction,
                     pushArray: "interactions"
                 },
                 {
                     name: "Bed",
-                    text: "Test bed",
+                    text: "Aaah, the bed... A place for spooning, among other things...",
                     tileCheck: 1210,
                     object: Interaction,
                     pushArray: "interactions"
                 },
                 {
                     name: "Computer",
-                    text: "Test Computer",
+                    text: "The computer is where Niels's nerdy side comes out. Many hours have been spent practicing his scripting and playing video games. A lot of hours went into this very project.",
                     tileCheck: 1210,
                     object: Interaction,
                     pushArray: "interactions"
                 },
                 {
                     name: "Sofa",
-                    text: "Test Sofa",
+                    text: "The sofa, a place where you're equally likely to catch Floor sleeping as in the bed. Whilst asleep, both 1) snoring and 2) kicking other sofa users are part of the experience.",
                     tileCheck: 1210,
                     object: Interaction,
                     pushArray: "interactions"
                 },
                 {
                     name: "Bookshelve",
-                    text: "Test Bookshelve",
+                    text: "This is an extraordinary part of the house. Here you can find a combination of Elle Kennedy books (a.k.a. 'sex bookskes') and non-fiction books. You can guess which books belong to whom.",
                     key: true,
                     tileCheck: 1210,
                     object: Interaction,
@@ -98,8 +98,8 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
                 },
                 {
                     name: "Boat",
-                    text: "Test Boat",
-                    congratsText: "You made it to the island!",
+                    text: "After you found the key you can take this boat back to Malines.",
+                    congratsText: "You made it back!",
                     tileCheck: 1025,
                     object: BoatInteraction,
                     pushArray: "interactions"
