@@ -15,18 +15,14 @@ const GameInfo = ({title, introText, controls, game}) => {
           <span className="magic-text font-semibold drop-shadow">{title}</span>
         </h1>
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
-          <p>
             {introText}
-          </p>
         </div>
         <div className="mt-5">
           <h3 className="subhead-text-magic">
             <span className="magic-text font-semibold drop-shadow">Controls</span>
           </h3>
-          <div className="mt-5 flex flex-col gap-3 text-slate-500">
-            <p>
+          <div className="mt-5 flex flex-col gap-3 text-slate-500">   
               {controls}
-            </p>
           </div>
         </div>
         <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>

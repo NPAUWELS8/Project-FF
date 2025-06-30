@@ -86,7 +86,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .info-box {
-    @apply relative mx-5 flex max-w-2xl flex-col gap-3 px-8 pt-4 pb-12 text-white;
+    @apply relative mx-5 flex max-w-2xl min-w-lg flex-col gap-3 px-8 pt-4 pb-12 text-white;
   }
 
   .neo-btn {

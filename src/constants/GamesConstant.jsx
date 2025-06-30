@@ -1,6 +1,6 @@
 import { PianoGame, RpgGame, SudokuGame, MemoryGame  } from "games"
 import { AppContext } from "contexts/AppContext";
-import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon, TrophyIcon } from '@heroicons/react/24/solid'
+import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon, TrophyIcon, StarIcon, LightBulbIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
 
 import { Link } from 'react-router-dom';
 import { arrow } from 'assets/icons';
@@ -25,11 +25,12 @@ const InfoBox = ({text, link, btnText, title})=>{
     return (
     <div className="info-box neo-brutalism-magic">
         <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
-        {context.getIsGameFinished(title) && <p>COMPLETED!</p>}
+        {context.getIsGameFinished(title) ? <div className="bg-white border-3 border-amber-500 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-amber-500 sm:w-1/2"><CheckCircleIcon aria-hidden="true" className="size-6 text-amber-600" /><p>COMPLETED!</p></div> :
         <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn-magic">
             {btnText}
             {iconArray[Math.floor(Math.random()*iconArray.length + 1)]}
         </Link>
+        }
     </div>
     )
 }
@@ -87,12 +88,22 @@ class Box {
     }
 }
 
+const Controls = ({controlArray,icon}) =>{
+    const controls = controlArray.map((control,index)=>
+        <div key={index} className="flex flex-row">{icon}<p><b>{control.key}</b>{`: ${control.action}`}</p></div>
+    )
+    return <>{controls}</>
+}
+
 class Game{
-    constructor({title, introText, infoBox, controls, element, url}){
+    constructor({title, introText, infoBox, controlArray, element, listIcon, url}){
         this.title = title;
         this.introText = introText;
         this.infoBox= infoBox(this.title);
-        this.controls = controls;
+        this.controls = <Controls
+                controlArray = {controlArray}
+                icon = {listIcon}
+            />
         this.element = element(this.title);
         this.url = url
     }
@@ -110,63 +121,88 @@ infoBoxes.addBox({
 })
 infoBoxes.addGame({
     title: "Piano",
-    introText: 'This is a pianogame',
+    introText: (<p>Collect honey pots whilst avoiding bees and the turning picture.</p>),
     infoBox: (title) => (
         <InfoBox
-            text="Game 1 is nice game that you have to play because it's very nice and all."
+            text="This game is a twist on the '1,2,3 piano' game."
             link="/games/piano"
-            btnText="Learn More"
+            btnText="1, 2, 3, let's play!"
             title={title}
         />
     ),
-    controls: 'do this, then that, blaaa blaaa blaaa',
+    controlArray: [
+        {key: "Arrow Left", action: "Move left"},
+        {key: "Arrow Right", action: "Move right"},
+        {key: "Arrow Up", action: "Jump"},
+        {key: "Arrow Down", action: "Dive"},
+        {key: "Space", action: "Roll"},
+        {key: "E", action: "Slash"},
+        {key: "A", action: "Dash"},
+        {key: "Z", action: "Stand Idle"},
+    ],
+    listIcon: (<StarIcon aria-hidden="true" className="size-6 text-amber-600 mr-5" />),
     element: (title) => (<PianoGame title={title}/>),
     url: "piano"
 })
 
 infoBoxes.addGame({
     title: "RPG",
-    introText:"This is an RPG game.",
+    introText:"In this game, you'll have to look for the key.",
     infoBox:(title) => (
         <InfoBox 
-        text="Game 2 is even nicer, believe me!"
+        text="Floor lost her key, help her find it!"
         link="/games/rpg"
-        btnText="Play it bassie!"
+        btnText="Let's go looking!"
         title={title}
         />
     ),
-    controls:"Do this, then do the next thing and so on!",
+    controlArray: [
+        {key: "Arrow Left", action: "Move left"},
+        {key: "Arrow Right", action: "Move right"},
+        {key: "Arrow Up", action: "Move Up"},
+        {key: "Arrow Down", action: "Move Down"},
+    ],
+    listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
     element: (title) => (<RpgGame title={title}/>),
     url: "rpg"
 })
 
 infoBoxes.addGame({
     title: "Sudoku",
-    introText:"This is a Sudoku game.",
+    introText:"It's just a classic sudoku game.",
     infoBox:(title) => (
         <InfoBox 
-        text="Game 3 is crazy. You will love it!"
+        text="Some people say Floor loves sudoku. Good luck!"
         link="/games/sudoku"
         btnText="Sudoku away!"
         title={title}
         />
     ),
-    controls:"Do this, then do the next thing and so on!",
+    controlArray:[
+        {key: "Click empty square", action: "Start Typing"},
+        {key: "Check button", action: "Check your solution"},
+        {key: "Reset button", action: "Reset your solution"},
+        {key: "Regenerate button", action: "Regenerate a completly new sudoku"},
+    ],
+    listIcon: (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
     element: (title) => (<SudokuGame title={title}/>),
     url:"sudoku"
 })
 infoBoxes.addGame({
     title: "Memory",
-    introText:"This is a Memory game.",
+    introText:"This is a Memory game. Subsequently click two equal cards to remove them from the game.",
     infoBox:(title) => (
         <InfoBox 
-        text="Game 4 brings back old memories, you'll see!"
+        text="This will bring back old memories, you'll see!"
         link="/games/memory"
         btnText="Let's memorize!"
         title={title}
         />
     ),
-    controls:"Do this, then do the next thing and so on!",
+    controlArray:[
+        {key: "Click a card", action: "Card turns around"},,
+    ],
+    listIcon: (<LightBulbIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
     element: (title) => (<MemoryGame title={title}/>),
     url:"memory"
 })

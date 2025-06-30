@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { arrow } from '../assets/icons';
+import { MapPinIcon } from '@heroicons/react/24/solid'
 
 import { AppContext } from 'contexts/AppContext';
 
@@ -18,7 +19,9 @@ const WelcomeBack = ({text}) =>{
                 <Link 
                     to="/reveal"
                     className="neo-brutalism-white neo-btn-magic"
-                >Reveal Location</Link>
+                >Reveal Location
+                <MapPinIcon aria-hidden="true" className="size-6 text-amber-600" />
+                </Link>
             }
         </div>
     )
@@ -35,7 +38,9 @@ const GameCompletion = ({text}) =>{
                 <Link 
                     to="/reveal"
                     className="neo-brutalism-white neo-btn-magic"
-                >Reveal Location</Link>
+                >Reveal Location
+                <MapPinIcon aria-hidden="true" className="size-6 text-amber-600" />
+                </Link>
             }
         </div>
     )
