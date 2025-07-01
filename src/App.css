@@ -361,8 +361,9 @@ body::-webkit-scrollbar {
 .memory-card {
   /* margin: 100px auto 0; */
   margin: 2px;
-  width: 200px;
-  height: 300px;
+  aspect-ratio: 2/3;
+  width: 15vw;
+  /* height: 300px; */
   perspective: 1000px;
   z-index: 1;
   transition: z-index 1s;
@@ -405,15 +406,6 @@ body::-webkit-scrollbar {
 
 .card__face--front {
   background-image: linear-gradient(to bottom right, var(--primaryCard), var(--secondaryCard));
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.card__face--front h2 {
-  color: #FFF;
-  font-size: 32px;
 }
 
 .card__face--back {
@@ -422,16 +414,9 @@ body::-webkit-scrollbar {
 }
 .top-bar{
   font-family: 'Cinzel', serif; /* Matches the title font */
-  font-size: 1.5rem; /* Adjust button text size */
-  color: #fff; /* White text for contrast */
   background: linear-gradient(90deg, var(--primaryMagic), var(--secondaryMagic), var(--tertiaryMagic)); /* A magical gradient */
   background-size: 200%; /* Smooth gradient animation */
   border: 2px solid var(--primaryMagic); /* Golden border */
-  border-radius: 15px; /* Soft edges for a magical feel */
-  padding: 10px 20px;
-  width: 75%;
-  margin: 1vw;
-  opacity: 0.75;
   text-shadow: 
       0 0 5px var(--primaryMagic),
       0 0 10px var(--secondaryMagic),

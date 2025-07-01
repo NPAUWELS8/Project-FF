@@ -95,8 +95,8 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
           className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${isDisplayed ? "": "is-not-displayed"}`}
           onClick={onClickHandle}
         >
-          <div className="card__face card__face--front">
-            <h2>Memory</h2>
+          <div className="card__face card__face--front flex w-full h-full place-content-center">
+            <h2 className="text-[clamp(0.75rem,3vw,1.5rem)] text-white">Memory</h2>
           </div>
           <div className="card__face card__face--back">
             <img
@@ -140,7 +140,7 @@ const MemoryGame = ({title}) => {
   }
 
   return (
-    <div className="mt-24 overflow-hidden">
+    <div className="mt-24 overflow-hidden flex flex-col items-center">
       <Modal
         open={open}
         setOpen={setOpen}
@@ -148,28 +148,30 @@ const MemoryGame = ({title}) => {
         onGameFinished={onGameFinished}
         gameTitle={title}
       />
-      <div id="cardCount"  className="top-bar">
+      <div id="cardCount"  className="flex flex-col w-[90%] backdrop-opacity-75 rounded-[15px] justify-center text-center top-bar text-white m-[1vw] px-10 py-1 text-[clamp(0.75rem,3vw,1.5rem)]">
         <p>Memory cards left</p>
         <p id="count">{count}</p>
       </div>
-      <div className="grid grid-cols-5 mr-24 ml-12" id="container">
-        {images.map((image, index)=>(
-          <MemoryCard
-            key={index}
-            ref={(element) => cardRefs.current[index] = [element, image.doubleKey]}
-            display = {image.display}
-            imgSource={image.src}
-            doubleKey={image.doubleKey}
-            setTurnedDoubleKey={setTurnedDoubleKey}
-            count={count}
-            setCount={setCount}
-            turnedDoubleKey={turnedDoubleKey}
-            removeCards={removeCards}
-            returnCards={returnCards}
-            setIsSuccess={setIsSuccess}
-            setOpen={setOpen}
-          />
-        ))}
+      <div className="w-full max-w-screen px-4 mx-auto">
+        <div className="grid grid-cols-5 justify-items-center aspect-square" id="container">
+          {images.map((image, index)=>(
+            <MemoryCard
+              key={index}
+              ref={(element) => cardRefs.current[index] = [element, image.doubleKey]}
+              display = {image.display}
+              imgSource={image.src}
+              doubleKey={image.doubleKey}
+              setTurnedDoubleKey={setTurnedDoubleKey}
+              count={count}
+              setCount={setCount}
+              turnedDoubleKey={turnedDoubleKey}
+              removeCards={removeCards}
+              returnCards={returnCards}
+              setIsSuccess={setIsSuccess}
+              setOpen={setOpen}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
