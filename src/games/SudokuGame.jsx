@@ -47,7 +47,7 @@ const SudokuGame = ({title}) => {
 
   return (
     <div
-    className="mt-24 ml-12"
+    className="mt-24"
     >
       <Modal
         open={open}
@@ -56,53 +56,57 @@ const SudokuGame = ({title}) => {
         onGameFinished={onGameFinished}
         gameTitle={title}
       />
-      <h1 className="head-text-magic">
+      <h1 className="head-text-magic flex justify-center">
           <span className="magic-text font-semibold drop-shadow">Sudoku Challenge</span>
       </h1>
-      <div
-        className={`grid grid-cols-9 grid-rows-9 justify-center items-center w-[576px] h-[576px]`}
-      >
-        {values.map((value, index) =>{
-        if(shownValues[index] !==""){
-          return (
-            <input
-            className= {`font-bold border-1 ${(index % 9 === 2 || index % 9 ===5) ? "border-r-3" : ""} ${(Math.floor(index / 9) === 2 || Math.floor(index / 9) ===5) ? "border-b-3" : ""} aspect-square text-center w-[64px]`}
-            key={index}
-            value={value}
-            type="text"
-            readOnly
-            onChange={e => onInputChange(e.target.value, index)}></input>
-          )
-        } else{
-          return (
-            <input
-            className= {`border-1 ${(index % 9 === 2 || index % 9 ===5) ? "border-r-3" : ""} ${(Math.floor(index / 9) === 2 || Math.floor(index / 9) ===5) ? "border-b-3" : ""} aspect-square text-center w-[64px]`}
-            key={index}
-            value={value}
-            type="text"
-            onChange={e => onInputChange(e.target.value, index)}></input>
-          )
-        }
-        
-        })}
+      <div className="w-full max-w-screen-sm px-4 mx-auto">
+        <div
+          className="grid grid-cols-9 aspect-square"
+        >
+          {values.map((value, index) =>{
+          if(shownValues[index] !==""){
+            return (
+              <input
+              className= {`font-bold bg-slate-200 border-1 ${(index % 9 === 2 || index % 9 ===5) ? "border-r-3" : ""} ${(Math.floor(index / 9) === 2 || Math.floor(index / 9) ===5) ? "border-b-3" : ""} aspect-square text-center w-full h-full text-[clamp(0.75rem,2.5vw,1.25rem)]`}
+              key={index}
+              value={value}
+              type="text"
+              readOnly
+              onChange={e => onInputChange(e.target.value, index)}></input>
+            )
+          } else{
+            return (
+              <input
+              className= {`border-1 ${(index % 9 === 2 || index % 9 ===5) ? "border-r-3" : ""} ${(Math.floor(index / 9) === 2 || Math.floor(index / 9) ===5) ? "border-b-3" : ""} aspect-square text-center w-full h-full text-[clamp(0.75rem,2.5vw,1.25rem)]`}
+              key={index}
+              value={value}
+              type="text"
+              onChange={e => onInputChange(e.target.value, index)}></input>
+            )
+          }
+          
+          })}
+        </div>
       </div>
-      <button
-        className="btn-magic m-12"
-        onClick={checkValues}
-      >Check</button>
-      <button
-        className="btn-magic m-12"
-        onClick={resetValues}
-      >Reset</button>
-      <button
-        className="btn-magic m-12"
-        onClick={regenerateSudoku}
-      >Regenerate</button>
-      <button
-        className="btn-magic m-12"
-        onClick={solveSudoku}
-        style={{display:"none"}}
-      >Solve</button>
+      <div className="flex justify-center items-center flex-col sm:flex-row">
+        <button
+          className="btn-magic mx-2 my-5"
+          onClick={checkValues}
+        >Check</button>
+        <button
+          className="btn-magic mx-2 my-5"
+          onClick={resetValues}
+        >Reset</button>
+        <button
+          className="btn-magic mx-2 my-5"
+          onClick={regenerateSudoku}
+        >Regenerate</button>
+        <button
+          className="btn-magic mx-2 my-5"
+          onClick={solveSudoku}
+          style={{display:"none"}}
+        >Solve</button>
+      </div>
     </div>
   )
 }

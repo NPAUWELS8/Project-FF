@@ -76,7 +76,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .btn-magic {
-    @apply font-cinzel text-xl w-full rounded-lg bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 shadow-amber-200 shadow-md px-5 py-2.5 text-center font-semibold text-white hover:scale-110 hover:from-amber-500  hover:via-orange-500 hover:to-red-500 hover:text-yellow-50 hover:shadow-lg active:scale-95 active:shadow-md focus:ring-4 focus:ring-yellow-400 focus:outline-none sm:w-auto;
+    @apply font-cinzel text-xl w-[90%] rounded-lg bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 shadow-amber-200 shadow-md px-5 py-2.5 text-center font-semibold text-white hover:scale-110 hover:from-amber-500  hover:via-orange-500 hover:to-red-500 hover:text-yellow-50 hover:shadow-lg active:scale-95 active:shadow-md focus:ring-4 focus:ring-yellow-400 focus:outline-none sm:w-3xs;
   }
   .header {
     @apply absolute top-0 right-0 left-0 z-10 mx-auto flex max-w-5xl items-center justify-between bg-transparent px-8 py-4 sm:px-16;
