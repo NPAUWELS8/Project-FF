@@ -95,8 +95,8 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
           className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${isDisplayed ? "": "is-not-displayed"}`}
           onClick={onClickHandle}
         >
-          <div className="card__face card__face--front flex w-full h-full place-content-center">
-            <h2 className="text-[clamp(0.75rem,3vw,1.5rem)] text-white">Memory</h2>
+          <div className="card__face card__face--front flex w-full h-full justify-center items-center">
+            <h2 className="text-[clamp(0.75rem,3vw,2.5rem)] text-white">Memory</h2>
           </div>
           <div className="card__face card__face--back">
             <img
