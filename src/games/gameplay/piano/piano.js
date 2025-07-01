@@ -14,8 +14,10 @@ import { TrailTexture } from '@react-three/drei'
 
 export function playPiano(canvas,setGameOver, setWon){
     const ctx = canvas.getContext('2d');
-    canvas.width = 1333;
-    canvas.height = 500;
+    const width = 1333;
+    const height = 500;
+    canvas.width = width;
+    canvas.height = height;
 
     class PianoGame{
         constructor(width, height){
@@ -218,7 +220,7 @@ export function playPiano(canvas,setGameOver, setWon){
             return win
         }
     }
-    const game =  new PianoGame(canvas.width, canvas.height);
+    const game =  new PianoGame(width, height);
 
     let lastTime = 0;
 

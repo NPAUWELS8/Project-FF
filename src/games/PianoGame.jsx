@@ -23,10 +23,12 @@ const PianoGame = ({title}) => {
         playPiano(pianoRef.current, setGameOver, setWon);
     },[])
   return (
-    <div>
-      <canvas ref={pianoRef} className="h-[500px] w-[1333px]">PianoGame</canvas>
-      {gameOver && won && <button onClick={onSuccess} className="btn-magic m-12">Continue</button> }
-      {gameOver && !won && <button onClick={onRetry} className="btn-magic m-12">Retry</button> }
+    <div className="mx-auto min-h-[calc(100vh-80px)] px-8 !pt-[75px] pb-12 sm:p-16">
+      <div className="flex justify-center max-w-screen ">
+        <canvas ref={pianoRef} className="aspect-1333/500 max-w-full">PianoGame</canvas>
+      </div>
+      {gameOver && won && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }
+      {gameOver && !won && <button onClick={onRetry} className="btn-magic mt-12">Retry</button> }
     </div>
   )
 }
