@@ -16,7 +16,7 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
     const [gameWidth, gameHeight] = gameSize;
 
     return (
-        <canvas ref={rpgRef} className={`"w-[${gameWidth}px] h-[${gameHeight}px]"`}></canvas>
+        <canvas ref={rpgRef} className={`aspect-${gameWidth}/${gameHeight} max-w-full`}></canvas>
     )
 }
 
@@ -31,7 +31,8 @@ const RpgGame = ({title}) => {
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
     const [overlay, setOverlay] = useState(false);
 
-    const gameSize = [840,480]
+    const gameSize = [840,480];
+    const [gameWidth, gameHeight] = gameSize;
 
     const handleUpdateText = useCallback((text) => {
         setGameText(text);
@@ -51,23 +52,27 @@ const RpgGame = ({title}) => {
     }
 
   return (
-    <div className="mx-auto min-h-[calc(100vh-80px)] max-w-5xl px-8 !pt-[75px] pb-12 sm:p-16">
-        <FadingDiv
-            overlay={overlay}
-            gameSize={gameSize}
-        />
-        <GameCanvas 
-            setGameOver={setGameOver}
-            handleUpdateText={handleUpdateText}
-            handleDisplayText={handleDisplayText}
-            handleOverlay={handleOverlay}
-            gameSize={gameSize}
-        />
-        {gameOver && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }
-        <TextBoxContainer
-            gameText={gameText}
-            gameTextDisplay={gameTextDisplay}
-        />
+    <div className="flex justify-center mx-auto min-h-[calc(100vh-80px)] px-8 !pt-[75px] pb-12 sm:p-16">
+        <div className={`max-w-[${gameWidth}px] w-full`}>
+            <div className={`max-w-[${gameWidth}px] w-full max-h-[${gameHeight}] relative`}>
+                <FadingDiv
+                    overlay={overlay}
+                    gameSize={gameSize}
+                />
+                <GameCanvas 
+                    setGameOver={setGameOver}
+                    handleUpdateText={handleUpdateText}
+                    handleDisplayText={handleDisplayText}
+                    handleOverlay={handleOverlay}
+                    gameSize={gameSize}
+                />
+            </div>
+            {gameOver && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }
+            <TextBoxContainer
+                gameText={gameText}
+                gameTextDisplay={gameTextDisplay}
+            />
+        </div>
     </div>
   )
 }

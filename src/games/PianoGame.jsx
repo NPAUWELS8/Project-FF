@@ -23,8 +23,8 @@ const PianoGame = ({title}) => {
         playPiano(pianoRef.current, setGameOver, setWon);
     },[])
   return (
-    <div className="mx-auto min-h-[calc(100vh-80px)] px-8 !pt-[75px] pb-12 sm:p-16">
-      <div className="flex justify-center max-w-screen ">
+    <div className="mx-auto max-w-[1333px] px-8 !pt-[75px] pb-12 sm:p-16">
+      <div className="flex justify-center max-w-screen">
         <canvas ref={pianoRef} className="aspect-1333/500 max-w-full">PianoGame</canvas>
       </div>
       {gameOver && won && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }
