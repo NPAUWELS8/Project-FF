@@ -29,7 +29,7 @@ const memoryGrid = new MemoryGrid();
 
 for(let i = 2; i <=16;i++){
   const zero = Math.floor(i/10) >= 1 ? "" : "0";
-  const imageSrc =  "/memory/IMG-20241218-WA00"+ zero + i + ".jpg";
+  const imageSrc =  "/Project-FF/memory/IMG-20241218-WA00"+ zero + i + ".jpg";
   memoryGrid.addImage(imageSrc,i);
   memoryGrid.addImage(imageSrc,i);
 }
