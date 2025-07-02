@@ -23,7 +23,7 @@ const GameInfo = ({title, introText, controls, game}) => {
     );
   } else{
     return (
-      <section className="bg-slate-950 max-container">
+      <section className="bg-slate-950 max-container hover:cursor-default">
         <h1 className="head-text-magic">
           <span className="magic-text font-semibold drop-shadow">{title}</span>
         </h1>

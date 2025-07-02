@@ -10,8 +10,8 @@ import { boxes } from 'constants/GamesConstant'
 const WelcomeBack = ({header, text, isShown}) =>{
     const context = useContext(AppContext);
     return (
-        <div className="info-box neo-brutalism-magic">
-            <div className="font-medium sm:text-xl hover:cursor-default">
+        <div className="info-box neo-brutalism-magic hover:cursor-default">
+            <div className="font-medium sm:text-xl">
                 <h1 className="text-center bg-white text-amber-500 rounded-xl">{header}</h1>
                 <br/>
                 <p>{text}</p>
@@ -43,8 +43,8 @@ const GameCompletion = ({header, text,isShown}) =>{
     const context = useContext(AppContext);
 
     return (
-        <div className="info-box neo-brutalism-magic">
-            <div className="font-medium sm:text-xl hover:cursor-default">
+        <div className="info-box neo-brutalism-magic hover:cursor-default">
+            <div className="font-medium sm:text-xl">
                 <h1 className="text-center bg-white text-amber-500 rounded-xl">{header}</h1>
                 <p>{text}</p>
             </div>
