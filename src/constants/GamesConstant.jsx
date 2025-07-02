@@ -3,7 +3,6 @@ import { AppContext } from "contexts/AppContext";
 import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon, TrophyIcon, StarIcon, LightBulbIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
 
 import { Link } from 'react-router-dom';
-import { arrow } from 'assets/icons';
 import { useContext } from "react";
 
 const InfoBox = ({text, link, btnText, title})=>{
@@ -223,4 +222,3 @@ infoBoxes.addGame({
 infoBoxes.addRadialDivision();
 export const games = infoBoxes.games;
 export const boxes = infoBoxes.boxes;
-

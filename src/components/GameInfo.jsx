@@ -24,6 +24,9 @@ const GameInfo = ({title, introText, controls, game}) => {
           <div className="mt-5 flex flex-col gap-3 text-slate-500">   
               {controls}
           </div>
+          <div className="mt-5 flex flex-col gap-3 text-slate-500">
+            You can also consult the controls by clicking the button in the top right corner.
+          </div>
         </div>
         <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
       </section>
