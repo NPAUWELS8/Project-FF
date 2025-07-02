@@ -8,7 +8,7 @@ const Game = () => {
     const {setCurrentGame} = useContext(AppContext);
     const params = useParams();
     const {title, introText, controls, element} = games.find((el)=> el.url === params.game);
-    
+
     useEffect(()=>{
       setCurrentGame(title);
     },[])

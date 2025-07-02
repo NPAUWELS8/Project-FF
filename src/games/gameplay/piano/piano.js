@@ -13,6 +13,7 @@ import { Bird, Fish } from './ornaments.js'
 import { TrailTexture } from '@react-three/drei'
 
 export function playPiano(canvas,setGameOver, setWon){
+    setGameOver(false);
     const ctx = canvas.getContext('2d');
     const width = 1333;
     const height = 500;

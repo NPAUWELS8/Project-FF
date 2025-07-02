@@ -140,7 +140,7 @@ const MemoryGame = ({title}) => {
   }
 
   return (
-    <div className="mt-24 overflow-hidden flex flex-col items-center">
+    <div className="my-24 overflow-hidden flex flex-col items-center">
       <Modal
         open={open}
         setOpen={setOpen}

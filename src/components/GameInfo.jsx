@@ -1,13 +1,26 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GameInfo = ({title, introText, controls, game}) => {
   const [gameStarted, setGameStarted] = useState(false)
+  const navigate = useNavigate();
 
   const handleButtonClick = ()=>{
     setGameStarted(true)
   }
+  const goBack = ()=>{
+    window.location.reload()
+  }
+
   if(gameStarted){
-    return game;
+    return (
+      <div>
+        {game}
+        <button className="btn-magic-dark block mx-auto mb-5" onClick={goBack}>
+          Go Back
+        </button>
+      </div>
+    );
   } else{
     return (
       <section className="bg-slate-950 max-container">
