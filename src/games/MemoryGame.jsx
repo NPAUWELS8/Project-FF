@@ -2,7 +2,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useStat
 import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
-
+//TODO: Fix the mouse when hovering over a turned card, currently it looks like you can click it again.
 class MemoryGrid {
   constructor(){
     this.images = []

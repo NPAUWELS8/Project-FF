@@ -85,7 +85,7 @@ body:has(.card[data-color="green"]:hover) {
   
 
   .header {
-    @apply absolute top-0 right-0 left-0 z-10 mx-auto flex max-w-5xl items-center justify-between bg-transparent px-8 py-4 sm:px-16;
+    @apply absolute top-0 right-0 left-0 z-50 mx-auto flex max-w-5xl items-center justify-between bg-transparent px-8 py-4 sm:px-16;
   }
 
   .footer {
