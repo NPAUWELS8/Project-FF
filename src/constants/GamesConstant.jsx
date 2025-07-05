@@ -5,6 +5,19 @@ import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 
+export const videoIds = [
+    "Pih2mlC1duE",
+    "_vMIr3_Lbjg",
+    "0MTkODK1hzg",
+    "acY_V1stn54",
+    "ywH2C6KVFno",
+    "kXHNAWshbSc",
+    "9yF0BMb5OT0",
+    "QejkDjEgbr0",
+    "h87prLIH7YE"
+]
+
+
 const InfoBox = ({text, link, btnText, title})=>{
     const context = useContext(AppContext);
     

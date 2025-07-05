@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap&family=Cinzel:wght@900");
 @import "tailwindcss";
 
 @theme {
@@ -119,6 +119,14 @@ body:has(.card[data-color="green"]:hover) {
   .cta-text {
     @apply flex-1 text-3xl font-extrabold max-md:text-center;
   }
+}
+
+.cinzel-epic{
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 120px;
 }
 
 .glassmorphism {
