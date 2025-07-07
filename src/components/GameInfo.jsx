@@ -4,6 +4,7 @@ import { videoIds } from 'constants/GamesConstant'
 import {useGSAP} from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+
 import GeneralLoader from 'components/GeneralLoader'
 //TODO: Fix continue button. Currently the mouse doesn't change when hovering over the button.
 //TODO: For piano game and rpg game, make sure the page doesn't scroll whilst pressing down button when playing the game
