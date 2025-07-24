@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 
 import GeneralLoader from 'components/GeneralLoader'
+import { hogwartsEmblem } from 'assets/images'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -110,8 +111,8 @@ const GameInfo = ({title, introText, controls, game}) => {
             </h1>
           </div>
         </section>
-        <section className="z-0 min-h-screen bg-slate-950 max-container hover:cursor-default">
-            <h1 className="head-text-magic">
+        <section className="z-0 min-h-screen w-screen bg-slate-950 hover:cursor-default">
+            {/* <h1 className="head-text-magic">
             <span className="magic-text font-semibold drop-shadow">{title}</span>
           </h1>
           <div className="mt-5 flex flex-col gap-3 text-slate-500">
@@ -128,7 +129,30 @@ const GameInfo = ({title, introText, controls, game}) => {
               You can also consult the controls by clicking the button in the top right corner.
             </div>
           </div>
-          <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
+          <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button> */}
+          <div id="parchment-container" className="font-bilbo-swash-caps text-6xl">
+            <div className="main-parchment">
+              <div id="parchment" className="mt-5"></div>
+              <div id="contain">
+                <p className="inkTitle">{title}</p>
+                <h1>Description</h1>
+                <p></p>
+                <p id="labarum" className="-my-20"><img src={hogwartsEmblem}/></p>
+                <h1>Controls</h1>
+                <p className="parchment-p text-3xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.</p>
+                <p className="parchment-p text-3xl">Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.</p>
+                <p className="cachet"><img src="https://i.postimg.cc/4NBYNqCR/22.png"/></p>
+                <div id="signature" className="text-4xl">Imperator Caesar Flavius Constantinus<br />Pius Felix Invictus Augustus</div>
+              </div>
+            </div>
+
+            {/* <svg>
+              <filter id="wavy2">
+                <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1" />
+                <feDisplacementMap in="SourceGraphic" scale="20" />
+              </filter>
+            </svg> */}
+          </div>
           </section>
         </>
     )
