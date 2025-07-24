@@ -11,21 +11,35 @@ import ModelWrapper from 'models/ModelWrapper'
 import HomeInfo from 'components/HomeInfo'
 
 
-import sakura from 'assets/sakura.mp3'
+import epicOrchestra from 'assets/sounds/epic_orchestra.mp3'
 import { soundoff, soundon } from 'assets/icons'
 
 const Home = () => {
   const {setCurrentGame} = useContext(AppContext);
-  const audioRef = useRef(new Audio(sakura));
+  const audioRef = useRef(new Audio(epicOrchestra));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
   const [isRotating, setIsRotating] = useState(false)
   const [currentStage, setCurrentStage] = useState(1)
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const [isFirstClick, setIsFirstClick] = useState(true);
 
   useEffect(()=>{
       setCurrentGame(null);
     },[])
+
+  function playOnFirstClick(e){
+    if(isFirstClick) audioRef.current.play();
+    setIsFirstClick(false);
+    console.log("test")
+  }
+
+  useEffect(()=>{
+    document.addEventListener('click',playOnFirstClick)
+    return ()=>{
+      document.removeEventListener('click', playOnFirstClick);
+    }
+  },[isFirstClick])
 
   useEffect(()=>{
     if(isPlayingMusic){
@@ -85,7 +99,6 @@ const Home = () => {
         />
         </Suspense>
       </Canvas>
-      {/* TODO: change music to new soundtrack and make it so it starts playing automatically but can be turned off with button. */}
       <div className="absolute bottom-2 left-2">
         <img 
           src={!isPlayingMusic ? soundoff : soundon}
