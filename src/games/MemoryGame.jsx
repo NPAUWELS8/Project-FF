@@ -2,7 +2,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useStat
 import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
-//TODO: Fix the mouse when hovering over a turned card, currently it looks like you can click it again.
+
 class MemoryGrid {
   constructor(){
     this.images = []
@@ -98,7 +98,7 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
           <div className="card__face card__face--front flex w-full h-full justify-center items-center">
             <h2 className="text-[clamp(0.75rem,3vw,2.5rem)] text-white">Memory</h2>
           </div>
-          <div className="card__face card__face--back">
+          <div className="card__face card__face--back hover:cursor-not-allowed">
             <img
               src={imgSource}
             />
