@@ -29,16 +29,16 @@ const GameInfo = ({title, introText, controls, game}) => {
   */
 
   useGSAP(()=>{
-    gsap.set("#video-frame", {
+    gsap.set("#video-container", {
       clipPath: "polygon(100% 34%, 21% 56%, 48% 77%, 0% 100%, 86% 76%, 55% 58%)",
       // borderRadius:" 0% 0% 40% 10%"
     })
-    gsap.from("#video-frame",{
+    gsap.from("#video-container",{
       clipPath: "polygon(100% 0%, 0% 0%, 0% 77%, 0% 100%, 100% 100%, 100% 58%)",
       borderRadius: '0 0 0 0',
       ease: 'power1.inOut',
       scrollTrigger:{
-        trigger: "#video-frame",
+        trigger: "#video-container",
         start: "center center",
         end: "bottom center",
         scrub: true
@@ -71,35 +71,39 @@ const GameInfo = ({title, introText, controls, game}) => {
         <section className="w-screen h-screen">
           { isLoading && <GeneralLoader/>
           }
-          <div id="video-frame" className={`absolute -top-[10%] left-0 w-full overflow-hidden`}>
-            {/* <div className="bg-black absolute top-0 left-0 w-full h-[10%]"></div> */}
-            <YouTube
-              id=""
-              className="z-0"
-              videoId={randomVideo}
-              opts={{
-                height: height,
-                width: width,
-                playerVars: {
-                  autoplay: 1,
-                  controls:0,
-                  mute:1,
-                  start: 90,
-                  disablekb:1,
-                  modestbranding: 1
-              }
-              }}
-              onStateChange={onStateChange}
-            />
-            <div className="absolute top-0 left-0 w-full h-full z-10"></div>
-            <h1 className="cinzel-epic absolute text-white top-40 left-20 z-40">
-              {title}
-            </h1>
-            <h1 className="cinzel-epic absolute text-white bottom-10 right-20 z-40">
-              GAME
-            </h1>
+          <div id="video-container" className="h-screen">
+            <div id="video-frame" className={`absolute -top-[10%] left-0 w-full overflow-hidden`}>
+              {/* <div className="bg-black absolute top-0 left-0 w-full h-[10%]"></div> */}
+              <YouTube
+                id=""
+                className="z-0"
+                videoId={randomVideo}
+                opts={{
+                  height: height,
+                  width: width,
+                  playerVars: {
+                    autoplay: 1,
+                    controls:0,
+                    mute:1,
+                    start: 90,
+                    disablekb:1,
+                    modestbranding: 1
+                }
+                }}
+                onStateChange={onStateChange}
+              />
+              
+            </div>
+            <div className="absolute top-0 left-0 w-full h-screen z-10">
+              <h1 className="cinzel-epic absolute text-white top-40 left-20 z-40">
+                {title}
+              </h1>
+              <h1 className="cinzel-epic absolute text-white bottom-10 right-20 z-40">
+                GAME
+              </h1>
+            </div>
           </div>
-          <div className={`absolute -top-[10%] left-0 w-full h-[${height}px] overflow-hidden -z-10`}>
+          <div className={`absolute top-0 left-0 w-full h-screen overflow-hidden -z-10`}>
             <h1 className="cinzel-epic absolute text-black top-40 left-20 z-40">
               {title}
             </h1>
