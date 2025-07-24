@@ -62,7 +62,7 @@ const Home = () => {
   const [broomScale, broomPosition] = adjustBroomForScreenSize();
   return (
     <section className="w-full h-screen relative">
-      <div className="absolute m-auto max-w-2xl top-28 left-0 right-0 z-10 flex items-center justify-center">
+      <div className={`absolute m-auto max-w-2xl top-28 left-0 right-0 z-10 flex items-center justify-center ${isRotating ? "pointer-events-none" : ""}`}>
         {currentStage && <HomeInfo currentStage={currentStage}/>}
       </div>
       <Canvas 
