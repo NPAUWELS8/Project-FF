@@ -27,7 +27,6 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
             this.backgroundOffset = {x: -1120, y: -620}
             this.islandBackground = new Background(this, outBgMap, outFgMap, 4, 12, {x:-1345 + this.width/2, y: -820 + this.height/2 + this.player.height/2}, "STANDDOWN", 30);
             this.houseBackground = new Background(this, intBgMap, intFgMap, 3, 16,{x:-1344 + this.width/2, y: -864 + this.height/2 + this.player.height/2}, "STANDRIGHT", 45);
-            //TODO: add a message that you have to press enter to close the dialog boxes.
             this.houseMap = [
                 {
                     name: "Tv",

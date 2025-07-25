@@ -99,11 +99,11 @@ export class Interaction extends InteractionObject{
         this.showButton = !this.showButton;
     }
     showText(){
-       this.game.dialogue.displayText(this.text);
-       this.toggleButton();
+        this.game.dialogue.displayText(this.text + " Press enter to continue.");
+        this.toggleButton();
     }
     showKeyText(text){
-        this.game.dialogue.displayText(text);
+        this.game.dialogue.displayText(text + " Press enter to continue");
         this.toggleButton();
         this.keyFound = true;
         this.game.keyFound = true;
@@ -149,7 +149,7 @@ export class BoatInteraction extends Interaction {
     showText(){
         this.toggleButton();
         if(!this.game.keyFound){
-            this.game.dialogue.displayText(this.text);
+            this.game.dialogue.displayText(this.text + " Press enter to continue");
         } else{
             this.game.dialogue.displayText(this.congratsText);
             this.game.gameOver = true;
