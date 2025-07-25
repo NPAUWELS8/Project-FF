@@ -31,7 +31,7 @@ const ControlsElem = ({gameTitle, setOpen}) => {
                     Controls:
                   </DialogTitle>
                   <div className="mt-2">
-                    {game.controls}
+                    {game.basicControls}
                   </div>
                 </div>
               </div>

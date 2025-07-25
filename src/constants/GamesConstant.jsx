@@ -101,10 +101,17 @@ class Box {
 }
 
 //TODO: fix longer control explanation to get smaller than other control explanations when screen is very small (e.g. for the sudoku game)
-const Controls = ({controlArray,icon}) =>{
+const Controls = ({controlArray}) =>{
     const controls = controlArray.map((control,index)=>
         // <div key={index} className="flex flex-row">{icon}<p><b>{control.key}</b>{`: ${control.action}`}</p></div>
         <p key={index} className="parchment-p text-3xl"><b>{control.key}</b>{`: ${control.action}`}</p>
+    )
+    return <>{controls}</>
+}
+
+const BasicControls = ({controlArray,icon}) =>{
+    const controls = controlArray.map((control,index)=>
+        <div key={index} className="flex flex-row">{icon}<p><b>{control.key}</b>{`: ${control.action}`}</p></div>
     )
     return <>{controls}</>
 }
@@ -125,6 +132,9 @@ class Game{
             />;
         this.infoBox= infoBox(this.title);
         this.controls = <Controls
+                controlArray = {controlArray}
+            />
+        this.basicControls = <BasicControls
                 controlArray = {controlArray}
                 icon = {listIcon}
             />

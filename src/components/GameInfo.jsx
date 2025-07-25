@@ -57,11 +57,13 @@ const GameInfo = ({title, introText, controls, game}) => {
 
   if(gameStarted){
     return (
-      <div>
+      <div className="game-container h-full min-h-screen relative">
         {game}
-        <button className="btn-magic-dark block mx-auto mb-5" onClick={goBack}>
-          Go Back
-        </button>
+        <div className="absolute bottom-5 mx-auto mb-5 w-full flex justify-center">
+          <button className="btn-magic-dark" onClick={goBack}>
+            Go Back
+          </button>
+        </div>
       </div>
     );
   } else{
@@ -130,29 +132,25 @@ const GameInfo = ({title, introText, controls, game}) => {
             </div>
           </div>
           <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button> */}
-          <div id="parchment-container" className="font-bilbo-swash-caps text-6xl">
+          <div id="parchment-container" className="font-bilbo-swash-caps text-8xl">
             <div className="main-parchment">
               <div id="parchment" className="mt-5"></div>
               <div id="contain">
-                <p className="inkTitle">{title}</p>
-                <h1>Description</h1>
+                <p className="inkTitle">{`${title} Game`}</p>
+                <h1 className="text-6xl">Description</h1>
                 {introText}
                 <p id="labarum" className="-my-20"><img src={hogwartsEmblem}/></p>
-                <h1>Controls</h1>
+                <h1 className="text-6xl">Controls</h1>
                 {controls}
-                {/* <p className="parchment-p text-3xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.</p>
-                <p className="parchment-p text-3xl">Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.</p> */}
-                <p className="cachet"><img src={hogwartsSeal}/></p>
-                <div id="signature" className="text-4xl">Overviewer Niels Pauwels<br />Master of Philosofloor's stone</div>
+                <div className="mb-10 flex flex-row justify-between items-center">
+                  <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
+                  <div>
+                    <p className="cachet"><img src={hogwartsSeal}/></p>
+                    <div id="signature" className="text-4xl">Overviewer Niels Pauwels<br />Master of Philosofloor's stone</div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* <svg>
-              <filter id="wavy2">
-                <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1" />
-                <feDisplacementMap in="SourceGraphic" scale="20" />
-              </filter>
-            </svg> */}
           </div>
           </section>
         </>

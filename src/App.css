@@ -248,6 +248,11 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* game container */
+.game-container{
+  background-image: url(assets/images/background.jpeg)
+}
+
 /*recycled from original project*/
 
 @font-face{
@@ -518,7 +523,7 @@ body::-webkit-scrollbar {
 
 #parchment-container {
   font-family: 'Bilbo Swash Caps', cursive;
-  background-image: url(https://images.unsplash.com/photo-1546484396-fb3fc6f95f98);
+  background-image: url(assets/images/background.jpeg);
   background-size: cover;
   /* font-size: calc((1vw + 1vh) * .75); */
 }
@@ -540,7 +545,7 @@ August 2021 : ok on Chrome v92+, Firefox v90+, Edge v92+
   position: absolute;
   display: flex;
 	width: 75%;
-  height: 97%;
+  height: 98%;
   /* center page with absolute position */
   top: 0%; left: 50%; transform: translate(-50%, 0);
   /* margin: 2em 0; */
@@ -597,7 +602,7 @@ August 2021 : ok on Chrome v92+, Firefox v90+, Edge v92+
 	width: 75%;
   height: auto;
   margin: 0 auto;
-	padding: 1em 4em;
+	padding: 0em 2em;
 }
 
 .inkTitle {

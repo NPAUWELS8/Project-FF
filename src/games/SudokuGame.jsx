@@ -47,7 +47,7 @@ const SudokuGame = ({title}) => {
 
   return (
     <div
-    className="mt-24"
+    className="pt-24 pb-30"
     >
       <Modal
         open={open}
@@ -59,7 +59,7 @@ const SudokuGame = ({title}) => {
       <h1 className="head-text-magic flex justify-center">
           <span className="magic-text font-semibold drop-shadow">Sudoku Challenge</span>
       </h1>
-      <div className="w-full max-w-screen-sm px-4 mx-auto">
+      <div className="w-full max-w-screen-sm xl:max-w-[60vh] bg-white mx-auto">
         <div
           className="grid grid-cols-9 aspect-square"
         >
