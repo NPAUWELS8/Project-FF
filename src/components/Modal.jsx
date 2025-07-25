@@ -86,8 +86,7 @@ const Success = ({onGameFinished, gameTitle}) => {
 }
 
 const Modal = ({isSuccess, open, setOpen, onGameFinished, gameTitle}) => {
-  console.log(isSuccess);
-
+  
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-10">
       <DialogBackdrop

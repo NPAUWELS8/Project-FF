@@ -29,7 +29,6 @@ export const AppContextProvider = (props)=>{
         }
     }
     const {gameMap, isFirstTime} = getGames();
-    console.log(isFirstTime)
 
     const [gamesFinished, setGamesFinished] = useState(gameMap);
     const [isAfterGameComplete, setIsAfterGameComplete] = useState(false);

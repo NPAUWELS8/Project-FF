@@ -54,15 +54,6 @@
           const handlePlaybackUpdate = (e) => {
             const { position, duration, isBuffering, isPaused, playingURI } =
               e.data;
-            console.log(
-              `Playback State updates:
-              position - ${position},
-              duration - ${duration},
-              isBuffering - ${isBuffering},
-              isPaused - ${isPaused},
-              playingURI - ${playingURI},
-              duration - ${duration}`
-            );
           };
 
           spotifyEmbedController.addListener(
@@ -72,7 +63,6 @@
 
           spotifyEmbedController.addListener("playback_started", (e) => {
             const { playingURI } = e.data;
-            console.log(`The playback has started for: ${playingURI}`);
           });
 
           spotifyEmbedControllerRef.current = spotifyEmbedController;

@@ -18,10 +18,8 @@ const SudokuGame = ({title}) => {
   const [values, setValues] = useState(obj.shownArray)
 
   function onInputChange(value, index){
-    console.log(value);
     const newValues = [...values]
     newValues[index] = value;
-    console.log(newValues);
     setValues(newValues);
   }
 

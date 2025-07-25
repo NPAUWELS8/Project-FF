@@ -60,7 +60,7 @@ const GameInfo = ({title, introText, controls, game}) => {
       <div className="game-container h-full min-h-screen relative">
         {game}
         <div className="absolute bottom-5 mx-auto mb-5 w-full flex justify-center">
-          <button className="btn-magic-dark" onClick={goBack}>
+          <button className="btn-magic-dark hover:cursor-pointer" onClick={goBack}>
             Go Back
           </button>
         </div>
@@ -114,24 +114,6 @@ const GameInfo = ({title, introText, controls, game}) => {
           </div>
         </section>
         <section className="z-0 min-h-screen w-screen bg-slate-950 hover:cursor-default">
-            {/* <h1 className="head-text-magic">
-            <span className="magic-text font-semibold drop-shadow">{title}</span>
-          </h1>
-          <div className="mt-5 flex flex-col gap-3 text-slate-500">
-              {introText}
-          </div>
-          <div className="mt-5">
-            <h3 className="subhead-text-magic">
-              <span className="magic-text font-semibold drop-shadow">Controls</span>
-            </h3>
-            <div className="mt-5 flex flex-col gap-3 text-slate-500">   
-                {controls}
-            </div>
-            <div className="mt-5 flex flex-col gap-3 text-slate-500">
-              You can also consult the controls by clicking the button in the top right corner.
-            </div>
-          </div>
-          <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button> */}
           <div id="parchment-container" className="font-bilbo-swash-caps text-8xl">
             <div className="main-parchment">
               <div id="parchment" className="mt-5"></div>

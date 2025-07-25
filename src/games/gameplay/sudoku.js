@@ -169,7 +169,6 @@ export function generateRandomSudoku(){
                     throw new Error('Max set back number reached!');
                 }
             } catch (e){
-                console.log(e);
                 if(this.regenCount<this.maxRegen){
                     this.regenerate();
                     this.regenCount++
