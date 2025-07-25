@@ -166,7 +166,7 @@ infoBoxes.addBox({
 })
 //TODO: add extra intro information and dubbel check controlarray on completeness of information
 infoBoxes.addGame({
-    title: "Piano",
+    title: "1 2 3 Piano",
     introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge."],
     infoBox: (title) => (
         <InfoBox
@@ -192,12 +192,12 @@ infoBoxes.addGame({
 })
 
 infoBoxes.addGame({
-    title: "RPG",
+    title: "Lost Keys",
     introArray:["In this game, you'll have to look for the key."],
     infoBox:(title) => (
         <InfoBox 
         text="Floor lost her key, help her find it!"
-        link="/games/rpg"
+        link="/games/keys"
         btnText="Let's go looking!"
         title={title}
         />
@@ -210,7 +210,7 @@ infoBoxes.addGame({
     ],
     listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
     element: (title) => (<RpgGame title={title}/>),
-    url: "rpg"
+    url: "keys"
 })
 
 infoBoxes.addGame({
