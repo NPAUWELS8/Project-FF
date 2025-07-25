@@ -103,15 +103,26 @@ class Box {
 //TODO: fix longer control explanation to get smaller than other control explanations when screen is very small (e.g. for the sudoku game)
 const Controls = ({controlArray,icon}) =>{
     const controls = controlArray.map((control,index)=>
-        <div key={index} className="flex flex-row">{icon}<p><b>{control.key}</b>{`: ${control.action}`}</p></div>
+        // <div key={index} className="flex flex-row">{icon}<p><b>{control.key}</b>{`: ${control.action}`}</p></div>
+        <p key={index} className="parchment-p text-3xl"><b>{control.key}</b>{`: ${control.action}`}</p>
     )
     return <>{controls}</>
 }
 
+const IntroText = ({introArray}) =>{
+    const intro = introArray.map((introText, index)=>
+        <p key={index} className="parchment-descr text-4xl">{introText}</p>
+    )
+
+    return <>{intro}</>
+}
+
 class Game{
-    constructor({title, introText, infoBox, controlArray, element, listIcon, url}){
+    constructor({title, introArray, infoBox, controlArray, element, listIcon, url}){
         this.title = title;
-        this.introText = introText;
+        this.introText = <IntroText
+                introArray={introArray}
+            />;
         this.infoBox= infoBox(this.title);
         this.controls = <Controls
                 controlArray = {controlArray}
@@ -145,7 +156,7 @@ infoBoxes.addBox({
 })
 infoBoxes.addGame({
     title: "Piano",
-    introText: (<p>Collect honey pots whilst avoiding bees and the turning picture.</p>),
+    introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge."],
     infoBox: (title) => (
         <InfoBox
             text="This game is a twist on the '1, 2, 3 piano' game."
@@ -171,7 +182,7 @@ infoBoxes.addGame({
 
 infoBoxes.addGame({
     title: "RPG",
-    introText:"In this game, you'll have to look for the key.",
+    introArray:["In this game, you'll have to look for the key."],
     infoBox:(title) => (
         <InfoBox 
         text="Floor lost her key, help her find it!"
@@ -193,7 +204,7 @@ infoBoxes.addGame({
 
 infoBoxes.addGame({
     title: "Sudoku",
-    introText:"It's just a classic sudoku game.",
+    introArray:["It's just a classic sudoku game."],
     infoBox:(title) => (
         <InfoBox 
         text="Some people say Floor loves sudoku. Good luck!"
@@ -214,7 +225,7 @@ infoBoxes.addGame({
 })
 infoBoxes.addGame({
     title: "Memory",
-    introText:"This is a Memory game. Subsequently click two equal cards to remove them from the game.",
+    introArray:["This is a Memory game. Subsequently click two equal cards to remove them from the game."],
     infoBox:(title) => (
         <InfoBox 
         text="This will bring back old memories, you'll see!"
