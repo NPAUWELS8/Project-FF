@@ -31,7 +31,7 @@ const Home = () => {
   function playOnFirstClick(e){
     if(isFirstClick) audioRef.current.play();
     setIsFirstClick(false);
-    console.log("test")
+    setIsPlayingMusic(true);
   }
 
   useEffect(()=>{
