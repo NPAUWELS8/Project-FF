@@ -51,7 +51,7 @@ class InfoBoxes{
     constructor(){
         this.boxCount = 0;
         this.firstRadial = 4.25;
-        this.areaPercentage = 0.35; //the percentage of the radial area that the box will be shown
+        this.areaPercentage = 0.5; //the percentage of the radial area that the box will be shown
         this.boxes = [];
         this.games = [];
         this.maxRadial = 2 * Math.PI;
@@ -67,7 +67,7 @@ class InfoBoxes{
         this.boxes.push(new Box(obj))
     }
     #addCount(){
-        this.boxCount = this.boxes.reduce((acc, game, index)=> acc + 1, this.boxCount);
+        this.boxCount = this.boxes.reduce((acc, _game, _index)=> acc + 1, this.boxCount);
     }
     addRadialDivision(){
         this.#calculateRadialDivision();
