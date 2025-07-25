@@ -146,7 +146,7 @@ const GameInfo = ({title, introText, controls, game}) => {
                   <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
                   <div>
                     <p className="cachet"><img src={hogwartsSeal}/></p>
-                    <div id="signature" className="text-4xl">Overviewer Niels Pauwels<br />Master of Philosofloor's stone</div>
+                    <div id="signature" className="text-4xl">Game Overseer Niels Pauwels<br />Keeper of Philosofloor's stone</div>
                   </div>
                 </div>
               </div>
