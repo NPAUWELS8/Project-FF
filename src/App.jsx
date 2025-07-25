@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import { AppContextProvider } from './contexts/AppContext';
 
 const App = () => {
-    //TODO: delete unnecessary pages and their related jsx component(s) from the project
+    //TODO: add introduction page where you receive letter of invitation
     return (
         <main className="bg-slate-300/20 flex-1">
             <Router basename='/Project-FF'>

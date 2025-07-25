@@ -164,6 +164,7 @@ infoBoxes.addBox({
         </div>
     )
 })
+//TODO: add extra intro information and dubbel check controlarray on completeness of information
 infoBoxes.addGame({
     title: "Piano",
     introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge."],
