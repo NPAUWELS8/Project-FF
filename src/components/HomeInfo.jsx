@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { arrow } from '../assets/icons';
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
 import { AppContext } from 'contexts/AppContext';
