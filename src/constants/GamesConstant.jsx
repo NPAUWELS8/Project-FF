@@ -167,7 +167,7 @@ infoBoxes.addBox({
 //TODO: add extra intro information and dubbel check controlarray on completeness of information
 infoBoxes.addGame({
     title: "1 2 3 Piano",
-    introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge."],
+    introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge.","Tip: Make sure you're not moving when the picture is turned and not moving upwards."],
     infoBox: (title) => (
         <InfoBox
             text="This game is a twist on the '1, 2, 3 piano' game."
