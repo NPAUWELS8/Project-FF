@@ -24,15 +24,6 @@ const Reveal = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                 ></iframe> : <p>{text}</p>}
                 <SpotifyReveal/>
-                {/* <iframe
-                  className="mt-5"
-                  src="https://open.spotify.com/embed/track/6xjxMWGsprmtUVMDaMhgH0?utm_source=generator"
-                  width="100%"
-                  height="152"
-                  allowFullScreen=""
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                ></iframe> */}
             </div>
         </div>
       </section>
