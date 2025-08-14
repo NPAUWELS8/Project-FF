@@ -34,6 +34,7 @@ export const AppContextProvider = (props)=>{
     const [isAfterGameComplete, setIsAfterGameComplete] = useState(false);
     const [lastGameFinished, setLastGameFinished] = useState();
     const [currentGame, setCurrentGame] = useState();
+     const [isDisplayedBackButton,setIsDisplayedBackButton] = useState(true);
 
     function getGameFinishedCount(){
         const total = gamesFinished.size
@@ -75,7 +76,9 @@ export const AppContextProvider = (props)=>{
                 isAfterGameComplete,
                 setIsAfterGameComplete,
                 currentGame,
-                setCurrentGame
+                setCurrentGame,
+                isDisplayedBackButton,
+                setIsDisplayedBackButton
             }}
         >
             {props.children}

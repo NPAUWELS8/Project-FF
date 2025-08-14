@@ -6,6 +6,9 @@ import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
 import { useNavigate } from 'react-router-dom';
 
+//TODO: fix issue where "Go back" button is not moving down when the textbox appears and gets larger during game
+//TODO: change losing key to losing cell phone (that's more of a personal touch)
+
 const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
 
@@ -31,7 +34,7 @@ const RpgGame = ({title}) => {
     const [gameTextDisplay, setGameTextDisplay] = useState(false);
     const [overlay, setOverlay] = useState(false);
 
-    const gameSize = [840,480];
+    const gameSize = [840,480]; //max-w-840px max-h-480px --> adding the classes here to be picked up by Tailwind
     const [gameWidth, gameHeight] = gameSize;
 
     const handleUpdateText = useCallback((text) => {
@@ -40,6 +43,7 @@ const RpgGame = ({title}) => {
 
     const handleDisplayText = useCallback((isDisplayed) => {
         setGameTextDisplay(isDisplayed);
+        context.setIsDisplayedBackButton(!isDisplayed);
     },[])
 
     const handleOverlay = useCallback((overlay)=>{
@@ -54,7 +58,7 @@ const RpgGame = ({title}) => {
   return (
     <div className="flex justify-center mx-auto min-h-[calc(100vh-80px)] px-8 !pt-[75px] pb-12 sm:p-16">
         <div className={`max-w-[${gameWidth}px] w-full`}>
-            <div className={`max-w-[${gameWidth}px] w-full max-h-[${gameHeight}] relative`}>
+            <div className={`max-w-[${gameWidth}px] w-full max-h-[${gameHeight}] relative border-4 border-black`}>
                 <FadingDiv
                     overlay={overlay}
                     gameSize={gameSize}

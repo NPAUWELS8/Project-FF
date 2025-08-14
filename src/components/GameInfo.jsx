@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import YouTube from 'react-youtube'
 import { videoIds } from 'constants/GamesConstant'
 import {useGSAP} from '@gsap/react'
@@ -7,13 +7,19 @@ import { ScrollTrigger } from 'gsap/all'
 
 import GeneralLoader from 'components/GeneralLoader'
 import { hogwartsEmblem, hogwartsSeal } from 'assets/images'
+import Button from 'components/Button'
+
+import { AppContext } from 'contexts/AppContext';
 
 gsap.registerPlugin(ScrollTrigger)
 
 const GameInfo = ({title, introText, controls, game}) => {
+  const context = useContext(AppContext);
   const [gameStarted, setGameStarted] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [randomVideo, setRandomVideo] = useState(videoIds[Math.floor(Math.random() * videoIds.length)]);
+ 
+  const {isDisplayedBackButton} = context;
 
   function onStateChange(event){
     if(event.data === 1) setIsLoading(false); //this condition checks whether the video is playing
@@ -43,6 +49,16 @@ const GameInfo = ({title, introText, controls, game}) => {
         scrub: true
       }
     })
+    gsap.to("#parchment-container",{
+      marginTop: 0,
+      ease: 'power1.inOut',
+      scrollTrigger:{
+        trigger: "#video-section",
+        start: "bottom center",
+        end: "140% center",
+        scrub:true,
+      }
+    })
 
   },[isLoading]) //important to add isLoading to the dependencies, otherwise this animation doesn't work on initial load.
 
@@ -59,7 +75,7 @@ const GameInfo = ({title, introText, controls, game}) => {
     return (
       <div className="game-container h-full min-h-screen relative">
         {game}
-        <div className="absolute bottom-5 mx-auto mb-5 w-full flex justify-center">
+        <div className={`${isDisplayedBackButton ? 'flex' : 'hidden'} absolute bottom-5 mx-auto mb-5 w-full justify-center`}>
           <button className="btn-magic-dark hover:cursor-pointer" onClick={goBack}>
             Go Back
           </button>
@@ -69,7 +85,7 @@ const GameInfo = ({title, introText, controls, game}) => {
   } else{
     return (
       <>
-        <section className="w-screen h-screen">
+        <section id="video-section" className="w-screen h-screen">
           { isLoading && <GeneralLoader/>
           }
           <div id="video-container" className="h-screen">
@@ -103,6 +119,15 @@ const GameInfo = ({title, introText, controls, game}) => {
                 GAME
               </h1>
             </div>
+            <div className="absolute flex justify-center left-10 bottom-[10%] w-full xl:w-100 h-12">
+            <Button
+                className="w-[90%] md:w-[70%]"
+                id="button"
+                text="Continue"
+                scrollId='parchment-section'
+                offset={-window.innerHeight * 0.01}
+            />
+          </div>
           </div>
           <div className={`absolute top-0 left-0 w-full h-screen overflow-hidden -z-10`}>
             <h1 className="cinzel-epic absolute text-black top-40 left-20 z-40">
@@ -113,8 +138,8 @@ const GameInfo = ({title, introText, controls, game}) => {
             </h1>
           </div>
         </section>
-        <section className="z-0 min-h-screen w-screen bg-slate-950 hover:cursor-default">
-          <div id="parchment-container" className="font-bilbo-swash-caps text-8xl">
+        <section id="parchment-section" className="z-0 min-h-screen w-screen hover:cursor-default pt-[0.5px]">
+          <div id="parchment-container" className="font-bilbo-swash-caps text-8xl mt-50">
             <div className="main-parchment">
               <div id="parchment" className="mt-5"></div>
               <div id="contain">
@@ -128,7 +153,7 @@ const GameInfo = ({title, introText, controls, game}) => {
                   <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
                   <div>
                     <p className="cachet"><img src={hogwartsSeal}/></p>
-                    <div id="signature" className="text-4xl">Game Overseer Niels Pauwels<br />Keeper of Philosofloor's stone</div>
+                    <div id="signature" className="text-4xl">Game Overseer Nielske Pauwels<br />Keeper of Philosofloor's stone</div>
                   </div>
                 </div>
               </div>

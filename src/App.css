@@ -8,6 +8,8 @@
   --font-monogram: "monogram", "monospace";
   --font-pirata-one: "Pirata One", "sans-serif";
   --font-bilbo-swash-caps: "Bilbo Swash Caps", "cursive";
+  --color-black-200: #282732;
+  --color-white-50: #d9ecff;
 }
 
 :root {
@@ -358,3 +360,31 @@ body::-webkit-scrollbar {
   text-align: right;
   color: black;
 }
+
+.cta-wrapper {
+    @apply relative z-20 cursor-pointer;
+  }
+
+  .cta-button {
+    @apply px-4 py-4 rounded-lg bg-black flex justify-center items-center relative cursor-pointer overflow-hidden;
+
+    .bg-circle {
+      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
+        w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
+        rounded-full bg-white-50 transition-all duration-500;
+    }
+
+    .text {
+      @apply uppercase md:text-lg text-black transition-all duration-500
+        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
+    }
+
+    .arrow-wrapper {
+      @apply group-hover:bg-white-50 size-10 rounded-full absolute right-10 top-1/2 
+        -translate-y-1/2 flex justify-center items-center overflow-hidden;
+
+      img {
+        @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
+      }
+    }
+  }
