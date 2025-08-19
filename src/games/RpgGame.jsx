@@ -6,9 +6,6 @@ import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
 import { useNavigate } from 'react-router-dom';
 
-//TODO: fix issue where "Go back" button is not moving down when the textbox appears and gets larger during game
-//TODO: change losing key to losing cell phone (that's more of a personal touch)
-
 const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
 
