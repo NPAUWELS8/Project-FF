@@ -117,8 +117,23 @@ const BasicControls = ({controlArray,icon}) =>{
 }
 
 const IntroText = ({introArray}) =>{
-    const intro = introArray.map((introText, index)=>
-        <p key={index} className="parchment-descr text-4xl">{introText}</p>
+    const intro = introArray.map((introText, index)=>{
+        const splitArray = introText.split("\n");
+        console.log(splitArray)
+        const newText = splitArray.map((text, index, array)=>{
+            if(index === 0){
+                return (<p>{text}<br/></p>)
+            }
+            else {
+                return (<p className="ml-20">{text}
+                            {index < array.length -1 && <br/>}
+                        </p>)
+            }
+            // else return (<p className="left-2">{text}</p>)
+        })
+        console.log(newText)
+        return (<p key={index} className="parchment-descr text-4xl">{newText}</p>)
+    }
     )
 
     return <>{intro}</>
@@ -192,12 +207,12 @@ infoBoxes.addGame({
 })
 
 infoBoxes.addGame({
-    title: "Lost Keys",
-    introArray:["In this game, you'll have to look for the key."],
+    title: "Find My Phone",
+    introArray:["Floor and Niels want to leave the island by boat...\nHowever, Floor just realized she lost her phone. Look for the phone before finding the boat." ,"Tip: You can enter the house."],
     infoBox:(title) => (
         <InfoBox 
-        text="Floor lost her key, help her find it!"
-        link="/games/keys"
+        text="Floor lost her phone, help her find it!"
+        link="/games/findmyphone"
         btnText="Let's go looking!"
         title={title}
         />
@@ -210,7 +225,7 @@ infoBoxes.addGame({
     ],
     listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
     element: (title) => (<RpgGame title={title}/>),
-    url: "keys"
+    url: "findmyphone"
 })
 
 infoBoxes.addGame({

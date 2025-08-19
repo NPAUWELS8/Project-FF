@@ -133,7 +133,7 @@ export class Interaction extends InteractionObject{
             else if(otherInput.includes("Enter") && this.game.dialogue.shown && this.game.dialogue.time > 2000){
                 this.hideText();
                 if(this.key && !this.keyFound){
-                    this.showKeyText("You found the key!");
+                    this.showKeyText("You found the phone! You didn't cheat with your smartwatch, I hope?");
                 }
                 else this.game.player.frozen = false;
             }
