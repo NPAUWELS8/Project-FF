@@ -79,10 +79,10 @@ const HomeInfo = ({currentStage}) => {
                     isShown={count === total}
                 />
         );
-    } else if(currentStage === 1 && !context.isFirstTime){
+    } else if(currentStage === 1){
         return (
                 <WelcomeBack
-                    header={`Welcome Back!`}
+                    header={`Welcome${!context.isFirstTime? "" : " Back"}!`}
                     text={`${count === total ?  "You have already completed all games!" : (total-count) + " more games are waiting for you!"}`}
                     isShown={count ===  total}    
                 />

@@ -5,36 +5,49 @@ import { games } from 'constants/GamesConstant'
 export const AppContext = createContext();
 
 const localStorageName = "gamemap"
+const localStorageFirstTime = "firsttime";
 
 export const AppContextProvider = (props)=>{
 
+    function setGames(){
+        const gameMap = new Map();
+        games.forEach(game=>{
+            gameMap.set(game.title,false)
+        })
+
+        const obj = Object.fromEntries(gameMap);
+        const json = JSON.stringify(obj);
+
+        localStorage.setItem(localStorageName, json)
+        localStorage.setItem(localStorageFirstTime, true)
+        
+
+        return {gameMap, firstTime: true}
+    }
+
     function getGames(){
         const storedGameObj = localStorage.getItem(localStorageName)
+        const storedIsFirstTime = localStorage.getItem(localStorageFirstTime)
+
         if(storedGameObj){
             const parsedGameObj = JSON.parse(storedGameObj)
             const gameMap = new Map(Object.entries(parsedGameObj))
-            return {gameMap, isFirstTime:false}
+
+            return {gameMap, isFirstTime: storedIsFirstTime}
         } else{
-            const gameMap = new Map();
-            games.forEach(game=>{
-                gameMap.set(game.title,false)
-            })
-    
-            const obj = Object.fromEntries(gameMap);
-            const json = JSON.stringify(obj);
-    
-            localStorage.setItem(localStorageName, json)
-    
-            return {gameMap, isFirstTime:true}
+
+            return setGames();
         }
     }
-    const {gameMap, isFirstTime} = getGames();
+
+    const {gameMap, firstTime} = getGames();
 
     const [gamesFinished, setGamesFinished] = useState(gameMap);
+    const [isFirstTime, setIsFirstTime] = useState(firstTime);
     const [isAfterGameComplete, setIsAfterGameComplete] = useState(false);
     const [lastGameFinished, setLastGameFinished] = useState();
     const [currentGame, setCurrentGame] = useState();
-     const [isDisplayedBackButton,setIsDisplayedBackButton] = useState(true);
+    const [isDisplayedBackButton,setIsDisplayedBackButton] = useState(true);
 
     function getGameFinishedCount(){
         const total = gamesFinished.size
@@ -73,12 +86,13 @@ export const AppContextProvider = (props)=>{
                 onGameFinished,
                 lastGameFinished,
                 isFirstTime,
+                setIsFirstTime,
                 isAfterGameComplete,
                 setIsAfterGameComplete,
                 currentGame,
                 setCurrentGame,
                 isDisplayedBackButton,
-                setIsDisplayedBackButton
+                setIsDisplayedBackButton,
             }}
         >
             {props.children}

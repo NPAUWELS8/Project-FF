@@ -15,7 +15,8 @@ import epicOrchestra from 'assets/sounds/epic_orchestra.mp3'
 import { soundoff, soundon } from 'assets/icons'
 
 const Home = () => {
-  const {setCurrentGame} = useContext(AppContext);
+  const context = useContext(AppContext);
+  const {setCurrentGame} = context;
   const audioRef = useRef(new Audio(epicOrchestra));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
