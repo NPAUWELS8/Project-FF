@@ -3,9 +3,14 @@ import { useLayoutEffect, useContext } from 'react';
 import { games } from 'constants/GamesConstant'
 import gsap from 'gsap'
 import { AppContext } from 'contexts/AppContext';
+import { useImagePreloader } from 'hooks';
+import GeneralLoader from 'components/GeneralLoader';
+
+const preloadImages = ["assets/images/background.jpeg","assets/images/background-noise.png", hogwartsSeal, hogwartsEmblem]
 
 const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
     const context = useContext(AppContext);
+    const imagesLoaded = useImagePreloader(preloadImages);
 
     useLayoutEffect(()=>{
         setShowNavBar(false);
@@ -42,7 +47,7 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
 
     return (
         <section id="parchment-section" className="z-0 min-h-screen w-screen hover:cursor-default">
-            <div id="parchment-container" className="font-bilbo-swash-caps text-8xl">
+            <div id="parchment-container" className={`font-bilbo-swash-caps text-8xl ${imagesLoaded ? "opacity-100" : "opacity-0"}`}>
                 <div className="main-parchment">
                     <div id="parchment" className="mt-5"></div>
                     <div id="contain">
@@ -77,6 +82,7 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
                     </div>
                 </div>
             </div>
+            <GeneralLoader className={`${imagesLoaded ? "hidden" : ""}`}/>
         </section>
     )
 }
