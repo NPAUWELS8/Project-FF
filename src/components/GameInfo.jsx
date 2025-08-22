@@ -13,7 +13,7 @@ import { AppContext } from 'contexts/AppContext';
 
 gsap.registerPlugin(ScrollTrigger)
 
-const GameInfo = ({title, introText, controls, game}) => {
+const GameInfo = ({title, trialTitle, introText, controls, game}) => {
   const context = useContext(AppContext);
   const [gameStarted, setGameStarted] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
@@ -113,10 +113,10 @@ const GameInfo = ({title, introText, controls, game}) => {
             </div>
             <div className="absolute top-0 left-0 w-full h-screen z-10">
               <h1 className="cinzel-epic absolute text-white top-40 left-20 z-40">
-                {title}
+                TRIAL OF
               </h1>
               <h1 className="cinzel-epic absolute text-white bottom-10 right-20 z-40">
-                GAME
+                {trialTitle}
               </h1>
             </div>
             <div className="absolute flex justify-center left-10 bottom-[10%] w-full xl:w-100 h-12">
@@ -131,10 +131,10 @@ const GameInfo = ({title, introText, controls, game}) => {
           </div>
           <div className={`absolute top-0 left-0 w-full h-screen overflow-hidden -z-10`}>
             <h1 className="cinzel-epic absolute text-black top-40 left-20 z-40">
-              {title}
+              TRIAL OF
             </h1>
             <h1 className="cinzel-epic absolute text-black bottom-10 right-20">
-              GAME
+              {trialTitle}
             </h1>
           </div>
         </section>

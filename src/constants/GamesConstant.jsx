@@ -142,6 +142,7 @@ const IntroText = ({introArray}) =>{
 class Game{
     constructor({trial, trialText, title, introArray, infoBox, controlArray, element, listIcon, url}){
         this.trial = trial;
+        this.trialTitle = trial.split(" ").slice(2).join(" ").toUpperCase();
         this.trialText = trialText;
         this.title = title;
         this.introText = <IntroText
