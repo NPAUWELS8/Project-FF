@@ -34,7 +34,7 @@ const Navbar = ({setToIntro}) => {
                 </NavLink>
                 <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">
                     <h1 className="magic-gradient_text hover:cursor-default">
-                        {`Games finished: ${count} / ${total}`}
+                        {`Games Finished: ${count} / ${total}`}
                     </h1>
                 </div>
                 {currentGame && <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md hover:bg-amber-50">
