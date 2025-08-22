@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { AppContext } from 'contexts/AppContext'
 import ControlsInfo from 'components/ControlsInfo'
 
-const Navbar = () => {
+const Navbar = ({setToIntro}) => {
     const context = useContext(AppContext);
     const {count, total} = context.getGameFinishedCount();
     const {currentGame} = context;
@@ -11,6 +11,10 @@ const Navbar = () => {
 
     function openControls(){
         setOpen(true);
+    }
+
+    function onClick(){
+        setToIntro(true);
     }
 
 
@@ -22,6 +26,9 @@ const Navbar = () => {
                 gameTitle={currentGame}
             />
             <header className="header">
+                <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
+                    <p className="magic-gradient_text" onClick={onClick}>Letter of Acceptance</p>
+                </NavLink>
                 <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text">Home</p>
                 </NavLink>

@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 const localStorageName = "gamemap"
 const localStorageFirstTime = "firsttime";
+const localStorageSignDate = "signdate"
 
 export const AppContextProvider = (props)=>{
 
@@ -40,6 +41,16 @@ export const AppContextProvider = (props)=>{
         }
     }
 
+    function getSignDate(){
+        return localStorage.getItem(localStorageSignDate);
+
+    }
+
+    function setSignedDate(date){
+        localStorage.setItem(localStorageSignDate,date)
+        setSignDate(date);
+    }
+
     const {gameMap, firstTime} = getGames();
 
     const [gamesFinished, setGamesFinished] = useState(gameMap);
@@ -48,6 +59,8 @@ export const AppContextProvider = (props)=>{
     const [lastGameFinished, setLastGameFinished] = useState();
     const [currentGame, setCurrentGame] = useState();
     const [isDisplayedBackButton,setIsDisplayedBackButton] = useState(true);
+    const [signDate, setSignDate] = useState(getSignDate());
+
 
     function getGameFinishedCount(){
         const total = gamesFinished.size
@@ -93,6 +106,8 @@ export const AppContextProvider = (props)=>{
                 setCurrentGame,
                 isDisplayedBackButton,
                 setIsDisplayedBackButton,
+                signDate,
+                setSignedDate
             }}
         >
             {props.children}

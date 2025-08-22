@@ -140,7 +140,9 @@ const IntroText = ({introArray}) =>{
 }
 
 class Game{
-    constructor({title, introArray, infoBox, controlArray, element, listIcon, url}){
+    constructor({trial, trialText, title, introArray, infoBox, controlArray, element, listIcon, url}){
+        this.trial = trial;
+        this.trialText = trialText;
         this.title = title;
         this.introText = <IntroText
                 introArray={introArray}
@@ -181,6 +183,8 @@ infoBoxes.addBox({
 })
 //TODO: add extra intro information and dubbel check controlarray on completeness of information
 infoBoxes.addGame({
+    trial: "Trial of Patience",
+    trialText: "For even the strongest magic falters without understanding.",
     title: "1 2 3 Piano",
     introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge.","Tip: Make sure you're not moving when the picture is turned and not moving upwards."],
     infoBox: (title) => (
@@ -207,6 +211,8 @@ infoBoxes.addGame({
 })
 
 infoBoxes.addGame({
+    trial: "Trial of the Seeker",
+    trialText: "You must search with perseverance and heart, for that which is precious is not always in plain sight.",
     title: "Find My Phone",
     introArray:["Floor and Niels want to leave the island by boat...\nHowever, Floor just realized she lost her phone. Look for the phone before finding the boat." ,"Tip: You can enter the house."],
     infoBox:(title) => (
@@ -229,6 +235,8 @@ infoBoxes.addGame({
 })
 
 infoBoxes.addGame({
+    trial: "Trial of Puzzles",
+    trialText:"Your wits shall be tested, for the Philosofloor’s Stone reveals itself only to those who can weave logic with imagination.",
     title: "Sudoku",
     introArray:["It's just a classic sudoku game."],
     infoBox:(title) => (
@@ -250,6 +258,8 @@ infoBoxes.addGame({
     url:"sudoku"
 })
 infoBoxes.addGame({
+    trial: "Trial of Memories",
+    trialText: "You will be asked to recall the moments that shaped your journey, for love is built upon the tapestry of shared pasts.",
     title: "Memory",
     introArray:["This is a Memory game. Subsequently click two equal cards to remove them from the game."],
     infoBox:(title) => (

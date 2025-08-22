@@ -3,12 +3,12 @@ import { AppContext } from 'contexts/AppContext';
 import { Home, Intro } from '.';
 
 
-const HomePage = ({setShowNavBar}) => {
+const HomePage = ({setShowNavBar,toIntro, setToIntro}) => {
     const context = useContext(AppContext);
 
   return (
     <>
-    {!context.isFirstTime ? <Home/> : <Intro setShowNavBar={setShowNavBar} setIsFirstTime={context.setIsFirstTime} />}
+    {!context.isFirstTime && !toIntro? <Home/> : <Intro setShowNavBar={setShowNavBar} setIsFirstTime={context.setIsFirstTime} toIntro={toIntro} setToIntro={setToIntro} />}
     </>
   )
 }

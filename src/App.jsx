@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const App = () => {
     const [showNavBar, setShowNavBar] = useState(true);
+    const [toIntro, setToIntro] = useState(false);
 
     //TODO: add introduction page where you receive letter of invitation
     //TODO: See if you can find reason for app not working on safari.
@@ -14,9 +15,9 @@ const App = () => {
         <main className="bg-slate-300/20 flex-1">
             <Router basename='/'>
                 <AppContextProvider>
-                    {showNavBar && <Navbar/>}
+                    {showNavBar && <Navbar setToIntro={setToIntro}/>}
                     <Routes>
-                        <Route path="/" element={<HomePage setShowNavBar={setShowNavBar} />}/>
+                        <Route path="/" element={<HomePage setShowNavBar={setShowNavBar} toIntro={toIntro} setToIntro={setToIntro} />}/>
                         <Route path="/reveal" element={<Reveal/>}/>
                         <Route path="/games/:game" element={<Games/>}/>
                     </Routes>
