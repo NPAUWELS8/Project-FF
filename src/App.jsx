@@ -8,7 +8,6 @@ const App = () => {
     const [showNavBar, setShowNavBar] = useState(true);
     const [toIntro, setToIntro] = useState(false);
 
-    //TODO: add introduction page where you receive letter of invitation
     //TODO: See if you can find reason for app not working on safari.
 
     return (

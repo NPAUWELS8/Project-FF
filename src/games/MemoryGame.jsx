@@ -3,6 +3,8 @@ import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
 
+//TODO: make sure the user is at top of page when this game is rendered
+
 class MemoryGrid {
   constructor(){
     this.images = []
