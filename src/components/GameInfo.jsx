@@ -76,7 +76,7 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
 
   if(gameStarted){
     return (
-      <div className="game-container h-full min-h-screen relative">
+      <div id="game-container" className="game-container h-full min-h-screen relative">
         {game}
         <div className={`${isDisplayedBackButton ? 'flex' : 'hidden'} absolute bottom-5 mx-auto mb-5 w-full justify-center`}>
           <button className="btn-magic-dark hover:cursor-pointer" onClick={goBack}>

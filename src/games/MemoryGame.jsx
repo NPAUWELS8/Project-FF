@@ -1,9 +1,8 @@
 import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { AppContext } from 'contexts/AppContext'
+import { scrollTo } from 'functions/functions'
 
 import Modal from 'components/Modal'
-
-//TODO: make sure the user is at top of page when this game is rendered
 
 class MemoryGrid {
   constructor(){
@@ -122,6 +121,15 @@ const MemoryGame = ({title}) => {
   const [images, setImages] = useState(memoryGrid.images)
   const [open, setOpen] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  useEffect(()=>{
+    //scroll back up after clicking continue in game info page
+    scrollTo({
+      scrollId: 'game-container',
+      duration: 0,
+      offset: 0
+    })
+  })
 
   const onGameFinished = context.onGameFinished
 
