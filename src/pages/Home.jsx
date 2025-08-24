@@ -31,9 +31,11 @@ const Home = () => {
     },[])
 
   function playOnFirstClick(e){
-    if(isFirstClick) audioRef.current.play();
-    setIsFirstClick(false);
-    setIsPlayingMusic(true);
+    if(isFirstClick) {
+      audioRef.current.play();
+      setIsFirstClick(false);
+      setIsPlayingMusic(true);
+    }
   }
 
   useEffect(()=>{
@@ -106,7 +108,10 @@ const Home = () => {
           src={!isPlayingMusic ? soundoff : soundon}
           alt="sound"
           className="w-10 h-10 cursor-pointer object-contain"
-          onClick={()=>setIsPlayingMusic(!isPlayingMusic)}
+          onClick={(e)=>{
+            console.log(isPlayingMusic);
+            setIsPlayingMusic(!isPlayingMusic)
+          }}
         />
       </div>
     </section>
