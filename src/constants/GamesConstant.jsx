@@ -132,7 +132,7 @@ const IntroText = ({introArray}) =>{
             // else return (<p className="left-2">{text}</p>)
         })
         console.log(newText)
-        return (<p key={index} className="parchment-descr text-4xl">{newText}</p>)
+        return (<div key={index} className="parchment-descr text-4xl">{newText}</div>)
     }
     )
 

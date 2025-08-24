@@ -10,7 +10,8 @@
         "constants/*": ["src/constants/*"],
         "games/*": ["src/games/*"],
         "/models/*": ["src/models/*"],
-        "/contexts/*": ["src/contexts/*"]
+        "/contexts/*": ["src/contexts/*"],
+        "functions/*": ["src/functions/*"]
       },
     }
   }
