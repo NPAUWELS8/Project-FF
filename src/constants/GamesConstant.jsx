@@ -122,10 +122,10 @@ const IntroText = ({introArray}) =>{
         console.log(splitArray)
         const newText = splitArray.map((text, index, array)=>{
             if(index === 0){
-                return (<p>{text}<br/></p>)
+                return (<p key={index}>{text}<br/></p>)
             }
             else {
-                return (<p className="ml-20">{text}
+                return (<p key={index} className="ml-20">{text}
                             {index < array.length -1 && <br/>}
                         </p>)
             }

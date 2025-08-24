@@ -63,7 +63,7 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
                         <div className="text-4xl">
                             <p className="pb-5">However, such an honor cannot be bestowed without trial. In order to prove yourself worthy of wearing the Stone, you must face a series of challenges designed to test the very qualities it represents:</p>
                             {games.map((game, index)=>
-                                <p className="py-2"><b>{index + 1}. {game.trial}</b> - {game.trialText}</p>
+                                <p key={index} className="py-2"><b>{index + 1}. {game.trial}</b> - {game.trialText}</p>
                             )}
                             <p className="pt-20">Upon completing these trials, the Stone shall accept you as its rightful bearer, and your acceptance into its mysteries shall be complete.</p>
                             <p>We await your success with great anticipation, and trust that you will rise to the occasion with the courage and heart befitting a true romantasist.</p>
