@@ -129,7 +129,7 @@ const MemoryGame = ({title}) => {
       duration: 0,
       offset: 0
     })
-  })
+  },[])
 
   const onGameFinished = context.onGameFinished
 
