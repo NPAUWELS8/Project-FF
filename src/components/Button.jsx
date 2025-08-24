@@ -1,8 +1,4 @@
-// import gsap from 'gsap'
-// import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { arrowDown } from 'assets/images';
-
-// gsap.registerPlugin(ScrollToPlugin)
 
 import { scrollTo } from 'functions/functions';
 
@@ -17,19 +13,6 @@ const Button = ({text, className, id, scrollId, offset}) => {
                 offset,
                 duration: 1.2
             })
-
-            // const target = document.getElementById(scrollId)
-
-            // if(target && id) {
-
-            //     const top = target.getBoundingClientRect().top + window.scrollY - offset
-            //     // window.scrollTo({top, behaviour: 'smooth'})
-            //     gsap.to(window,{
-            //         duration:1.2,
-            //         scrollTo: {y:top},
-            //         ease:'power2.out'
-            //     })
-            // }
         }}
         className={`${className ??''} cta-wrapper`}
     >
