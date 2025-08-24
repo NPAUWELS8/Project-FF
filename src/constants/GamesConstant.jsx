@@ -119,7 +119,6 @@ const BasicControls = ({controlArray,icon}) =>{
 const IntroText = ({introArray}) =>{
     const intro = introArray.map((introText, index)=>{
         const splitArray = introText.split("\n");
-        console.log(splitArray)
         const newText = splitArray.map((text, index, array)=>{
             if(index === 0){
                 return (<p key={index}>{text}<br/></p>)
@@ -129,9 +128,7 @@ const IntroText = ({introArray}) =>{
                             {index < array.length -1 && <br/>}
                         </p>)
             }
-            // else return (<p className="left-2">{text}</p>)
         })
-        console.log(newText)
         return (<div key={index} className="parchment-descr text-4xl">{newText}</div>)
     }
     )
