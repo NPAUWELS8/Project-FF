@@ -24,6 +24,7 @@ const Home = () => {
   const [currentStage, setCurrentStage] = useState(1)
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(()=>{
       setCurrentGame(null);
@@ -76,15 +77,15 @@ const Home = () => {
   const [islandScale, islandPosition,islandRotation] = adjustIslandForScreenSize();
   const [broomScale, broomPosition] = adjustBroomForScreenSize();
   return (
-    <section className="w-full h-screen relative">
+    <section className="w-full h-screen relative bg-black-200">
       <div className={`absolute m-auto max-w-2xl top-28 left-0 right-0 z-10 flex items-center justify-center ${isRotating ? "pointer-events-none" : ""}`}>
-        {currentStage && <HomeInfo currentStage={currentStage}/>}
+        {currentStage && showInfo && <HomeInfo currentStage={currentStage}/>}
       </div>
       <Canvas 
       className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
       camera={{near:0.1, far:1000}}
       >
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader setShowInfo={setShowInfo}/>}>
         <directionalLight position = {[1,1,1]} intensity={2}/>
         <ambientLight intensity={0.5}/>
         <hemisphereLight skyColor="#b1eff" groundColor="#000000"/>

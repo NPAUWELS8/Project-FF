@@ -46,19 +46,19 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
         trigger: "#video-container",
         start: "center center",
         end: "bottom center",
-        scrub: true
+        toggleActions: "play none none reverse",
       }
     })
-    gsap.to("#parchment-container",{
-      marginTop: 0,
-      ease: 'power1.inOut',
-      scrollTrigger:{
-        trigger: "#video-section",
-        start: "bottom center",
-        end: "140% center",
-        scrub:true,
-      }
-    })
+    // gsap.to("#parchment-container",{
+    //   marginTop: 1,
+    //   ease: 'power1.inOut',
+    //   scrollTrigger:{
+    //     trigger: "#video-section",
+    //     start: "bottom center",
+    //     end: "140% center",
+    //     scrub:true,
+    //   }
+    // })
 
   },[isLoading]) //important to add isLoading to the dependencies, otherwise this animation doesn't work on initial load.
 
