@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect, useContext, useRef} from 'react'
 import YouTube from 'react-youtube'
 import { videoIds } from 'constants/GamesConstant'
 import {useGSAP} from '@gsap/react'
@@ -13,6 +13,8 @@ import { AppContext } from 'contexts/AppContext';
 
 gsap.registerPlugin(ScrollTrigger)
 
+//TODO: fix the "more videos" that appear on bottom of page when you switch from another chrome tab back to this website, for now changed with loading screen when video is paused
+
 const GameInfo = ({title, trialTitle, introText, controls, game}) => {
   const context = useContext(AppContext);
   const [gameStarted, setGameStarted] = useState(false)
@@ -23,6 +25,7 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
 
   function onStateChange(event){
     if(event.data === 1) setIsLoading(false); //this condition checks whether the video is playing
+    if(event.data === 2) setIsLoading(true);
   }
   /* Possible values are:
     -1 (unstarted)
@@ -92,7 +95,7 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
             <div id="video-frame" className={`absolute -top-[10%] left-0 w-full overflow-hidden`}>
               {/* <div className="bg-black absolute top-0 left-0 w-full h-[10%]"></div> */}
               <YouTube
-                id=""
+                id="player"
                 className="z-0"
                 videoId={randomVideo}
                 opts={{
@@ -104,7 +107,8 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
                     mute:1,
                     start: 90,
                     disablekb:1,
-                    modestbranding: 1
+                    modestbranding: 1,
+                    iv_load_policy: 3
                 }
                 }}
                 onStateChange={onStateChange}
