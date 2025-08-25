@@ -3,15 +3,14 @@ import * as data from 'constants/sortingQuestions.json' with {type: "json" }
 import { AppContext } from 'contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
 
-const dataObject = data.default;
-const quiz = dataObject.quiz;
+const sortingData = data.default;
+const quiz = sortingData.quiz;
 const answerButtons = ["A","B","C","D"]
 
-const AnswerButton = ({children, id, question, setAnswered, score, setAnswerText})=>{
+const AnswerButton = ({children, index, question, setAnswered, score, setAnswerText})=>{
 
     function handleClick(e){
-        const id = e.target.id;
-        const option = quiz[question].options[id];
+        const option = quiz[question].options[index];
         score.current[option.house]++;
         setAnswerText(option.comment)
         setAnswered(true);
@@ -19,6 +18,13 @@ const AnswerButton = ({children, id, question, setAnswered, score, setAnswerText
 
     return (
         <button id={id} onClick={handleClick} className="neo-brutalism-white neo-btn-magic-question hover:cursor-pointer sm:w-1/2">{children}</button>
+    )
+}
+
+const MagicButton = ({onClick, className, children}) => {
+
+    return (
+        <button onClick={onClick} className={`w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5 ${className}`}>{children}</button>
     )
 }
 
@@ -49,7 +55,7 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
                         <AnswerButton
                             key={index}
                             question={question}
-                            id={index}
+                            index={index}
                             setAnswered={setAnswered}
                             setAnswerText={setAnswerText}
                             score={score}
@@ -57,21 +63,24 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
                             {answer}
                         </AnswerButton>
                 )}
-                </div> : <button onClick={handleClick} className="w-[25%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Continue</button>
+                </div> : <MagicButton onClick={handleClick}>Continue</MagicButton>
                 }
             </div>
     )
 }
 
-const Result = ({score, setHouseCrest, getImage, navigate})=>{
+const Result = ({score, setHouseCrest, getImage, getHouseData, navigate})=>{
     const [showResult, setShowResult] = useState(false);
 
     const result = useRef(getResult())
+    const houseData = getHouseData(result.current)
 
     function onContinue(){
-        if(!showResult) setShowResult(true);
-        else{
+        if(!showResult){
+            setShowResult(true);
             setHouseCrest(result.current);
+        }
+        else{
             navigate("/");
             document.location.reload();
         }
@@ -92,6 +101,12 @@ const Result = ({score, setHouseCrest, getImage, navigate})=>{
         return entries[0][0];
     }
 
+    
+
+    function showHouse(){
+        navigate("/house");
+    }
+
     return (
         <div className="flex flex-col w-screen items-center">
             <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%]">
@@ -102,14 +117,19 @@ const Result = ({score, setHouseCrest, getImage, navigate})=>{
                     <div className="font-medium sm:text-3xl flex flex-col items-center justify-center">
                         <p>{result.current}</p>
                         <img className="h-50" src={getImage(result.current)} alt="Crest"/>
+                        <p className="text-xl">{houseData.motto}</p>
                     </div>
                 :
-                    <div className="font-medium sm:text-xl flex justify-center">
+                    <div className="font-medium sm:text-xl flex flex-col items-center justify-center">
+                        <p className="pb-5">{`"${houseData.sorting_hat_line}"`}</p>
                         <p>Click continue to find out your house:</p>
                     </div>
                 }
             </div>
-            <button onClick={onContinue} className="w-[25%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Continue</button>
+            <div className="flex flex-row gap-50 w-full items-center justify-center">
+                {showResult && <MagicButton onClick={showHouse}>Find out More</MagicButton>}
+                <MagicButton onClick={onContinue}>Continue</MagicButton>
+            </div>
         </div>
     )
 }
@@ -147,16 +167,16 @@ const Intro = ({setQuestion, house, setHouseCrest, getImage, navigate})=>{
                     </div>
                 }
             </div>
-            <div className="flex flex-row w-full items-center justify-center gap-20">
-                <button onClick={onContinue} className="w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Continue</button>
-                {house && <button onClick={onResort} className="w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Resort</button>}
+            <div className="flex flex-row w-full items-center justify-center gap-50">
+                <MagicButton onClick={onContinue}>Continue</MagicButton>
+                {house && <MagicButton onClick={onResort}>Resort</MagicButton>}
             </div>
         </div>
     )
 }
 
 const SortHouse = () => {
-    const {setHouseCrest, house, getImage} = useContext(AppContext)
+    const {setHouseCrest, house, getImage, getHouseData} = useContext(AppContext)
     const navigate = useNavigate()
 
     const score = useRef({
@@ -212,6 +232,7 @@ const SortHouse = () => {
                     score={score}
                     setHouseCrest={setHouseCrest}
                     getImage={getImage}
+                    getHouseData={getHouseData}
                     navigate={navigate}
                 />            
             }

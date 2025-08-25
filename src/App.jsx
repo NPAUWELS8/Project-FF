@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { HomePage, Games, Reveal, SortHouse } from './pages'
+import { HomePage, Games, Reveal, SortHouse, House } from './pages'
 import Navbar from './components/Navbar';
 import { AppContextProvider } from './contexts/AppContext';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ const App = () => {
     //TODO: See if you can find reason for app not working on safari.
 
     return (
-        <main className="bg-slate-300/20 flex-1">
+        <main className="bg-black-200 flex-1">
             <Router basename='/'>
                 <AppContextProvider>
                     {showNavBar && <Navbar setToIntro={setToIntro}/>}
@@ -20,6 +20,7 @@ const App = () => {
                         <Route path="/reveal" element={<Reveal/>}/>
                         <Route path="/games/:game" element={<Games/>}/>
                         <Route path="/sort" element={<SortHouse/>}/>
+                        <Route path="/house" element={<House/>}/>
                     </Routes>
                 </AppContextProvider>
             </Router>

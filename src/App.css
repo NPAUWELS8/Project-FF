@@ -81,6 +81,9 @@ body:has(.card[data-color="green"]:hover) {
   .question-box {
     @apply relative mx-5 flex min-w-lg flex-col gap-3 px-8 pt-4 pb-12 text-white;
   }
+  .house-box {
+     @apply relative flex flex-col pt-4 pb-12 text-white;
+  }
   .neo-btn-magic {
     @apply absolute right-0 -bottom-5 left-0 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-amber-500 sm:w-1/2;
   }

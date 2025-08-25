@@ -2,6 +2,11 @@ import React, {createContext, useState } from 'react';
 import { games } from 'constants/GamesConstant'
 import { dulci, espresso, nitro, spritz } from 'assets/sort'
 
+import * as data from 'constants/houses.json' with {type: "json" }
+
+const housesData = data.default;
+const houses = housesData.houses;
+
 
 export const AppContext = createContext();
 
@@ -117,6 +122,14 @@ export const AppContextProvider = (props)=>{
         }
     }
 
+    function getHouseData(house){
+        const houseData = houses.filter((element)=>element.name === house)[0];
+
+        return houseData
+    }
+
+    // const houseArray = houses.map((house)=> house.name)
+
     return (
         <AppContext.Provider 
             value={{
@@ -136,7 +149,9 @@ export const AppContextProvider = (props)=>{
                 setSignedDate,
                 house,
                 setHouseCrest,
-                getImage
+                getImage,
+                getHouseData,
+                houses
             }}
         >
             {props.children}
