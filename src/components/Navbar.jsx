@@ -29,7 +29,7 @@ const Navbar = ({setToIntro}) => {
                 <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text" onClick={onClick}>Letter of Acceptance</p>
                 </NavLink>
-                <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
+                <NavLink to="/" reloadDocument className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text">Home</p>
                 </NavLink>
                 <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">
