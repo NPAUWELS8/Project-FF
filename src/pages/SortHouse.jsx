@@ -148,6 +148,10 @@ const Intro = ({setQuestion, house, setHouseCrest, getImage, navigate})=>{
         setHouseCrest(null);
     }
 
+    function onMore(){
+        navigate("/house");
+    }
+
     return (
         <div className="flex flex-col w-screen items-center">
             <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%]">
@@ -160,6 +164,7 @@ const Intro = ({setQuestion, house, setHouseCrest, getImage, navigate})=>{
                         <p className="text-3xl" >{house}</p>
                         <img className="h-50" src={getImage(house)} alt="Crest"/>
                         <p>Click "Resort" if you want to sort again.</p>
+                        <p>Click "Find out More" if you want to know more about your house.</p>
                     </div>
                 :
                     <div className="font-medium sm:text-xl flex justify-center">
@@ -167,9 +172,10 @@ const Intro = ({setQuestion, house, setHouseCrest, getImage, navigate})=>{
                     </div>
                 }
             </div>
-            <div className="flex flex-row w-full items-center justify-center gap-50">
+            <div className="flex flex-row w-full items-center justify-center gap-20">
                 <MagicButton onClick={onContinue}>Continue</MagicButton>
                 {house && <MagicButton onClick={onResort}>Resort</MagicButton>}
+                {house && <MagicButton onClick={onMore}>Find Out More</MagicButton>}
             </div>
         </div>
     )

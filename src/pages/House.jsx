@@ -96,6 +96,7 @@ const House = () => {
 
     return (
         <div className="h-screen w-screen">
+        {!showAllHouses && <div className="absolute top-0 w-screen h-screen bg-black-200"/>}
         <div className="w-screen h-[60vh] bg-black-200 flex items-end justify-center">
             <div className="flex flex-col w-screen items-center justify-center h-[70%]">
                 <div className={`flex flex-col ${showAllHouses ? "w-[70%] ms-2" : "w-full"} h-full items-center`}>
@@ -109,10 +110,9 @@ const House = () => {
                 </div>
             </div>
         </div>
-        {!showAllHouses && <div className="absolute top-0 w-screen h-screen bg-black-200 -z-10"/>}
         {showAllHouses &&
             <div className="w-screen h-[80vh] bg-black-200 flex items-start justify-center py-20">
-                <div className="flex flex-col w-screen bg-white rounded-xl mx-5 px-5 py-5">
+                <div className="flex flex-col w-screen bg-white rounded-xl mx-5 px-5 py-5 border-amber-500 border-5">
                     <h1 className="text-3xl w-full text-center text-amber-500 pb-5">Other Houses</h1>
                     <div className="flex flex-row w-full justify-center h-[80%] gap-5">
                         {otherHouses.map((house)=>
