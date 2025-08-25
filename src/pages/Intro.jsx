@@ -21,7 +21,8 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
             onComplete: ()=>{
                 setShowNavBar(true)
                 setIsFirstTime(false)
-                setToIntro(false);
+                // setToIntro(false);
+                document.location.reload();
             },
             onStart: ()=>{
                 const date = new Date().toLocaleDateString();
@@ -42,7 +43,8 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
 
     function handleContinueClick(){
         setShowNavBar(true)
-        setToIntro(false);
+        // setToIntro(false);
+        document.location.reload();
     }
 
     return (

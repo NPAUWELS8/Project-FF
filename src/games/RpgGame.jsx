@@ -50,6 +50,7 @@ const RpgGame = ({title}) => {
     function onSuccess(){
         context.onGameFinished(title)
         navigate('/');
+        document.location.reload();
     }
 
   return (

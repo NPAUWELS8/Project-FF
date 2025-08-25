@@ -14,6 +14,7 @@ const PianoGame = ({title}) => {
     function onSuccess(){
       context.onGameFinished(title)
       navigate('/');
+      document.location.reload();
     }
     function onRetry(){
       playPiano(pianoRef.current, setGameOver, setWon);

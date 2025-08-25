@@ -48,6 +48,7 @@ const Success = ({onGameFinished, gameTitle}) => {
   function onSuccess(){
     onGameFinished(gameTitle);
     navigate('/');
+    document.location.reload();
   }
 
   return (
