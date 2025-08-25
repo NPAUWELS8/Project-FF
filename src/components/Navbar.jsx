@@ -6,7 +6,7 @@ import ControlsInfo from 'components/ControlsInfo'
 const Navbar = ({setToIntro}) => {
     const context = useContext(AppContext);
     const {count, total} = context.getGameFinishedCount();
-    const {currentGame} = context;
+    const {currentGame, house, getImage} = context;
     const [open, setOpen] = useState(false);
 
     function openControls(){
@@ -25,6 +25,13 @@ const Navbar = ({setToIntro}) => {
                 setOpen={setOpen}
                 gameTitle={currentGame}
             />
+            <div className="absolute left-5 top-2 z-20">
+                {house && 
+                    <div>
+                        <img className="h-30" src={getImage(house)} alt="Crest"/>
+                    </div>
+                }
+            </div>
             <header className="header">
                 <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text" onClick={onClick}>Letter of Acceptance</p>
@@ -32,9 +39,12 @@ const Navbar = ({setToIntro}) => {
                 <NavLink to="/" reloadDocument className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text">Home</p>
                 </NavLink>
+                <NavLink to="/sort" reloadDocument className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
+                    <p className="magic-gradient_text">Sorting</p>
+                </NavLink>
                 <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">
                     <h1 className="magic-gradient_text hover:cursor-default">
-                        {`Games Finished: ${count} / ${total}`}
+                        {`Trials Finished: ${count} / ${total}`}
                     </h1>
                 </div>
                 {currentGame && <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md hover:bg-amber-50">

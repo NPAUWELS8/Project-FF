@@ -1,12 +1,14 @@
 import React, {createContext, useState } from 'react';
 import { games } from 'constants/GamesConstant'
+import { dulci, espresso, nitro, spritz } from 'assets/sort'
 
 
 export const AppContext = createContext();
 
-const localStorageName = "gamemap"
+const localStorageName = "gamemap";
 const localStorageFirstTime = "firsttime";
-const localStorageSignDate = "signdate"
+const localStorageSignDate = "signdate";
+const localStorageHouse = "house";
 
 export const AppContextProvider = (props)=>{
 
@@ -51,6 +53,16 @@ export const AppContextProvider = (props)=>{
         setSignDate(date);
     }
 
+    function getHouse(){
+        return localStorage.getItem(localStorageHouse);
+    }
+
+    function setHouseCrest(house){
+        if(house) localStorage.setItem(localStorageHouse,house);
+        else localStorage.removeItem(localStorageHouse);
+        setHouse(house);
+    }
+
     const {gameMap, firstTime} = getGames();
 
     const [gamesFinished, setGamesFinished] = useState(gameMap);
@@ -60,6 +72,7 @@ export const AppContextProvider = (props)=>{
     const [currentGame, setCurrentGame] = useState();
     const [isDisplayedBackButton,setIsDisplayedBackButton] = useState(true);
     const [signDate, setSignDate] = useState(getSignDate());
+    const [house, setHouse] = useState(getHouse());
 
 
     function getGameFinishedCount(){
@@ -91,6 +104,19 @@ export const AppContextProvider = (props)=>{
         localStorage.setItem(localStorageName, json)
     }
 
+    function getImage(result){
+        switch(result){
+            case "Dulci":
+                return dulci
+            case "Spritz":
+                return spritz
+            case "Espresso":
+                return espresso
+            case "Nitro":
+                return nitro
+        }
+    }
+
     return (
         <AppContext.Provider 
             value={{
@@ -107,7 +133,10 @@ export const AppContextProvider = (props)=>{
                 isDisplayedBackButton,
                 setIsDisplayedBackButton,
                 signDate,
-                setSignedDate
+                setSignedDate,
+                house,
+                setHouseCrest,
+                getImage
             }}
         >
             {props.children}

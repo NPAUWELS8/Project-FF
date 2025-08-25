@@ -1,0 +1,92 @@
+{
+  "quiz": [
+    {
+      "id": 1,
+      "question": "Your ideal Saturday afternoon:",
+      "subtext": "Hmm… do you linger in a place steeped in memories, or bask in sunlight with a sparkling drink? Perhaps you seek a burst of energy or a little chaos?",
+      "options": [
+        { "label": "A", "text": "Sitting outside in the sun with a sparkling drink", "house": "Spritz", "comment": "Sunshine and spritzes – basically a walking Instagram story." },
+        { "label": "B", "text": "Reminiscing at a cozy café or bar you love", "house": "Dulci", "comment": "Ah, the sentimental type. You cry over your first sip of espresso." },
+        { "label": "C", "text": "Playing video games, racing, or doing something spontaneous", "house": "Nitro", "comment": "Chaos incarnate. You live life one kart crash at a time." },
+        { "label": "D", "text": "Getting energized with a strong coffee and tackling projects", "house": "Espresso", "comment": "Buzzing like a caffeinated squirrel. Productivity is your middle name." }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "How your friends describe you:",
+      "subtext": "Ah… a mirror of the soul! Are you thoughtful and nostalgic, bright and social, intense and fiery, or playful and unpredictable?",
+      "options": [
+        { "label": "A", "text": "Intense, passionate, full of energy", "house": "Espresso", "comment": "Your aura smells faintly of coffee… and ambition." },
+        { "label": "B", "text": "Playful, chaotic, adventurous", "house": "Nitro", "comment": "You put the ‘fun’ in ‘functional chaos.’" },
+        { "label": "C", "text": "Bubbly, social, cheerful", "house": "Spritz", "comment": "Your laugh could fuel a small city." },
+        { "label": "D", "text": "Sentimental, thoughtful, nostalgic", "house": "Dulci", "comment": "The one who still cries over movies from 2005." }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Your favorite snack or drink:",
+      "subtext": "Choices, choices… the essence of a person can sometimes be found in what they savor.",
+      "options": [
+        { "label": "A", "text": "Espresso or strong coffee", "house": "Espresso", "comment": "Basically a human espresso shot. Caution advised." },
+        { "label": "B", "text": "Sparkling spritz or cocktail", "house": "Spritz", "comment": "You sparkle brighter than your drink." },
+        { "label": "C", "text": "Sweet pastries or desserts", "house": "Dulci", "comment": "Sugar runs through your veins. Literally." },
+        { "label": "D", "text": "Something fun and unexpected", "house": "Nitro", "comment": "Candy? Nachos? Fire-breathing llama? Why not all three?" }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Your personal space:",
+      "subtext": "Where you rest your head and heart reveals your true colors.",
+      "options": [
+        { "label": "A", "text": "Bright, sunny spots", "house": "Spritz", "comment": "Sun-kissed and ready for a vitamin D photoshoot." },
+        { "label": "B", "text": "Functional, energized setups", "house": "Espresso", "comment": "Productivity lair detected. Coffee optional but recommended." },
+        { "label": "C", "text": "Playful, whimsical chaos", "house": "Nitro", "comment": "You’ve reached maximum chaos level. Enter at your own risk." },
+        { "label": "D", "text": "Niels' shoulder", "house": "Dulci", "comment": "Warning: touching your things may cause tears of nostalgia." }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Your go-to evening activity:",
+      "subtext": "The twilight hours whisper secrets… do you relax, lounge, work, or play?",
+      "options": [
+        { "label": "A", "text": "Crash Nitro with the tiger character", "house": "Nitro", "comment": "Controllers are life. Karts are love." },
+        { "label": "B", "text": "Chatting and relaxing somewhere nostalgic", "house": "Dulci", "comment": "Soft music, deep talks… and maybe crying over old memes." },
+        { "label": "C", "text": "Working on something exciting or intense", "house": "Espresso", "comment": "Burning the midnight oil with heroic amounts of caffeine." },
+        { "label": "D", "text": "Lounging in the sun with a drink", "house": "Spritz", "comment": "Sun, spritz, repeat. Warning: happiness levels high." }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Which word resonates most with you?",
+      "subtext": "A single word can reveal the deepest of truths.",
+      "options": [
+        { "label": "A", "text": "Fire", "house": "Espresso", "comment": "You bring the heat… literally and metaphorically." },
+        { "label": "B", "text": "Chaos", "house": "Nitro", "comment": "Chaos is your middle name. Or is it Turbo?" },
+        { "label": "C", "text": "Memories", "house": "Dulci", "comment": "Ah, the sentimental soul… still remembering your first sip of latte." },
+        { "label": "D", "text": "Sunshine", "house": "Spritz", "comment": "Solar-powered human. Batteries always full." }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Pick a vibe for a cozy night in:",
+      "subtext": "The night wraps around you… do you seek warmth, brightness, passion, or mischief?",
+      "options": [
+        { "label": "A", "text": "Strong coffee, books, or a sudoku", "house": "Espresso", "comment": "Late-night productivity queen/king." },
+        { "label": "B", "text": "Console games, laughs, or playful competition", "house": "Nitro", "comment": "Expect flying controllers and dramatic victory dances." },
+        { "label": "C", "text": "Soft lighting, music, nostalgia", "house": "Dulci", "comment": "Candles, blankets, and tiny emotional breakdowns encouraged." },
+        { "label": "D", "text": "Terrace drinks and chatting", "house": "Spritz", "comment": "Sunset selfies mandatory." }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Your ideal gift:",
+      "subtext": "Ah, the heart speaks through desires… what gift would make yours skip a beat?",
+      "options": [
+        { "label": "A", "text": "Something playful or quirky", "house": "Nitro", "comment": "If it’s weird, chaotic, or slightly dangerous… perfect." },
+        { "label": "B", "text": "Something fun, sparkly, or sunny", "house": "Spritz", "comment": "You shine brighter than any glittery trinket." },
+        { "label": "C", "text": "Something meaningful from shared memories", "house": "Dulci", "comment": "You cry happy tears before opening it. Then cry some more." },
+        { "label": "D", "text": "Something energizing or passionate", "house": "Espresso", "comment": "You will caffeinate, dominate, and conquer." }
+      ]
+    }
+  ]
+}

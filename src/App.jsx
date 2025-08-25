@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { HomePage, Games, Reveal } from './pages'
+import { HomePage, Games, Reveal, SortHouse } from './pages'
 import Navbar from './components/Navbar';
 import { AppContextProvider } from './contexts/AppContext';
 import { useState } from 'react';
@@ -19,6 +19,7 @@ const App = () => {
                         <Route path="/" element={<HomePage setShowNavBar={setShowNavBar} toIntro={toIntro} setToIntro={setToIntro} />}/>
                         <Route path="/reveal" element={<Reveal/>}/>
                         <Route path="/games/:game" element={<Games/>}/>
+                        <Route path="/sort" element={<SortHouse/>}/>
                     </Routes>
                 </AppContextProvider>
             </Router>
