@@ -162,7 +162,7 @@ class Game{
             />
         this.url = url
         this.gamePowerHouse = this.#addGamePowerHouse(houses)
-        this.element = element(this.title, this.gamePowerHouse);
+        this.element = element(this);
         
     }
     #addGamePowerHouse(array){
@@ -212,7 +212,7 @@ infoBoxes.addGame({
         {key: "Z", action: "Stand Idle"},
     ],
     listIcon: (<StarIcon aria-hidden="true" className="size-6 text-amber-600 mr-5" />),
-    element: (title, gamePowerHouse) => (<PianoGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}) => (<PianoGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url: "piano"
 })
 
@@ -231,7 +231,7 @@ infoBoxes.addGame({
         {key: "Arrow Down", action: "Move Down"},
     ],
     listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title, gamePowerHouse) => (<RpgGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}) => (<RpgGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url: "findmyphone"
 })
 
@@ -250,7 +250,7 @@ infoBoxes.addGame({
         {key: "Regenerate button", action: "Regenerate a completly new sudoku"},
     ],
     listIcon: (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title, gamePowerHouse) => (<SudokuGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}) => (<SudokuGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url:"sudoku"
 })
 infoBoxes.addGame({
@@ -265,7 +265,7 @@ infoBoxes.addGame({
         {key: "Click a card", action: "Card turns around"},,
     ],
     listIcon: (<LightBulbIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title, gamePowerHouse) => (<MemoryGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}) => (<MemoryGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url:"memory"
 })
 
