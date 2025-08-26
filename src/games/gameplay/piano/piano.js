@@ -12,7 +12,7 @@ import { PlatformA, PlatformB } from './platforms.js'
 import { Bird, Fish } from './ornaments.js'
 import { TrailTexture } from '@react-three/drei'
 
-export function playPiano(canvas,setGameOver, setWon){
+export function playPiano(canvas,setGameOver, setWon, house){
     setGameOver(false);
     const ctx = canvas.getContext('2d');
     const width = 1333;
@@ -21,9 +21,11 @@ export function playPiano(canvas,setGameOver, setWon){
     canvas.height = height;
 
     class PianoGame{
-        constructor(width, height){
+        constructor(width, height, house){
             this.width = width;
             this.height = height;
+            this.house = house;
+            if (this.house === "Espresso") this.drainSpeed = 0;
             this.groundMargin = 102;
             this.waterMargin = 40;
             this.speed = 0;
@@ -221,7 +223,7 @@ export function playPiano(canvas,setGameOver, setWon){
             return win
         }
     }
-    const game =  new PianoGame(width, height);
+    const game =  new PianoGame(width, height, house);
 
     let lastTime = 0;
 

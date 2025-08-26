@@ -8,7 +8,9 @@
       "traits": ["Sentimental", "Thoughtful", "Romantic", "Warm-hearted"],
       "explanation": "House Dulci is for those who treasure the past and find comfort in meaningful places, people, and moments. Named after the bar where your love story began, Dulci represents nostalgia, coziness, and the kind of heart that always looks for the deeper meaning in everything.",
       "funny_line": "You probably cry at old movie soundtracks and keep ticket stubs in a box somewhere… and that’s your superpower.",
-      "sorting_hat_line": "Ah, I sense a tender soul who holds memories in high regards..."
+      "sorting_hat_line": "Ah, I sense a tender soul who holds memories in high regards...",
+      "powername":"Power of Memory",
+      "power": "“Echo of the past” – See three pairs in matching color for the memory game."
     },
     {
       "name": "Spritz",
@@ -18,7 +20,9 @@
       "traits": ["Social", "Cheerful", "Playful", "Optimistic"],
       "explanation": "House Spritz belongs to those who shine brightest in the sunshine, who bring joy and laughter wherever they go. Lovers of terraces, cocktails, and golden rays, Spritz members are radiant souls who turn everyday life into a celebration.",
       "funny_line": "Basically a human solar panel: runs on sunshine, prosecco, and good vibes.",
-      "sorting_hat_line": "Mmm, so bright, so bubbly—yes, you belong where the sun always shines..."
+      "sorting_hat_line": "Mmm, so bright, so bubbly—yes, you belong where the sun always shines...",
+      "powername":"Power of Charm",
+      "power": "“Double Delight” – You get 2 complete rows for free in the sudoku game."
     },
     {
       "name": "Espresso",
@@ -28,7 +32,9 @@
       "traits": ["Energetic", "Focused", "Intense", "Driven"],
       "explanation": "House Espresso is for the passionate and the unstoppable—the people who thrive on energy, drive, and sometimes a little too much caffeine. With fiery enthusiasm and determination, they dive into life headfirst, inspiring those around them to keep up with their relentless pace.",
       "funny_line": "You’re basically a caffeinated squirrel—unstoppable, slightly chaotic, and oddly inspiring.",
-      "sorting_hat_line": "Ah, I feel the fire, the restless spark—you’re brimming with energy..."
+      "sorting_hat_line": "Ah, I feel the fire, the restless spark—you’re brimming with energy...",
+      "powername":"Power of Energy",
+      "power": "“Speed Surge” – You're energy cannot deplete in the 1, 2, 3 Piano Game."
     },
     {
       "name": "Nitro",
@@ -38,7 +44,9 @@
       "traits": ["Playful", "Adventurous", "Chaotic", "Spontaneous"],
       "explanation": "House Nitro is the spirit of fun, speed, and unpredictability. Born from laughter-filled game nights and the thrill of racing, Nitro members love adventure and never shy away from a little chaos. They remind everyone that life is best enjoyed when you're not afraid to crash and start again.",
       "funny_line": "Controller in one hand, chaos in the other—you live life like a bonus round.",
-      "sorting_hat_line": "Oho! Wild energy, playful chaos—I see the racer’s fire in you..."
+      "sorting_hat_line": "Oho! Wild energy, playful chaos—I see the racer’s fire in you...",
+      "powername":"Power of Nothing",
+      "power": "“Gamer Chick” - You're expected to be good at gaming... You get no power up!"
     }
   ]
 }

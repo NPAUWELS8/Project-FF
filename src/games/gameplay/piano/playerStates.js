@@ -154,7 +154,8 @@ export class Rolling extends State {
         this.invincible = true;
         this.drain = true;
         this.continuousDrain = true;
-        this.drainSpeed = 5;
+        if(game.drainSpeed != undefined) this.drainSpeed = game.drainSpeed;
+        else this.drainSpeed = 5;
         this.minEnergy = 20;
         this.recurringSound = new Audio();
         this.recurringSound.src = rolling;
@@ -188,7 +189,8 @@ export class Diving extends State {
         this.key = "ArrowDown";
         this.invincible = true;
         this.drain = true;
-        this.drainSpeed = 10;
+        if(game.drainSpeed != undefined) this.drainSpeed = game.drainSpeed;
+        else this.drainSpeed = 10;
         this.exitSound = new Audio();
         this.exitSound.src = dive_land;
         this.exitSound.volume = 0.5;
@@ -277,8 +279,10 @@ export class Attacking extends State {
         this.key = 'KeyQ'
         this.speedModifier = 2;
         this.invincible = true;
+        this.separateAnimation = true;
         this.drain = true;
-        this.drainSpeed = 10;
+        if(game.drainSpeed != undefined) this.drainSpeed = game.drainSpeed;
+        else this.drainSpeed = 10;
         this.enterSound = new Audio();
         this.enterSound.src = melee;
     }
@@ -297,8 +301,10 @@ export class Dashing extends State {
         this.key = 'KeyE';
         this.invincible = true;
         this.speedModifier = 3;
+        this.separateAnimation = true;
         this.drain = true;
-        this.drainSpeed = 10;
+        if(game.drainSpeed != undefined) this.drainSpeed = game.drainSpeed;
+        else this.drainSpeed = 10;
         this.enterSound = new Audio();
         this.enterSound.src = air_move;
         this.enterSound.playbackRate = 0.5;

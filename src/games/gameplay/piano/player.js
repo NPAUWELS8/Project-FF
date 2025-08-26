@@ -159,7 +159,8 @@ export class Player{
           });
     }
     energyHandling(deltaTime){
-        if(this.currentState.drain && !this.currentState.continuousDrain && this.character.animationOver()) this.drainEnergy();
+        if(this.currentState.drain && this.currentState.separateAnimation && !this.currentState.continuousDrain && this.character.animationOver()) this.drainEnergy();
+        else if(this.currentState.state === "DIVING" && (this.game.player.onGround() || this.game.player.onPlatform())) this.drainEnergy();
         else if(this.currentState.continuousDrain) this.contDrainEnergy(deltaTime);
         else if(!this.currentState.drain) this.fillEnergy(deltaTime);
     }

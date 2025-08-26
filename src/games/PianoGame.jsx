@@ -7,6 +7,7 @@ import { AppContext } from 'contexts/AppContext'
 const PianoGame = ({title}) => {
     const navigate = useNavigate()
     const context = useContext(AppContext);
+    const {house} = context;
     const pianoRef = useRef();
     const [won, setWon] = useState(false);
     const [gameOver, setGameOver] = useState(false)
@@ -17,11 +18,11 @@ const PianoGame = ({title}) => {
       document.location.reload();
     }
     function onRetry(){
-      playPiano(pianoRef.current, setGameOver, setWon);
+      playPiano(pianoRef.current, setGameOver, setWon, house);
     }
 
     useEffect(()=>{
-        playPiano(pianoRef.current, setGameOver, setWon);
+        playPiano(pianoRef.current, setGameOver, setWon, house);
     },[])
   return (
     <div className="mx-auto max-w-[1333px] px-8 !pt-[75px] pb-12 sm:p-16">
