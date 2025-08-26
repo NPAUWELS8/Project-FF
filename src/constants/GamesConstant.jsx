@@ -139,7 +139,7 @@ const IntroText = ({introArray}) =>{
 }
 
 class Game{
-    constructor({trial, trialText, title, introArray, infoBox, controlArray, element, listIcon, url}){
+    constructor({trial, trialText, title, introArray, infoBoxText, link, infoBoxBtnText, controlArray, element, listIcon, url}){
         this.trial = trial;
         this.trialTitle = trial.split(" ").slice(2).join(" ").toUpperCase();
         this.trialText = trialText;
@@ -147,7 +147,12 @@ class Game{
         this.introText = <IntroText
                 introArray={introArray}
             />;
-        this.infoBox= infoBox(this.title);
+        this.infoBox = <InfoBox
+                text={infoBoxText}
+                link={link}
+                btnText={infoBoxBtnText}
+                title={title}
+            />;
         this.controls = <Controls
                 controlArray = {controlArray}
             />
@@ -193,14 +198,9 @@ infoBoxes.addGame({
     trialText: "For even the strongest magic falters without understanding.",
     title: "1 2 3 Piano",
     introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge.","Tip: Make sure you're not moving when the picture is turned and not moving upwards."],
-    infoBox: (title) => (
-        <InfoBox
-            text="This game is a twist on the '1, 2, 3 piano' game."
-            link="/games/piano"
-            btnText="1, 2, 3, let's play!"
-            title={title}
-        />
-    ),
+    infoBoxText: "This game is a twist on the '1, 2, 3 piano' game.",
+    link: "/games/piano",
+    infoBoxBtnText: "1, 2, 3, let's play!",
     controlArray: [
         {key: "Arrow Left", action: "Move left"},
         {key: "Arrow Right", action: "Move right"},
@@ -221,14 +221,9 @@ infoBoxes.addGame({
     trialText: "You must search with perseverance and heart, for that which is precious is not always in plain sight.",
     title: "Find My Phone",
     introArray:["Floor and Niels want to leave the island by boat...\nHowever, Floor just realized she lost her phone. Look for the phone before finding the boat." ,"Tip: You can enter the house."],
-    infoBox:(title) => (
-        <InfoBox 
-        text="Floor lost her phone, help her find it!"
-        link="/games/findmyphone"
-        btnText="Let's go looking!"
-        title={title}
-        />
-    ),
+    infoBoxText:"Floor lost her phone, help her find it!",
+    link:"/games/findmyphone",
+    infoBoxBtnText:"Let's go looking!",
     controlArray: [
         {key: "Arrow Left", action: "Move left"},
         {key: "Arrow Right", action: "Move right"},
@@ -245,14 +240,9 @@ infoBoxes.addGame({
     trialText:"Your wits shall be tested, for the Philosofloor’s Stone reveals itself only to those who can weave logic with imagination.",
     title: "Sudoku",
     introArray:["It's just a classic sudoku game."],
-    infoBox:(title) => (
-        <InfoBox 
-        text="Some people say Floor loves sudoku. Good luck!"
-        link="/games/sudoku"
-        btnText="Sudoku away!"
-        title={title}
-        />
-    ),
+    infoBoxText:"Some people say Floor loves sudoku. Good luck!",
+    link:"/games/sudoku",
+    infoBoxBtnText:"Sudoku away!",
     controlArray:[
         {key: "Click empty square", action: "Start Typing"},
         {key: "Check button", action: "Check your solution"},
@@ -268,14 +258,9 @@ infoBoxes.addGame({
     trialText: "You will be asked to recall the moments that shaped your journey, for love is built upon the tapestry of shared pasts.",
     title: "Memory",
     introArray:["This is a Memory game. Subsequently click two equal cards to remove them from the game."],
-    infoBox:(title) => (
-        <InfoBox 
-        text="This will bring back old memories, you'll see!"
-        link="/games/memory"
-        btnText="Let's memorize!"
-        title={title}
-        />
-    ),
+    infoBoxText:"This will bring back old memories, you'll see!",
+    link:"/games/memory",
+    infoBoxBtnText:"Let's memorize!",
     controlArray:[
         {key: "Click a card", action: "Card turns around"},,
     ],
