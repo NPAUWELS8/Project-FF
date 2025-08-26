@@ -9,7 +9,8 @@
       "funny_line": "You probably cry at old movie soundtracks and keep ticket stubs in a box somewhere… and that’s your superpower.",
       "sorting_hat_line": "Ah, I sense a tender soul who holds memories in high regards...",
       "powername":"Power of Memory",
-      "power": "“Echo of the past” – See three pairs in matching color for the memory game.",
+      "power": "“Echo of the past” – Three image pairs will reveal themselves to you for the 'Trial of Memories'",
+      "trialExplanation":"“Echo of the past” – Three image pairs will reveal themselves to you through their colored borders",
       "powerGameUrl":"memory"
     },
     {
@@ -21,7 +22,8 @@
       "funny_line": "Basically a human solar panel: runs on sunshine, prosecco, and good vibes.",
       "sorting_hat_line": "Mmm, so bright, so bubbly—yes, you belong where the sun always shines...",
       "powername":"Power of Charm",
-      "power": "“Double Delight” – You get 1 complete row and 1 complete column for free in the sudoku game.",
+      "power": "“Double Delight” – You get 1 complete row and 1 complete column for free in the 'Trial of Puzzles'.",
+      "trialExplanation": "“Double Delight” – You get 1 complete row and 1 complete column for free after clicking the Power Up Button.",
       "powerGameUrl":"sudoku"
     },
     {
@@ -33,7 +35,8 @@
       "funny_line": "You’re basically a caffeinated squirrel—unstoppable, slightly chaotic, and oddly inspiring.",
       "sorting_hat_line": "Ah, I feel the fire, the restless spark—you’re brimming with energy...",
       "powername":"Power of Energy",
-      "power": "“Speed Surge” – You're energy cannot deplete in the 1, 2, 3 Piano Game.",
+      "power": "“Speed Surge” – You're energy cannot deplete in the 'Trial of Patience'.",
+      "trialExplanation":"“Speed Surge” – You're energy cannot be depleted for the entire game.",
       "powerGameUrl":"piano"
     },
     {

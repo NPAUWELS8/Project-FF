@@ -7,7 +7,7 @@ import { AppContext } from 'contexts/AppContext';
 const Game = () => {
     const {setCurrentGame} = useContext(AppContext);
     const params = useParams();
-    const {title, trialTitle, introText, controls, element} = games.find((el)=> el.url === params.game);
+    const {title, trialTitle, introText, controls, element, gamePowerHouse} = games.find((el)=> el.url === params.game);
 
     useEffect(()=>{
       setCurrentGame(title);
@@ -21,6 +21,7 @@ const Game = () => {
       introText={introText}
       controls={controls}
       game={element}
+      gamePowerHouse={gamePowerHouse}
     />
   )
 }

@@ -17,13 +17,16 @@ gsap.registerPlugin(ScrollTrigger)
 //TODO: add power up information in case of powerup
 //TODO: add warning to get sorted in case user ends up in this page without being sorted first
 
-const GameInfo = ({title, trialTitle, introText, controls, game}) => {
+const GameInfo = ({title, trialTitle, introText, controls, game, gamePowerHouse}) => {
   const context = useContext(AppContext);
   const [gameStarted, setGameStarted] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [randomVideo, setRandomVideo] = useState(videoIds[Math.floor(Math.random() * videoIds.length)]);
  
-  const {isDisplayedBackButton} = context;
+  const {isDisplayedBackButton, house, getHouseData} = context;
+
+  const isPowerUp = house === gamePowerHouse;
+  const houseData = getHouseData(house);
 
   function onStateChange(event){
     if(event.data === 1) setIsLoading(false); //this condition checks whether the video is playing
@@ -155,6 +158,12 @@ const GameInfo = ({title, trialTitle, introText, controls, game}) => {
                 <p id="labarum" className="-my-20"><img src={hogwartsEmblem}/></p>
                 <h1 className="text-6xl">Controls</h1>
                 {controls}
+                {isPowerUp && 
+                <>
+                <h1 className="text-6xl pt-20">!!!Power Up Granted!!!</h1>
+                <p className="parchment-p text-3xl">{houseData.trialExplanation}</p>
+                </>
+                }
                 <div className="mb-10 flex flex-row justify-between items-center">
                   <button className="btn-magic mt-12" onClick={handleButtonClick}>Continue</button>
                   <div>
