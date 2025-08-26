@@ -23,7 +23,6 @@ class MemoryGrid {
     }
     this.initialImageArray = imageArray;
     this.imageArray = imageArray.map((value, index)=>index);
-    console.log(this.imageArray);
   }
   addImages(){
     this.initialImageArray.forEach((card, index)=>{
@@ -39,7 +38,6 @@ class MemoryGrid {
       const random = Math.floor(Math.random() * this.imageArray.length)
       const value = this.imageArray[random]
       this.initialImageArray[value].color = this.colors[i];
-      console.log(this.initialImageArray[value]);
       this.imageArray.splice(random,1);
     }
   }
@@ -64,12 +62,11 @@ memoryGrid.createImageArray();
 memoryGrid.addColors();
 memoryGrid.addImages();
 
-console.log(memoryGrid.images)
 
 memoryGrid.shuffle();
 
 
-const MemoryCard = forwardRef(({display, imgSource, color, house, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards, setIsSuccess, setOpen}, ref) => {
+const MemoryCard = forwardRef(({display, imgSource, color, isPowerUp, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards, setIsSuccess, setOpen}, ref) => {
     const [turned, setTurned] = useState(false)
     const [isGone, setIsGone] = useState(false);
     const [isDisplayed, setIsDisplayed] = useState(display);
@@ -139,7 +136,7 @@ const MemoryCard = forwardRef(({display, imgSource, color, house, doubleKey, set
           className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${isDisplayed ? "": "is-not-displayed"}`}
           onClick={onClickHandle}
         >
-          <div className={`${ house === "Dulci" ? getBorderColor(color) : ""} card__face card__face--front flex w-full h-full justify-center items-center`}>
+          <div className={`${ isPowerUp ? getBorderColor(color) : ""} card__face card__face--front flex w-full h-full justify-center items-center`}>
             <h2 className="text-[clamp(0.75rem,3vw,2.5rem)] text-white">Memory</h2>
           </div>
           <div className="card__face card__face--back hover:cursor-not-allowed">
@@ -152,9 +149,11 @@ const MemoryCard = forwardRef(({display, imgSource, color, house, doubleKey, set
     )
  })
 
-const MemoryGame = ({title}) => {
+const MemoryGame = ({title, gamePowerHouse}) => {
   const context = useContext(AppContext);
   const {house, onGameFinished} = context;
+  const isPowerUp = house === gamePowerHouse;
+
   const cardRefs = useRef(null)
   if(cardRefs.current === null){
     cardRefs.current = new Array()
@@ -213,7 +212,7 @@ const MemoryGame = ({title}) => {
               display = {image.display}
               imgSource={image.src}
               color={image.color}
-              house={house}
+              isPowerUp={isPowerUp}
               doubleKey={image.doubleKey}
               setTurnedDoubleKey={setTurnedDoubleKey}
               count={count}

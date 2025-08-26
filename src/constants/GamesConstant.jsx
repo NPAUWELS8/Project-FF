@@ -1,6 +1,7 @@
 import { PianoGame, RpgGame, SudokuGame, MemoryGame  } from "games"
 import { AppContext } from "contexts/AppContext";
 import { LockOpenIcon, SparklesIcon, PuzzlePieceIcon, PlayIcon, RocketLaunchIcon, TrophyIcon, StarIcon, LightBulbIcon, CheckCircleIcon } from '@heroicons/react/24/solid'
+import * as data from 'constants/houses.json' with {type: "json" }
 
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
@@ -17,6 +18,7 @@ export const videoIds = [
     "h87prLIH7YE"
 ]
 
+const houses = data.default.houses
 
 const InfoBox = ({text, link, btnText, title})=>{
     const context = useContext(AppContext);
@@ -153,8 +155,14 @@ class Game{
                 controlArray = {controlArray}
                 icon = {listIcon}
             />
-        this.element = element(this.title);
         this.url = url
+        this.gamePowerHouse = this.#addGamePowerHouse(houses)
+        this.element = element(this.title, this.gamePowerHouse);
+        
+    }
+    #addGamePowerHouse(array){
+        const result = array.filter((house)=>house.powerGameUrl === this.url)[0]
+        return result ? result.name : null;
     }
 }
 
@@ -204,7 +212,7 @@ infoBoxes.addGame({
         {key: "Z", action: "Stand Idle"},
     ],
     listIcon: (<StarIcon aria-hidden="true" className="size-6 text-amber-600 mr-5" />),
-    element: (title) => (<PianoGame title={title}/>),
+    element: (title, gamePowerHouse) => (<PianoGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url: "piano"
 })
 
@@ -228,7 +236,7 @@ infoBoxes.addGame({
         {key: "Arrow Down", action: "Move Down"},
     ],
     listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title) => (<RpgGame title={title}/>),
+    element: (title, gamePowerHouse) => (<RpgGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url: "findmyphone"
 })
 
@@ -252,7 +260,7 @@ infoBoxes.addGame({
         {key: "Regenerate button", action: "Regenerate a completly new sudoku"},
     ],
     listIcon: (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title) => (<SudokuGame title={title}/>),
+    element: (title, gamePowerHouse) => (<SudokuGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url:"sudoku"
 })
 infoBoxes.addGame({
@@ -272,7 +280,7 @@ infoBoxes.addGame({
         {key: "Click a card", action: "Card turns around"},,
     ],
     listIcon: (<LightBulbIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: (title) => (<MemoryGame title={title}/>),
+    element: (title, gamePowerHouse) => (<MemoryGame title={title} gamePowerHouse={gamePowerHouse}/>),
     url:"memory"
 })
 

@@ -10,7 +10,8 @@
       "funny_line": "You probably cry at old movie soundtracks and keep ticket stubs in a box somewhere… and that’s your superpower.",
       "sorting_hat_line": "Ah, I sense a tender soul who holds memories in high regards...",
       "powername":"Power of Memory",
-      "power": "“Echo of the past” – See three pairs in matching color for the memory game."
+      "power": "“Echo of the past” – See three pairs in matching color for the memory game.",
+      "powerGameUrl":"memory"
     },
     {
       "name": "Spritz",
@@ -22,7 +23,8 @@
       "funny_line": "Basically a human solar panel: runs on sunshine, prosecco, and good vibes.",
       "sorting_hat_line": "Mmm, so bright, so bubbly—yes, you belong where the sun always shines...",
       "powername":"Power of Charm",
-      "power": "“Double Delight” – You get 2 complete rows for free in the sudoku game."
+      "power": "“Double Delight” – You get 2 complete rows for free in the sudoku game.",
+      "powerGameUrl":"sudoku"
     },
     {
       "name": "Espresso",
@@ -34,7 +36,8 @@
       "funny_line": "You’re basically a caffeinated squirrel—unstoppable, slightly chaotic, and oddly inspiring.",
       "sorting_hat_line": "Ah, I feel the fire, the restless spark—you’re brimming with energy...",
       "powername":"Power of Energy",
-      "power": "“Speed Surge” – You're energy cannot deplete in the 1, 2, 3 Piano Game."
+      "power": "“Speed Surge” – You're energy cannot deplete in the 1, 2, 3 Piano Game.",
+      "powerGameUrl":"piano"
     },
     {
       "name": "Nitro",
@@ -46,7 +49,8 @@
       "funny_line": "Controller in one hand, chaos in the other—you live life like a bonus round.",
       "sorting_hat_line": "Oho! Wild energy, playful chaos—I see the racer’s fire in you...",
       "powername":"Power of Nothing",
-      "power": "“Gamer Chick” - You're expected to be good at gaming... You get no power up!"
+      "power": "“Gamer Chick” - You're expected to be good at gaming... You get no power up!",
+      "powerGameUrl":"none"
     }
   ]
 }

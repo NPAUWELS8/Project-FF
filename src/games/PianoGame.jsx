@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { AppContext } from 'contexts/AppContext'
 
-const PianoGame = ({title}) => {
+const PianoGame = ({title, gamePowerHouse}) => {
     const navigate = useNavigate()
     const context = useContext(AppContext);
     const {house} = context;
+    const isPowerUp = house === gamePowerHouse;
     const pianoRef = useRef();
     const [won, setWon] = useState(false);
     const [gameOver, setGameOver] = useState(false)
@@ -18,11 +19,11 @@ const PianoGame = ({title}) => {
       document.location.reload();
     }
     function onRetry(){
-      playPiano(pianoRef.current, setGameOver, setWon, house);
+      playPiano(pianoRef.current, setGameOver, setWon, isPowerUp);
     }
 
     useEffect(()=>{
-        playPiano(pianoRef.current, setGameOver, setWon, house);
+        playPiano(pianoRef.current, setGameOver, setWon, isPowerUp);
     },[])
   return (
     <div className="mx-auto max-w-[1333px] px-8 !pt-[75px] pb-12 sm:p-16">
