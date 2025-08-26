@@ -32,42 +32,42 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
 
     return (
         <div className="flex flex-col w-screen items-center">
-                <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%]">
-                    <div className="font-medium sm:text-xl flex justify-center">
-                        <h1 className="px-5 py-2 max-w-[75%] min-w-25% text-center bg-white text-black rounded-xl border-black-200 border-3">{quiz[question].question}</h1>
+            <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%]">
+                <div className="font-medium sm:text-xl flex justify-center">
+                    <h1 className="px-5 py-2 max-w-[75%] min-w-25% text-center bg-white text-black rounded-xl border-black-200 border-3">{quiz[question].question}</h1>
+                </div>
+                <div className="rounded-xl bg-white text-amber-500 px-5 py-5">
+                    {!answered && 
+                    <div>
+                        <h2 className="text-black">{`"${quiz[question].subtext}"`}</h2>
+                        <br/>
                     </div>
-                    <div className="rounded-xl bg-white text-amber-500 px-5 py-5">
-                        {!answered && 
-                        <div>
-                            <h2 className="text-black">{`"${quiz[question].subtext}"`}</h2>
-                            <br/>
-                        </div>
-                        }
-                        <div className="font-medium sm:text-xl flex justify-center">
-                            <div className="w-full">
-                                {answered ? <p>{answerText}</p> : quiz[question].options.map((option, index)=>
-                                    <p key={index}><b>{`${option.label}) `}</b>{option.text}</p>
-                                )}
-                            </div>
+                    }
+                    <div className="font-medium sm:text-xl flex justify-center">
+                        <div className="w-full">
+                            {answered ? <p>{answerText}</p> : quiz[question].options.map((option, index)=>
+                                <p key={index}><b>{`${option.label}) `}</b>{option.text}</p>
+                            )}
                         </div>
                     </div>
                 </div>
-                {!answered ? <div className="flex flex-row w-[60%] gap-20 z-20 -mt-5 px-20">
-                    {answerButtons.map((answer,index)=>
-                        <AnswerButton
-                            key={index}
-                            question={question}
-                            index={index}
-                            setAnswered={setAnswered}
-                            setAnswerText={setAnswerText}
-                            score={score}
-                        >
-                            {answer}
-                        </AnswerButton>
-                )}
-                </div> : <MagicButton onClick={handleClick}>Continue</MagicButton>
-                }
             </div>
+            {!answered ? <div className="flex flex-row w-[60%] gap-20 z-20 -mt-5 px-20">
+                {answerButtons.map((answer,index)=>
+                    <AnswerButton
+                        key={index}
+                        question={question}
+                        index={index}
+                        setAnswered={setAnswered}
+                        setAnswerText={setAnswerText}
+                        score={score}
+                    >
+                        {answer}
+                    </AnswerButton>
+            )}
+            </div> : <MagicButton onClick={handleClick}>Continue</MagicButton>
+            }
+        </div>
     )
 }
 
@@ -211,7 +211,10 @@ const SortHouse = () => {
 
     if(question === -1){
         return (
-            <div className="w-screen h-screen bg-black-200 flex items-center justify-center">
+            <div className="w-screen h-screen bg-black-200 flex flex-col items-center justify-start pt-30">
+                <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%] mb-10">
+                    <h1 className="text-white text-center text-5xl font-bold">The Sorting Ceremony</h1>
+                </div>
                 <Intro
                     setQuestion={setQuestion}
                     house={house}
@@ -224,7 +227,10 @@ const SortHouse = () => {
     }
 
     return (
-        <div className="w-screen h-screen bg-black-200 flex items-center justify-center">
+        <div className="w-screen h-screen bg-black-200 flex flex-col items-center justify-start pt-30">
+            <div className="question-box neo-brutalism-magic hover:cursor-default w-[60%] mb-10">
+                <h1 className="text-white text-center text-5xl font-bold">The Sorting Ceremony</h1>
+            </div>
             {!finished ? 
                 <Question
                     question={question}
