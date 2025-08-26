@@ -35,6 +35,27 @@ export function generateRandomSudoku(){
 
             return array
         }
+        getPowerUpSudokuArray(){
+            const array = [];
+            const randomRow = Math.floor(Math.random() * this.rows.length);
+            const randomColumn = Math.floor(Math.random() * 9)
+            this.rows.forEach((row, index) =>{
+                if(index === randomRow){
+                    row.cells.forEach(cell =>{
+                        array.push(`${cell.value}`)
+                    })
+                }
+                 else {
+                    row.cells.forEach((cell, index)=>{
+                        if(index === randomColumn) array.push(`${cell.value}`);
+                        else array.push(`${cell.shownValue}`);
+                    })
+                }
+            })
+
+            return {array, randomRow, randomColumn};
+        }
+
         regenerate(){
             this.completedCells = [];
             this.setBackCount = 0;
@@ -280,6 +301,7 @@ export function generateRandomSudoku(){
 
     return {
         array: matrix.getSudokuArray(),
-        shownArray: matrix.getShownSudokuArray()
+        shownArray: matrix.getShownSudokuArray(),
+        powerUp: matrix.getPowerUpSudokuArray()
     }
 }

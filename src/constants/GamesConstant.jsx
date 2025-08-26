@@ -28,7 +28,7 @@ const InfoBox = ({text, link, btnText, title})=>{
     }
 
     const iconArray = [
-        (<LockOpenIcon aria-hidden="true" className="size-6 text-amber-600" />),
+        // (<LockOpenIcon aria-hidden="true" className="size-6 text-amber-600" />),
         (<SparklesIcon aria-hidden="true" className="size-6 text-amber-600" />),
         (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600" />),
         (<PlayIcon aria-hidden="true" className="size-6 text-amber-600" />),
@@ -42,7 +42,7 @@ const InfoBox = ({text, link, btnText, title})=>{
         {context.getIsGameFinished(title) ? <div className="bg-white border-3 border-amber-500 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-amber-500 sm:w-1/2"><CheckCircleIcon aria-hidden="true" className="size-6 text-amber-600" /><p>COMPLETED!</p></div> :
         <Link to={link} onClick={onClickHandle} className="neo-brutalism-white neo-btn-magic">
             {btnText}
-            {iconArray[Math.floor(Math.random()*iconArray.length + 1)]}
+            {iconArray[Math.floor(Math.random()* iconArray.length)]}
         </Link>
         }
     </div>
