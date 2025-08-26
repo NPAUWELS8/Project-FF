@@ -16,4 +16,5 @@ export function scrollTo({scrollId, duration, offset}){
             ease:'power2.out'
         })
     }
+    else console.warn("target not found")
 }

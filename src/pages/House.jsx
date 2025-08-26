@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'contexts/AppContext'
+import {scrollTo} from 'functions/functions'
 
 //TODO: add powerup explanation
 
@@ -21,18 +22,25 @@ const HouseDetails = ({houseData, textSize, other}) => {
     const textSizes = getTextSizes(textSize);
 
     return (
-        <div className={`flex ${other ? "flex-col items-center xl:px-10" : "flex-row items-start"} justify-center gap-5`}>
-            <div className={`${other ? "w-full" : "w-[75%]"} flex flex-col items-center justify-center bg-white rounded-xl px-5 py-2`}>
-                <h1 className={`${textSizes[0]} px-5 max-w-[75%] min-w-25% text-center text-amber-500 rounded-xl`}>House Description</h1>
-                <p className={`${textSizes[1]} text-justify text-black`}>{houseData.explanation}</p>
+        <div className="flex flex-col items-center gap-5">
+            <div className={`flex ${other ? "flex-col items-center xl:px-10" : "flex-row items-start"} justify-center gap-5`}>
+                <div className={`${other ? "w-full" : "w-[75%]"} flex flex-col items-center justify-center bg-white rounded-xl px-5 py-2`}>
+                    <h1 className={`${textSizes[0]} px-5 max-w-[75%] min-w-25% text-center text-amber-500`}>House Description</h1>
+                    <p className={`${textSizes[1]} text-justify text-black`}>{houseData.explanation}</p>
+                </div>
+                <div className={`${other ? "w-full md:w-[50%]" : "w-[25%]"} flex flex-col justify-center bg-white rounded-xl px-5 py-2`}>
+                    <h1 className={`${textSizes[0]} w-full text-center  text-amber-500 rounded-xl`}>Traits</h1>
+                    <ul className={`${textSizes[1]} w-full text-black text-start`}>
+                        {houseData.traits.map((trait, index)=>
+                            <li key={index}>{trait}</li>
+                        )}
+                    </ul>
+                </div>
             </div>
-            <div className={`${other ? "w-full md:w-[50%]" : "w-[25%]"} flex flex-col justify-center bg-white rounded-xl px-5 py-2`}>
-                <h1 className={`${textSizes[0]} w-full text-center  text-amber-500 rounded-xl`}>Traits</h1>
-                <ul className={`${textSizes[1]} w-full text-black text-start`}>
-                    {houseData.traits.map((trait, index)=>
-                        <li key={index}>{trait}</li>
-                    )}
-                </ul>
+            <div className={`w-full flex flex-col items-center justify-center bg-white rounded-xl px-5 py-2`}>
+                <h1 className={`${textSizes[0]} px-5 max-w-[75%] min-w-25% text-center text-amber-500`}>Special Power</h1>
+                <h2 className={`${textSizes[1]} px-5 max-w-[75%] min-w-25% text-center text-amber-500`}>{`"${houseData.powername}"`}</h2>
+                <p className={`${textSizes[1]} pt-2 text-justify text-black`}>{houseData.power}</p>
             </div>
         </div>
     )
@@ -56,6 +64,16 @@ const OtherHouse = ({house, getImage, houseData}) => {
 }
 
 const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses}) => {
+
+    useEffect(()=>{
+        if(showAllHouses){
+            scrollTo({
+                scrollId: "other-houses",
+                duration: 1,
+                offset: 0
+            })
+        }
+    },[showAllHouses])
 
     function showAll(){
         setShowAllHouses(true);
@@ -99,37 +117,37 @@ const House = () => {
 
     return (
         <div className="h-screen w-screen">
-        {!showAllHouses && <div className="absolute top-0 w-screen h-screen bg-black-200"/>}
-        <div className="w-screen h-[60vh] bg-black-200 flex items-end justify-center">
-            <div className="flex flex-col w-screen items-center justify-center h-[70%]">
-                <div className={`flex flex-col ${showAllHouses ? "w-[70%] ms-2" : "w-full"} h-full items-center`}>
-                    <MyHouse
-                        house={house}
-                        getImage={getImage}
-                        houseData={houseData}
-                        showAllHouses={showAllHouses}
-                        setShowAllHouses={setShowAllHouses}
-                    />
-                </div>
-            </div>
-        </div>
-        {showAllHouses &&
-            <div className="w-screen h-[80vh] bg-black-200 flex items-start justify-center py-20">
-                <div className="flex flex-col w-screen bg-white rounded-xl mx-5 px-5 py-5 border-amber-500 border-5">
-                    <h1 className="text-3xl w-full text-center text-amber-500 pb-5">Other Houses</h1>
-                    <div className="flex flex-row w-full justify-center h-[80%] gap-5">
-                        {otherHouses.map((house, index)=>
-                            <OtherHouse
-                                key={index}
-                                house={house.name}
-                                getImage={getImage}
-                                houseData={house}
-                            />
-                        )}
+            {!showAllHouses && <div className="absolute top-0 w-screen h-screen bg-black-200"/>}
+            <div className="w-screen h-screen bg-black-200 flex items-center justify-center">
+                <div className="flex flex-col w-screen items-center justify-center h-[70%]">
+                    <div className={`flex flex-col ${showAllHouses ? "w-[70%] ms-2" : "w-full"} h-full items-center`}>
+                        <MyHouse
+                            house={house}
+                            getImage={getImage}
+                            houseData={houseData}
+                            showAllHouses={showAllHouses}
+                            setShowAllHouses={setShowAllHouses}
+                        />
                     </div>
                 </div>
             </div>
-        }
+            {showAllHouses &&
+                <div id="other-houses" className="w-screen h-screen bg-black-200 flex items-start justify-center py-20">
+                    <div className="flex flex-col w-screen bg-white rounded-xl mx-5 px-5 py-5 border-amber-500 border-5">
+                        <h1 className="text-3xl w-full text-center text-amber-500 pb-5">Other Houses</h1>
+                        <div className="flex flex-row w-full justify-center h-[80%] gap-5">
+                            {otherHouses.map((house, index)=>
+                                <OtherHouse
+                                    key={index}
+                                    house={house.name}
+                                    getImage={getImage}
+                                    houseData={house}
+                                />
+                            )}
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     )
     }
