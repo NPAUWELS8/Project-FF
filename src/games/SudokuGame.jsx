@@ -3,6 +3,7 @@ import { generateRandomSudoku } from './gameplay/sudoku'
 import { AppContext } from 'contexts/AppContext'
 
 import Modal from 'components/Modal'
+//TODO: add powerup
 
 const SudokuGame = ({title}) => {
   const context = useContext(AppContext);

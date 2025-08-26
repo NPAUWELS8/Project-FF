@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react'
 import { AppContext } from 'contexts/AppContext'
 
+//TODO: add powerup explanation
+
 const HouseDetails = ({houseData, textSize, other}) => {
 
     function getTextSizes(textSize){
