@@ -1,5 +1,5 @@
 import { hogwartsEmblem, hogwartsSeal } from 'assets/images'
-import { useLayoutEffect, useContext } from 'react';
+import { useLayoutEffect, useContext, useState } from 'react';
 import { games } from 'constants/GamesConstant'
 import gsap from 'gsap'
 import { AppContext } from 'contexts/AppContext';
@@ -14,12 +14,15 @@ const Intro = ({setShowNavBar}) => {
     const context = useContext(AppContext);
     const {signDate} = context;
     const imagesLoaded = useImagePreloader(preloadImages);
+    const [signed, setSigned] = useState(signDate);
+    const [showSign, setShowSign] = useState(true);
 
     useLayoutEffect(()=>{
         setShowNavBar(false);
     })
 
     function handleSignClick(){
+        setShowSign(false);
         const tl = gsap.timeline({
             onComplete: ()=>{
                 setShowNavBar(true)
@@ -36,7 +39,7 @@ const Intro = ({setShowNavBar}) => {
             color:"black"
         })
         .to("#sign-name",{
-            duration: 2,
+            duration: 1,
             color: "black"
         })
         
@@ -74,7 +77,8 @@ const Intro = ({setShowNavBar}) => {
                             <div>
                                 <p id="sign-name" className={`${signDate ? "" : "text-transparent"}`}>Floor Bartier</p>
                                 <p id="sign-date" className={`${signDate ? "" : "text-transparent"} text-5xl pt-5`}>{signDate}</p>
-                                {signDate ? <button className="btn-magic mt-12" onClick={handleContinueClick}>Continue</button> : <button className="btn-magic mt-12" onClick={handleSignClick}>Sign</button>}
+                                {signDate && signed && <button className="btn-magic mt-12" onClick={handleContinueClick}>Continue</button>}
+                                {!(signDate && signed) && showSign && <button className="btn-magic mt-12" onClick={handleSignClick}>Sign</button>}
                             </div>
                             <div>
                                 <p className="cachet"><img src={hogwartsSeal}/></p>

@@ -46,24 +46,24 @@
     },
     {
       "id": 5,
-      "question": "Your go-to evening activity:",
-      "subtext": "The twilight hours whisper secrets… do you relax, lounge, work, or play?",
+      "question": "Your favourite thing about Niels:",
+      "subtext": "Your white knight on a quest for compliments…",
       "options": [
-        { "label": "A", "text": "Crash Nitro with the tiger character", "house": "Nitro", "comment": "Controllers are life. Karts are love." },
-        { "label": "B", "text": "Chatting and relaxing somewhere nostalgic", "house": "Dulci", "comment": "Soft music, deep talks… and maybe crying over old memes." },
-        { "label": "C", "text": "Working on something exciting or intense", "house": "Espresso", "comment": "Burning the midnight oil with heroic amounts of caffeine." },
-        { "label": "D", "text": "Lounging in the sun with a drink", "house": "Spritz", "comment": "Sun, spritz, repeat. Warning: happiness levels high." }
+        { "label": "A", "text": "His smelly breath.", "house": "Espresso", "comment": "You won't smell it through this screen, no worries!" },
+        { "label": "B", "text": "His hilarious jokes.", "house": "Dulci", "comment": "I heard they call him FunNyls." },
+        { "label": "C", "text": "His cooking skills.", "house": "Spritz", "comment": "They say it's all about thinking in flavours" },
+        { "label": "D", "text": "His passion for gaming.", "house": "Nitro", "comment": "Oh, is it 2 in the morning already?" }
       ]
     },
     {
       "id": 6,
-      "question": "Which word resonates most with you?",
-      "subtext": "A single word can reveal the deepest of truths.",
+      "question": "What makes you happiest?",
+      "subtext": "Happiness can be found in the darkest of times if one only remembers to turn on the lights... ",
       "options": [
-        { "label": "A", "text": "Fire", "house": "Espresso", "comment": "You bring the heat… literally and metaphorically." },
-        { "label": "B", "text": "Chaos", "house": "Nitro", "comment": "Chaos is your middle name. Or is it Turbo?" },
-        { "label": "C", "text": "Memories", "house": "Dulci", "comment": "Ah, the sentimental soul… still remembering your first sip of latte." },
-        { "label": "D", "text": "Sunshine", "house": "Spritz", "comment": "Solar-powered human. Batteries always full." }
+        { "label": "A", "text": "Slow dancing in our living room", "house": "Espresso", "comment": "This is what I call: 'Dansen'." },
+        { "label": "B", "text": "Winning a board game.", "house": "Nitro", "comment": "Winning is for losers." },
+        { "label": "C", "text": "Spooning Winnie.", "house": "Dulci", "comment": "Ah, the sentimental soul…" },
+        { "label": "D", "text": "Hearing the sound of skis nearing when you've tumbled in the snow.", "house": "Spritz", "comment": "Ah... Your guardian angel is near!." }
       ]
     },
     {
@@ -86,6 +86,28 @@
         { "label": "B", "text": "Something fun, sparkly, or sunny", "house": "Spritz", "comment": "You shine brighter than any glittery trinket." },
         { "label": "C", "text": "Something meaningful from shared memories", "house": "Dulci", "comment": "You cry happy tears before opening it. Then cry some more." },
         { "label": "D", "text": "Something energizing or passionate", "house": "Espresso", "comment": "You will caffeinate, dominate, and conquer." }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Your go-to evening activity:",
+      "subtext": "The twilight hours whisper secrets… do you relax, lounge, work, or play?",
+      "options": [
+        { "label": "A", "text": "Crash Nitro with the tiger character", "house": "Nitro", "comment": "Controllers are life. Karts are love." },
+        { "label": "B", "text": "Chatting and relaxing somewhere nostalgic", "house": "Dulci", "comment": "Soft music, deep talks… and maybe crying over old memes." },
+        { "label": "C", "text": "Working on something exciting or intense", "house": "Espresso", "comment": "Burning the midnight oil with heroic amounts of caffeine." },
+        { "label": "D", "text": "Lounging in the sun with a drink", "house": "Spritz", "comment": "They say a lounge is all Floorie desires." }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Your favourite nickname:",
+      "subtext": "What's in a name?",
+      "options": [
+        { "label": "A", "text": "Mi Amore", "house": "Dulci", "comment": "Classic!" },
+        { "label": "B", "text": "Floski", "house": "Dulci", "comment": "Hey guys, it's Floski time!" },
+        { "label": "C", "text": "Flodderita", "house": "Spritz", "comment": "My favourite as well!" },
+        { "label": "D", "text": "Floorie", "house": "Nitro", "comment": "I knew you'd pick that." }
       ]
     }
   ]

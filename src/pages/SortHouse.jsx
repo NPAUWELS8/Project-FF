@@ -17,7 +17,7 @@ const AnswerButton = ({children, index, question, setAnswered, score, setAnswerT
     }
 
     return (
-        <button id={id} onClick={handleClick} className="neo-brutalism-white neo-btn-magic-question hover:cursor-pointer sm:w-1/2">{children}</button>
+        <button id={index} onClick={handleClick} className="neo-brutalism-white neo-btn-magic-question hover:cursor-pointer sm:w-1/2">{children}</button>
     )
 }
 
@@ -37,10 +37,12 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
                         <h1 className="px-5 py-2 max-w-[75%] min-w-25% text-center bg-white text-black rounded-xl border-black-200 border-3">{quiz[question].question}</h1>
                     </div>
                     <div className="rounded-xl bg-white text-amber-500 px-5 py-5">
+                        {!answered && 
                         <div>
                             <h2 className="text-black">{`"${quiz[question].subtext}"`}</h2>
                             <br/>
                         </div>
+                        }
                         <div className="font-medium sm:text-xl flex justify-center">
                             <div className="w-full">
                                 {answered ? <p>{answerText}</p> : quiz[question].options.map((option, index)=>
