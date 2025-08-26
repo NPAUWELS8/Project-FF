@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { AppContext } from 'contexts/AppContext'
 import ControlsInfo from 'components/ControlsInfo'
 
-const Navbar = ({setToIntro}) => {
+const Navbar = () => {
     const context = useContext(AppContext);
     const {count, total} = context.getGameFinishedCount();
     const {currentGame, house, getImage} = context;
@@ -11,10 +11,6 @@ const Navbar = ({setToIntro}) => {
 
     function openControls(){
         setOpen(true);
-    }
-
-    function onClick(){
-        setToIntro(true);
     }
 
 
@@ -33,13 +29,13 @@ const Navbar = ({setToIntro}) => {
                 }
             </div>
             <header className="header">
-                <NavLink to="/" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
-                    <p className="magic-gradient_text" onClick={onClick}>Letter of Acceptance</p>
+                <NavLink to="/intro" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
+                    <p className="magic-gradient_text">Letter of Acceptance</p>
                 </NavLink>
                 <NavLink to="/" reloadDocument className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text">Home</p>
                 </NavLink>
-                <NavLink to="/sort" reloadDocument className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
+                <NavLink to="/sort" className="px-2 h-10 rounded-lg bg-white hover:bg-amber-50 items-center justify-center flex font-bold shadow-md">
                     <p className="magic-gradient_text">Sorting</p>
                 </NavLink>
                 <div className="flex text-lg gap-7 font-bold px-2 h-10 rounded-lg bg-white items-center justify-center shadow-md">

@@ -1,7 +1,7 @@
 import { useRef, useState, useContext } from 'react';
 import * as data from 'constants/sortingQuestions.json' with {type: "json" }
 import { AppContext } from 'contexts/AppContext';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from 'hooks';
 
 const sortingData = data.default;
 const quiz = sortingData.quiz;
@@ -183,7 +183,7 @@ const Intro = ({setQuestion, house, setHouseCrest, getImage, navigate})=>{
 
 const SortHouse = () => {
     const {setHouseCrest, house, getImage, getHouseData} = useContext(AppContext)
-    const navigate = useNavigate()
+    const navigate = useAppNavigate()
 
     const score = useRef({
         Dulci: 0,

@@ -1,18 +1,15 @@
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ComputerDesktopIcon } from '@heroicons/react/24/outline'
-import { useNavigate } from 'react-router-dom'
 import { games } from 'constants/GamesConstant'
 
 
 
 const ControlsElem = ({gameTitle, setOpen}) => {
-  const navigate = useNavigate();
 
   const game = games.find((game)=>game.title === gameTitle)
 
   function onContinue(){
-    // navigate('/');
     setOpen(false);
   }
 

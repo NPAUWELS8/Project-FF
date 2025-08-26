@@ -4,7 +4,7 @@ import { playRpg } from './gameplay/rpg/rpg';
 
 import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from 'hooks';
 
 const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
     const rpgRef = useRef();
@@ -22,7 +22,7 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
 
 
 const RpgGame = ({title}) => {
-    const navigate = useNavigate()
+    const navigate = useAppNavigate()
     
     const context = useContext(AppContext);
     

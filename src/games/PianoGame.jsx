@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { playPiano } from './gameplay/piano/piano';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from 'hooks';
 
 import { AppContext } from 'contexts/AppContext'
 
 const PianoGame = ({title, gamePowerHouse}) => {
-    const navigate = useNavigate()
+    const navigate = useAppNavigate()
     const context = useContext(AppContext);
     const {house} = context;
     const isPowerUp = house === gamePowerHouse;

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon, CheckIcon } from '@heroicons/react/24/outline'
-import { useNavigate } from 'react-router-dom'
+import { useAppNavigate } from 'hooks'
 
 
 
@@ -43,7 +43,7 @@ const Fail = ({setOpen}) => {
 }
 
 const Success = ({onGameFinished, gameTitle}) => {
-  const navigate = useNavigate()
+  const navigate = useAppNavigate()
 
   function onSuccess(){
     onGameFinished(gameTitle);

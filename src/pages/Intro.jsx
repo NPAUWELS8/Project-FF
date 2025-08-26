@@ -5,11 +5,14 @@ import gsap from 'gsap'
 import { AppContext } from 'contexts/AppContext';
 import { useImagePreloader } from 'hooks';
 import GeneralLoader from 'components/GeneralLoader';
+import { useAppNavigate } from 'hooks';
 
 const preloadImages = ["assets/images/background.jpeg","assets/images/background-noise.png", hogwartsSeal, hogwartsEmblem]
 
-const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
+const Intro = ({setShowNavBar}) => {
+    const navigate = useAppNavigate();
     const context = useContext(AppContext);
+    const {signDate} = context;
     const imagesLoaded = useImagePreloader(preloadImages);
 
     useLayoutEffect(()=>{
@@ -20,9 +23,7 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
         const tl = gsap.timeline({
             onComplete: ()=>{
                 setShowNavBar(true)
-                setIsFirstTime(false)
-                // setToIntro(false);
-                document.location.reload();
+                navigate("/sort");
             },
             onStart: ()=>{
                 const date = new Date().toLocaleDateString();
@@ -43,8 +44,7 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
 
     function handleContinueClick(){
         setShowNavBar(true)
-        // setToIntro(false);
-        document.location.reload();
+        navigate("/")
     }
 
     return (
@@ -72,9 +72,9 @@ const Intro = ({setShowNavBar, setIsFirstTime, toIntro, setToIntro}) => {
                         </div>
                         <div className="mb-10 flex flex-row justify-between items-center">
                             <div>
-                                <p id="sign-name" className={`${toIntro ? "" : "text-transparent"}`}>Floor Bartier</p>
-                                <p id="sign-date" className={`${toIntro ? "" : "text-transparent"} text-5xl pt-5`}>{context.signDate}</p>
-                                {toIntro ? <button className="btn-magic mt-12" onClick={handleContinueClick}>Continue</button> : <button className="btn-magic mt-12" onClick={handleSignClick}>Sign</button>}
+                                <p id="sign-name" className={`${signDate ? "" : "text-transparent"}`}>Floor Bartier</p>
+                                <p id="sign-date" className={`${signDate ? "" : "text-transparent"} text-5xl pt-5`}>{signDate}</p>
+                                {signDate ? <button className="btn-magic mt-12" onClick={handleContinueClick}>Continue</button> : <button className="btn-magic mt-12" onClick={handleSignClick}>Sign</button>}
                             </div>
                             <div>
                                 <p className="cachet"><img src={hogwartsSeal}/></p>

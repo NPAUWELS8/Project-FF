@@ -36,9 +36,8 @@ const useImagePreloader = (imageUrls) => {
 
     },[imageUrls])
 
-    return (
-        loaded
-    )
+    return loaded
+    
 }
 
 export default useImagePreloader
