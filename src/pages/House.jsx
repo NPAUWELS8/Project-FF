@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { AppContext } from 'contexts/AppContext'
 
-const HouseDetails = ({houseData, textSize}) => {
+const HouseDetails = ({houseData, textSize, other}) => {
 
     function getTextSizes(textSize){
         switch (textSize){
@@ -19,13 +19,13 @@ const HouseDetails = ({houseData, textSize}) => {
     const textSizes = getTextSizes(textSize);
 
     return (
-        <div className="flex flex-row items-start justify-center gap-5">
-            <div className="w-[75%] flex flex-col items-center justify-center bg-white rounded-xl px-5 py-2">
+        <div className={`flex ${other ? "flex-col items-center xl:px-10" : "flex-row items-start"} justify-center gap-5`}>
+            <div className={`${other ? "w-full" : "w-[75%]"} flex flex-col items-center justify-center bg-white rounded-xl px-5 py-2`}>
                 <h1 className={`${textSizes[0]} px-5 max-w-[75%] min-w-25% text-center text-amber-500 rounded-xl`}>House Description</h1>
                 <p className={`${textSizes[1]} text-justify text-black`}>{houseData.explanation}</p>
             </div>
-            <div className="w-[25%] flex flex-col justify-center bg-white rounded-xl px-5 py-2">
-                <h1 className={`${textSizes[0]} px-5 w-full text-center  text-amber-500 rounded-xl`}>Traits</h1>
+            <div className={`${other ? "w-full md:w-[50%]" : "w-[25%]"} flex flex-col justify-center bg-white rounded-xl px-5 py-2`}>
+                <h1 className={`${textSizes[0]} w-full text-center  text-amber-500 rounded-xl`}>Traits</h1>
                 <ul className={`${textSizes[1]} w-full text-black text-start`}>
                     {houseData.traits.map((trait, index)=>
                         <li key={index}>{trait}</li>
@@ -40,12 +40,13 @@ const OtherHouse = ({house, getImage, houseData}) => {
 
     return (
         <div className="house-box px-2 neo-brutalism-magic hover:cursor-default w-1/3">
-            <img className="h-15 absolute right-5 top-5" src={getImage(house)} alt="Crest"/>
-            <div className="font-medium sm:text-xl flex flex-col items-center justify-center gap-10">
-                <p className="text-3xl" >{house}</p>
+            <img className="h-15 absolute top-2 right-5 lg:top-5" src={getImage(house)} alt="Crest"/>
+            <div className="font-medium sm:text-xl flex flex-col items-start lg:items-center justify-center gap-10">
+                <p className="text-3xl ps-5 lg:ps-0" >{house}</p>
                 <HouseDetails
                     houseData={houseData}
                     textSize="sm"
+                    other={true}
                 />
             </div>
         </div>
@@ -79,9 +80,9 @@ const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses}) 
                 </div>
             </div>
             {showAllHouses ?
-                <button onClick={hideAll} className="w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
+                <button onClick={hideAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
             :
-                <button onClick={showAll} className="w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
+                <button onClick={showAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
             }
         </>
     )
@@ -115,8 +116,9 @@ const House = () => {
                 <div className="flex flex-col w-screen bg-white rounded-xl mx-5 px-5 py-5 border-amber-500 border-5">
                     <h1 className="text-3xl w-full text-center text-amber-500 pb-5">Other Houses</h1>
                     <div className="flex flex-row w-full justify-center h-[80%] gap-5">
-                        {otherHouses.map((house)=>
+                        {otherHouses.map((house, index)=>
                             <OtherHouse
+                                key={index}
                                 house={house.name}
                                 getImage={getImage}
                                 houseData={house}
