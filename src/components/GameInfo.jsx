@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 //TODO: fix the "more videos" that appear on bottom of page when you switch from another chrome tab back to this website, for now changed with loading screen when video is paused
 //TODO: add power up information in case of powerup
+//TODO: add warning to get sorted in case user ends up in this page without being sorted first
 
 const GameInfo = ({title, trialTitle, introText, controls, game}) => {
   const context = useContext(AppContext);
