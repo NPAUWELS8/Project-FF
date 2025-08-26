@@ -71,7 +71,7 @@ const Intro = ({setShowNavBar}) => {
                                 <p key={index} className="py-2"><b>{index + 1}. {game.trial}</b> - {game.trialText}</p>
                             )}
                             <p className="pt-20">Upon completing these trials, the Stone shall accept you as its rightful bearer, and your acceptance into its mysteries shall be complete.</p>
-                            <p>We await your success with great anticipation, and trust that you will rise to the occasion with the courage and heart befitting a true romantasist.</p>
+                            <p>We await your success with great anticipation, and trust that you will rise to the occasion with the courage and heart befitting a true keeper of the stone.</p>
                         </div>
                         <div className="mb-10 flex flex-row justify-between items-center">
                             <div>
