@@ -6,10 +6,42 @@ import Modal from 'components/Modal'
 
 class MemoryGrid {
   constructor(){
-    this.images = []
+    this.initialImageArray = [];
+    this.imageArray = [];
+    this.images = [];
+    this.colors = ["blue", "red", "green"];
+    this.startNum = 2;
+    this.endNum = 16;
   }
-  addImage(src, doubleKey){
-    this.images.push(new MemoryImage(src, doubleKey))
+  #addImage(src, doubleKey, color){
+    this.images.push(new MemoryImage(src, doubleKey, color))
+  }
+  createImageArray(){
+    const imageArray = []
+    for(let i = this.startNum; i <= this.endNum;i++){
+      imageArray.push({number: i, color: "normal"})
+    }
+    this.initialImageArray = imageArray;
+    this.imageArray = imageArray.map((value, index)=>index);
+    console.log(this.imageArray);
+  }
+  addImages(){
+    this.initialImageArray.forEach((card, index)=>{
+      const {number, color} = card;
+      const zero = Math.floor(number/10) >= 1 ? "" : "0";
+      const imageSrc =  "/memory/IMG-20241218-WA00"+ zero + number + ".jpg";
+      memoryGrid.#addImage(imageSrc,number, color);
+      memoryGrid.#addImage(imageSrc,number, color);
+    })
+  }
+  addColors(){
+    for(let i=0;i< this.colors.length;i++){
+      const random = Math.floor(Math.random() * this.imageArray.length)
+      const value = this.imageArray[random]
+      this.initialImageArray[value].color = this.colors[i];
+      console.log(this.initialImageArray[value]);
+      this.imageArray.splice(random,1);
+    }
   }
   shuffle(){
     this.images.sort(()=>{
@@ -19,25 +51,25 @@ class MemoryGrid {
 }
 
 class MemoryImage {
-  constructor(src, doubleKey){
+  constructor(src, doubleKey, color){
     this.src = src;
     this.doubleKey = doubleKey;
     this.display = true;
+    this.color = color;
   }
 }
 
 const memoryGrid = new MemoryGrid();
+memoryGrid.createImageArray();
+memoryGrid.addColors();
+memoryGrid.addImages();
 
-for(let i = 2; i <=16;i++){
-  const zero = Math.floor(i/10) >= 1 ? "" : "0";
-  const imageSrc =  "/memory/IMG-20241218-WA00"+ zero + i + ".jpg";
-  memoryGrid.addImage(imageSrc,i);
-  memoryGrid.addImage(imageSrc,i);
-}
+console.log(memoryGrid.images)
+
 memoryGrid.shuffle();
 
 
-const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards, setIsSuccess, setOpen}, ref) => {
+const MemoryCard = forwardRef(({display, imgSource, color, house, doubleKey, setTurnedDoubleKey, count, setCount, turnedDoubleKey, removeCards, returnCards, setIsSuccess, setOpen}, ref) => {
     const [turned, setTurned] = useState(false)
     const [isGone, setIsGone] = useState(false);
     const [isDisplayed, setIsDisplayed] = useState(display);
@@ -90,13 +122,24 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
       }, 1000)
     }
 
+    function getBorderColor(color){
+      const map = {
+        "red": "border-red-500",
+        "green": "border-green-500",
+        "blue": "border-blue-500"
+      }
+
+      if(map[color]) return `border-5 ${map[color]}`
+      else return ""
+    }
+
     return (
       <div className={`memory-card ${turned ? "is-flipped" : ""}`}>
         <div
           className={`card__inner ${turned ? "is-flipped": ""} ${isGone ? "is-gone": ""} ${isDisplayed ? "": "is-not-displayed"}`}
           onClick={onClickHandle}
         >
-          <div className="card__face card__face--front flex w-full h-full justify-center items-center">
+          <div className={`${ house === "Dulci" ? getBorderColor(color) : ""} card__face card__face--front flex w-full h-full justify-center items-center`}>
             <h2 className="text-[clamp(0.75rem,3vw,2.5rem)] text-white">Memory</h2>
           </div>
           <div className="card__face card__face--back hover:cursor-not-allowed">
@@ -111,6 +154,7 @@ const MemoryCard = forwardRef(({display, imgSource, doubleKey, setTurnedDoubleKe
 
 const MemoryGame = ({title}) => {
   const context = useContext(AppContext);
+  const {house, onGameFinished} = context;
   const cardRefs = useRef(null)
   if(cardRefs.current === null){
     cardRefs.current = new Array()
@@ -130,8 +174,6 @@ const MemoryGame = ({title}) => {
       offset: 0
     })
   },[])
-
-  const onGameFinished = context.onGameFinished
 
   function removeCards(doubleKey){
     cardRefs.current.forEach((card)=>{
@@ -170,6 +212,8 @@ const MemoryGame = ({title}) => {
               ref={(element) => cardRefs.current[index] = [element, image.doubleKey]}
               display = {image.display}
               imgSource={image.src}
+              color={image.color}
+              house={house}
               doubleKey={image.doubleKey}
               setTurnedDoubleKey={setTurnedDoubleKey}
               count={count}
