@@ -45,7 +45,7 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
                     }
                     <div className="font-medium sm:text-xl flex justify-center">
                         <div className="w-full">
-                            {answered ? <p>{answerText}</p> : quiz[question].options.map((option, index)=>
+                            {answered ? <p className="text-center">{`"${answerText}"`}</p> : quiz[question].options.map((option, index)=>
                                 <p key={index}><b>{`${option.label}) `}</b>{option.text}</p>
                             )}
                         </div>
