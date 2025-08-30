@@ -17,14 +17,14 @@ const AnswerButton = ({children, index, question, setAnswered, score, setAnswerT
     }
 
     return (
-        <button id={index} onClick={handleClick} className="neo-brutalism-white neo-btn-magic-question hover:cursor-pointer sm:w-1/2">{children}</button>
+        <button id={index} onClick={handleClick} className="neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer sm:w-1/2">{children}</button>
     )
 }
 
 const MagicButton = ({onClick, className, children}) => {
 
     return (
-        <button onClick={onClick} className={`w-[15%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5 ${className}`}>{children}</button>
+        <button onClick={onClick} className={`w-[15%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5 ${className}`}>{children}</button>
     )
 }
 

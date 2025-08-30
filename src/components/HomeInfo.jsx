@@ -28,7 +28,7 @@ const WelcomeBack = ({header, text, isShown}) =>{
                 && 
                 <Link 
                     to="/reveal"
-                    className="neo-brutalism-white neo-btn-magic"
+                    className="neo-brutalism-white-button bg-white neo-btn-magic hover:bg-amber-50"
                 >Reveal Location
                 <MapPinIcon aria-hidden="true" className="size-6 text-amber-600" />
                 </Link>
@@ -59,7 +59,7 @@ const GameCompletion = ({header, text,isShown}) =>{
                 && 
                 <Link 
                     to="/reveal"
-                    className="neo-brutalism-white neo-btn-magic"
+                    className="neo-brutalism-white-button bg-white neo-btn-magic hover:bg-amber-50"
                 >Reveal Location
                 <MapPinIcon aria-hidden="true" className="size-6 text-amber-600" />
                 </Link>
