@@ -108,15 +108,6 @@
             Pause
           </button>
         </div>
-        {/* <div>
-          <p>Change URI:</p>
-          <input
-            type="text"
-            value={uri}
-            onChange={onUriChange}
-            placeholder="Enter Spotify URI"
-          />
-        </div> */}
       </div>
     );
   }

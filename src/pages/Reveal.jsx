@@ -18,21 +18,23 @@ const Reveal = () => {
         <h1 className="head-text-magic">
             <span className="magic-text font-semibold drop-shadow">{title}</span>
         </h1>
-        <div className="mt-5 flex flex-col gap-3 text-slate-500">
-          <p>Come find me at following location:</p>
-            <div>
-                {(total - count === 0) ? <iframe
-                    src={`https://www.google.com/maps/embed?pb=${locationEnum.vrijbroekZomertuin}`}
-                    width="600"
-                    height="450"
-                    style={{border:0}}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                ></iframe> : <p>{text}</p>}
-                <SpotifyReveal/>
-            </div>
-        </div>
+        {(total - count === 0) ? 
+          <div className="mt-5 flex flex-col gap-3 text-white">
+            <p>Come find me at following location:</p>
+              <div>
+                  <iframe
+                      src={`https://www.google.com/maps/embed?pb=${locationEnum.vrijbroekZomertuin}`}
+                      width="600"
+                      height="450"
+                      style={{border:0}}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                  <SpotifyReveal/>
+              </div>  
+          </div>
+        : <p className="text-white">{text}</p>}
       </section>
     )
 }
