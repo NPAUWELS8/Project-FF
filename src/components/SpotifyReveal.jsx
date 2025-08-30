@@ -101,10 +101,10 @@
         <div ref={embedRef} />
         {!playerLoaded && <p>Loading...</p>}
         <div className="flex flex-row">
-          <button className= "neo-brutalism-white neo-btn-magic-rel" aria-label="Play" onClick={onPlayClick}>
+          <button className= "neo-brutalism-white-button bg-white hover:bg-amber-50 hover:cursor-pointer neo-btn-magic-rel" aria-label="Play" onClick={onPlayClick}>
             Play
           </button>
-          <button className= "neo-brutalism-white neo-btn-magic-rel" aria-label="Pause" onClick={onPauseClick}>
+          <button className= "neo-brutalism-white-button bg-white hover:bg-amber-50 hover:cursor-pointer neo-btn-magic-rel" aria-label="Pause" onClick={onPauseClick}>
             Pause
           </button>
         </div>
