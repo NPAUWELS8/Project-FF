@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'contexts/AppContext'
 import {scrollTo} from 'functions/functions'
+import { useAppNavigate } from 'hooks'
 
 //TODO: add powerup explanation
 
@@ -63,7 +64,8 @@ const OtherHouse = ({house, getImage, houseData}) => {
     )
 }
 
-const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses}) => {
+const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses, getGameFinishedCount}) => {
+    const navigate = useAppNavigate()
 
     useEffect(()=>{
         if(showAllHouses){
@@ -83,6 +85,10 @@ const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses}) 
         setShowAllHouses(false);
     }
 
+    function continueGaming(){
+        navigate("/");
+    }
+
     return (
         <>
             <div className={`house-box mx-5 px-8 gap-3 neo-brutalism-magic hover:cursor-default ${showAllHouses ? "w-[90%]" : "w-[60%]"}`}>
@@ -99,17 +105,20 @@ const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses}) 
                     {!showAllHouses && <p>Click "See all" if you want to see the other houses.</p>}
                 </div>
             </div>
-            {showAllHouses ?
-                <button onClick={hideAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
-            :
-                <button onClick={showAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
-            }
+            <div className="flex flex-row w-full items-center justify-center gap-20">
+                {showAllHouses ?
+                    <button onClick={hideAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
+                :
+                    <button onClick={showAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
+                }
+                <button onClick={continueGaming} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">{`${getGameFinishedCount().count > 0 ? "Continue Gaming" : "Start Gaming"}`}</button>
+            </div>
         </>
     )
 }
 
 const House = () => {
-    const {house, getImage, getHouseData, houses} = useContext(AppContext)
+    const {house, getImage, getHouseData, houses, getGameFinishedCount} = useContext(AppContext)
     const [showAllHouses, setShowAllHouses] = useState(false);
     
     const houseData = getHouseData(house);
@@ -127,6 +136,7 @@ const House = () => {
                             houseData={houseData}
                             showAllHouses={showAllHouses}
                             setShowAllHouses={setShowAllHouses}
+                            getGameFinishedCount={getGameFinishedCount}
                         />
                     </div>
                 </div>
