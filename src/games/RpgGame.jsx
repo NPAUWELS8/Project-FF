@@ -6,11 +6,11 @@ import FadingDiv from './gameplay/rpg/fadingDiv';
 import TextBoxContainer from './gameplay/rpg/TextBoxContainer';
 import { useAppNavigate } from 'hooks';
 
-const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize}) => {
+const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize, setShowGoBack}) => {
     const rpgRef = useRef();
 
     useEffect(()=>{
-        playRpg(rpgRef.current, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize);
+        playRpg(rpgRef.current, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize, setShowGoBack);
     },[])
 
     const [gameWidth, gameHeight] = gameSize;
@@ -21,7 +21,7 @@ const GameCanvas = ({setGameOver, handleUpdateText, handleDisplayText, handleOve
 }
 
 
-const RpgGame = ({title}) => {
+const RpgGame = ({title, extraProps}) => {
     const navigate = useAppNavigate()
     
     const context = useContext(AppContext);
@@ -67,6 +67,7 @@ const RpgGame = ({title}) => {
                     handleDisplayText={handleDisplayText}
                     handleOverlay={handleOverlay}
                     gameSize={gameSize}
+                    setShowGoBack={extraProps.setShowGoBack}
                 />
             </div>
             {gameOver && <button onClick={onSuccess} className="btn-magic mt-12">Continue</button> }

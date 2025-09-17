@@ -12,7 +12,7 @@ import { PlatformA, PlatformB } from './platforms.js'
 import { Bird, Fish } from './ornaments.js'
 import { TrailTexture } from '@react-three/drei'
 
-export function playPiano(canvas,setGameOver, setWon, isPowerUp){
+export function playPiano(canvas,setGameOver, setWon, isPowerUp, setShowGoBack){
     setGameOver(false);
     const ctx = canvas.getContext('2d');
     const width = 1333;
@@ -73,7 +73,7 @@ export function playPiano(canvas,setGameOver, setWon, isPowerUp){
             this.winningScore = 10;
             this.fontColor = 'black';
             this.time = 0;
-            this.maxTime = 75000;
+            this.maxTime = 180000;
             this.gameOver = false;
             this.lives = 3
             this.honeyPots = 0;
@@ -240,6 +240,7 @@ export function playPiano(canvas,setGameOver, setWon, isPowerUp){
             if(game.won()){
                 setGameOver(true);
                 setWon(true);
+                setShowGoBack(false);
             } else{
                 setGameOver(true);
             }

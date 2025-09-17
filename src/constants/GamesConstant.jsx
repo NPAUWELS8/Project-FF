@@ -161,7 +161,7 @@ class Game{
             />
         this.url = url
         this.gamePowerHouse = this.#addGamePowerHouse(houses)
-        this.element = element(this);
+        this.element = (extraProps) => element(this, extraProps);
         
     }
     #addGamePowerHouse(array){
@@ -196,7 +196,11 @@ infoBoxes.addGame({
     trial: "Trial of Patience",
     trialText: "For even the strongest magic falters without understanding.",
     title: "1 2 3 Piano",
-    introArray: ["Collect honey pots whilst avoiding bees and the turning picture.","You have 75 second to complete the challenge.","Tip: Make sure you're not moving when the picture is turned and not moving upwards."],
+    introArray: [
+        "Collect honey pots whilst avoiding bees and the turning picture.\nYou have 180 seconds and 3 lives to collect 5 honey pots and complete the challenge.",
+        "Make sure you're not moving when the picture is turned (press 'Z').\nYou can start moving again when it's moving upwards. Floor will take away a collected honey pot if you're moving while she's looking.",
+        "Bees can't hit you while you are:\n1) Rolling ('Space')\n2) Diving ('Arrow Down')\n3) Doing a slash ('E')\n4) Or doing a dash ('A')"
+    ],
     infoBoxText: "This game is a twist on the '1, 2, 3 piano' game.",
     link: "/games/piano",
     infoBoxBtnText: "1, 2, 3, let's play!",
@@ -211,7 +215,7 @@ infoBoxes.addGame({
         {key: "Z", action: "Stand Idle"},
     ],
     listIcon: (<StarIcon aria-hidden="true" className="size-6 text-amber-600 mr-5" />),
-    element: ({title, gamePowerHouse}) => (<PianoGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}, extraProps) => (<PianoGame title={title} gamePowerHouse={gamePowerHouse} extraProps={extraProps}/>),
     url: "piano"
 })
 
@@ -230,7 +234,7 @@ infoBoxes.addGame({
         {key: "Arrow Down", action: "Move Down"},
     ],
     listIcon: (<PlayIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: ({title, gamePowerHouse}) => (<RpgGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}, extraProps) => (<RpgGame title={title} gamePowerHouse={gamePowerHouse} extraProps={extraProps}/>),
     url: "findmyphone"
 })
 
@@ -249,7 +253,7 @@ infoBoxes.addGame({
         {key: "Regenerate button", action: "Regenerate a completly new sudoku"},
     ],
     listIcon: (<PuzzlePieceIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: ({title, gamePowerHouse}) => (<SudokuGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}, extraProps) => (<SudokuGame title={title} gamePowerHouse={gamePowerHouse} extraProps={extraProps}/>),
     url:"sudoku"
 })
 infoBoxes.addGame({
@@ -264,7 +268,7 @@ infoBoxes.addGame({
         {key: "Click a card", action: "Card turns around"},,
     ],
     listIcon: (<LightBulbIcon aria-hidden="true" className="size-6 text-amber-600 mr-5"/>),
-    element: ({title, gamePowerHouse}) => (<MemoryGame title={title} gamePowerHouse={gamePowerHouse}/>),
+    element: ({title, gamePowerHouse}, extraProps) => (<MemoryGame title={title} gamePowerHouse={gamePowerHouse} extraProps={extraProps}/>),
     url:"memory"
 })
 

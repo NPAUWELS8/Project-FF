@@ -9,7 +9,7 @@ import * as data2 from './collisions/interior_boundary.json' with {type: "json"}
 
 import { intBgMap, intFgMap, outBgMap, outFgMap } from 'assets/rpg'
 
-export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize){
+export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText, handleOverlay, gameSize,setShowGoBack){
     const [gameWidth, gameHeight] = gameSize
     const ctx = canvas.getContext('2d');
     canvas.width = gameWidth;
@@ -158,6 +158,7 @@ export function playRpg(canvas, setGameOver, handleUpdateText, handleDisplayText
         if (!game.gameOver) requestAnimationFrame(animate)
         else{
             setGameOver(true);
+            setShowGoBack(false);
         }
     }
     requestAnimationFrame(animate);

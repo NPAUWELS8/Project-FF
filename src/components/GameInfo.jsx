@@ -41,6 +41,7 @@ const GameInfo = ({title, trialTitle, introText, controls, game, gamePowerHouse}
   const [gameStarted, setGameStarted] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [randomVideo, setRandomVideo] = useState(videoIds[Math.floor(Math.random() * videoIds.length)]);
+  const [showGoBack, setShowGoBack] = useState(true);
  
   const {isDisplayedBackButton, house, getHouseData} = context;
 
@@ -94,11 +95,15 @@ const GameInfo = ({title, trialTitle, introText, controls, game, gamePowerHouse}
   if(gameStarted){
     return (
       <div id="game-container" className="game-container h-full min-h-screen relative">
-        {game}
+        {/* Hic sunt dracones, the object that is passed as argument below is destructured in the game component as "extraProps".
+        This is set up to be able to pass props from this gameinfo component.
+        To be able to use whatever is passed in this object, you can call this property on the extraProps object; In this case use extraProps.setShowGoBack
+        */}
+        {game({setShowGoBack})}
         <div className={`${isDisplayedBackButton ? 'flex' : 'hidden'} absolute bottom-5 mx-auto mb-5 w-full justify-center`}>
-          <button className="btn-magic-dark hover:cursor-pointer" onClick={goBack}>
+          {showGoBack && <button className="btn-magic-dark hover:cursor-pointer" onClick={goBack}>
             Go Back
-          </button>
+          </button>}
         </div>
       </div>
     );

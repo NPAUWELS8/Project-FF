@@ -4,7 +4,8 @@ import { useAppNavigate } from 'hooks';
 
 import { AppContext } from 'contexts/AppContext'
 
-const PianoGame = ({title, gamePowerHouse}) => {
+const PianoGame = ({title, gamePowerHouse, extraProps}) => {
+  console.log(extraProps)
     const navigate = useAppNavigate()
     const context = useContext(AppContext);
     const {house} = context;
@@ -19,11 +20,11 @@ const PianoGame = ({title, gamePowerHouse}) => {
       document.location.reload();
     }
     function onRetry(){
-      playPiano(pianoRef.current, setGameOver, setWon, isPowerUp);
+      playPiano(pianoRef.current, setGameOver, setWon, isPowerUp,extraProps.setShowGoBack);
     }
 
     useEffect(()=>{
-        playPiano(pianoRef.current, setGameOver, setWon, isPowerUp);
+        playPiano(pianoRef.current, setGameOver, setWon, isPowerUp,extraProps.setShowGoBack);
     },[])
   return (
     <div className="mx-auto max-w-[1333px] px-8 !pt-[75px] pb-12 sm:p-16">
