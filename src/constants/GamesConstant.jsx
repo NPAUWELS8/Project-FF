@@ -199,7 +199,8 @@ infoBoxes.addGame({
     introArray: [
         "Collect honey pots whilst avoiding bees and the turning picture.\nYou have 180 seconds and 3 lives to collect 5 honey pots and complete the challenge.",
         "Make sure you're not moving when the picture is turned (press 'Z').\nYou can start moving again when it's moving upwards. Floor will take away a collected honey pot if you're moving while she's looking.",
-        "Bees can't hit you while you are:\n1) Rolling ('Space')\n2) Diving ('Arrow Down')\n3) Doing a slash ('E')\n4) Or doing a dash ('A')"
+        "Bees can't hit you while you are:\n1) Rolling ('Space')\n2) Diving ('Arrow Down')\n3) Doing a slash ('E')\n4) Or doing a dash ('A')",
+        "Watch your energy. Special moves - anything other than jumping and moving left or right - drains your energy.\nYou can see the energy bar at the top left of your screen. "
     ],
     infoBoxText: "This game is a twist on the '1, 2, 3 piano' game.",
     link: "/games/piano",
