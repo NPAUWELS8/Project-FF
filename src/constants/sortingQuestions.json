@@ -29,8 +29,8 @@
       "options": [
         { "label": "A", "text": "Espresso or strong coffee", "house": "Espresso", "comment": "Basically a human espresso shot. Caution advised." },
         { "label": "B", "text": "Sparkling spritz or cocktail", "house": "Spritz", "comment": "You sparkle brighter than your drink." },
-        { "label": "C", "text": "Sweet pastries or desserts", "house": "Dulci", "comment": "Sugar runs through your veins. Literally." },
-        { "label": "D", "text": "Something fun and unexpected", "house": "Nitro", "comment": "Candy? Nachos? Fire-breathing llama? Why not all three?" }
+        { "label": "C", "text": "Ice cream with freshly melted chocolate sauce", "house": "Dulci", "comment": "Trip to the peinwinning?" },
+        { "label": "D", "text": "Leonidas with vanilla cream", "house": "Nitro", "comment": "Classic." }
       ]
     },
     {
@@ -41,7 +41,7 @@
         { "label": "A", "text": "Bright, sunny spots", "house": "Spritz", "comment": "Sun-kissed and ready for a vitamin D photoshoot." },
         { "label": "B", "text": "Functional, energized setups", "house": "Espresso", "comment": "Productivity lair detected. Coffee optional but recommended." },
         { "label": "C", "text": "Playful, whimsical chaos", "house": "Nitro", "comment": "You’ve reached maximum chaos level. Enter at your own risk." },
-        { "label": "D", "text": "Niels' shoulder", "house": "Dulci", "comment": "Warning: touching your things may cause tears of nostalgia." }
+        { "label": "D", "text": "Niels' shoulder", "house": "Dulci", "comment": "Warning: lying here might cause you to fall asleep immediately." }
       ]
     },
     {
@@ -51,8 +51,8 @@
       "options": [
         { "label": "A", "text": "His smelly breath.", "house": "Espresso", "comment": "You won't smell it through this screen, no worries!" },
         { "label": "B", "text": "His hilarious jokes.", "house": "Dulci", "comment": "I heard they call him FunNyls." },
-        { "label": "C", "text": "His cooking skills.", "house": "Spritz", "comment": "They say it's all about thinking in flavours" },
-        { "label": "D", "text": "His passion for gaming.", "house": "Nitro", "comment": "Oh, is it 2 in the morning already?" }
+        { "label": "C", "text": "His cooking skills.", "house": "Spritz", "comment": "They say it's all about thinking in flavours and knowing how to cut an onion." },
+        { "label": "D", "text": "His passion for gaming.", "house": "Nitro", "comment": "Oh, is it 2h00 in the morning already?" }
       ]
     },
     {
@@ -79,13 +79,13 @@
     },
     {
       "id": 8,
-      "question": "Your ideal gift:",
-      "subtext": "Ah, the heart speaks through desires… what gift would make yours skip a beat?",
+      "question": "Your favourite trip so far:",
+      "subtext": "Ah, another language to dive into for Niels… what destination would you want to revisit?",
       "options": [
-        { "label": "A", "text": "Something playful or quirky", "house": "Nitro", "comment": "If it’s weird, chaotic, or slightly dangerous… perfect." },
-        { "label": "B", "text": "Something fun, sparkly, or sunny", "house": "Spritz", "comment": "You shine brighter than any glittery trinket." },
-        { "label": "C", "text": "Something meaningful from shared memories", "house": "Dulci", "comment": "You cry happy tears before opening it. Then cry some more." },
-        { "label": "D", "text": "Something energizing or passionate", "house": "Espresso", "comment": "You will caffeinate, dominate, and conquer." }
+        { "label": "A", "text": "Italy", "house": "Espresso", "comment": "Pizza, espresso and a handsome Mario, love it." },
+        { "label": "B", "text": "Slovenia and Croatia", "house": "Spritz", "comment": "Voilà! Or was it Hvala...?" },
+        { "label": "C", "text": "La Champagne", "house": "Dulci", "comment": "A glass of champagne would fit perfectly with that PhilosFloor's stone." },
+        { "label": "D", "text": "Iceland", "house": "Nitro", "comment": "Islendur, watch out! Girl in jeans is coming back." }
       ]
     },
     {
@@ -104,10 +104,22 @@
       "question": "Your favourite nickname:",
       "subtext": "What's in a name?",
       "options": [
-        { "label": "A", "text": "Mi Amore", "house": "Dulci", "comment": "Classic!" },
+        { "label": "A", "text": "Mi Amore", "house": "Espresso", "comment": "Classic!" },
         { "label": "B", "text": "Floski", "house": "Dulci", "comment": "Hey guys, it's Floski time!" },
         { "label": "C", "text": "Flodderita", "house": "Spritz", "comment": "My favourite as well!" },
         { "label": "D", "text": "Floorie", "house": "Nitro", "comment": "I knew you'd pick that." }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Your favourite movie:",
+      "subtext": "The most important question of this sorting ceremony...",
+      "correct": "A",
+      "options": [
+        { "label": "A", "text": "Harry Potter (all of them)", "house": "Dulci", "comment": "Good choice!" },
+        { "label": "B", "text": "Starstruck", "house": "Espresso", "comment": "Wrong choice. Try again!" },
+        { "label": "C", "text": "The Holiday", "house": "Nitro", "comment": "Wrong choice. Try again!" },
+        { "label": "D", "text": "Star Wars", "house": "Spritz", "comment": "Wrong choice. Try again!" }
       ]
     }
   ]

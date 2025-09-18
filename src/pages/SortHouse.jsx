@@ -7,12 +7,19 @@ const sortingData = data.default;
 const quiz = sortingData.quiz;
 const answerButtons = ["A","B","C","D"]
 
-const AnswerButton = ({children, index, question, setAnswered, score, setAnswerText})=>{
+const AnswerButton = ({children, index, question, setAnswered, score, setAnswerText, setIsCorrect, correctTries})=>{
 
     function handleClick(e){
         const option = quiz[question].options[index];
         score.current[option.house]++;
-        setAnswerText(option.comment)
+        
+        setAnswerText(option.comment);
+        if(quiz[question].correct && quiz[question].correct !== option.label){
+            setIsCorrect(false);
+        } else if(quiz[question].correct){
+            if(correctTries > 0) setAnswerText(option.comment + ` You only needed ${correctTries} attempts to realize your error.`);
+            setIsCorrect(true);
+        }
         setAnswered(true);
     }
 
@@ -28,7 +35,7 @@ const MagicButton = ({onClick, className, children}) => {
     )
 }
 
-const Question = ({question, answered, answerText, handleClick, setAnswerText, setAnswered, score})=>{
+const Question = ({question, answered, answerText, handleClick, setAnswerText, setAnswered, score, isCorrect, setIsCorrect, correctTries})=>{
 
     return (
         <div className="flex flex-col w-screen items-center">
@@ -61,11 +68,13 @@ const Question = ({question, answered, answerText, handleClick, setAnswerText, s
                         setAnswered={setAnswered}
                         setAnswerText={setAnswerText}
                         score={score}
+                        setIsCorrect={setIsCorrect}
+                        correctTries={correctTries}
                     >
                         {answer}
                     </AnswerButton>
             )}
-            </div> : <MagicButton onClick={handleClick}>Continue</MagicButton>
+            </div> : <MagicButton onClick={handleClick}>{`${isCorrect ? "Continue":"Try Again!"}`}</MagicButton>
             }
         </div>
     )
@@ -197,12 +206,20 @@ const SortHouse = () => {
     const [answered, setAnswered] = useState(false);
     const [answerText, setAnswerText] = useState(null);
     const [finished, setFinished] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(true);
+    const [correctTries,setIsCorrectTries] = useState(0);
 
     function handleClick(){
-        if(question < quiz.length - 1){
-            setQuestion(question + 1);
-            setAnswered(false);
-            setAnswerText(null);
+        if(question < quiz.length - 1 || !isCorrect){
+            if(!isCorrect){
+                setAnswered(false);
+                setAnswerText(null);
+                setIsCorrectTries(correctTries + 1)
+            } else {
+                setQuestion(question + 1);
+                setAnswered(false);
+                setAnswerText(null);
+            }
         }
         else{
             setFinished(true);
@@ -240,6 +257,10 @@ const SortHouse = () => {
                     setAnswerText={setAnswerText}
                     handleClick={handleClick}
                     score={score}
+                    isCorrect={isCorrect}
+                    setIsCorrect={setIsCorrect}
+                    correctTries={correctTries}
+
                 />
             :
                 <Result
