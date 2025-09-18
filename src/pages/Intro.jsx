@@ -1,4 +1,4 @@
-import { hogwartsEmblem, hogwartsSeal } from 'assets/images'
+import { hogwartsEmblem, hogwartsSeal, backGroundNoise, background } from 'assets/images'
 import { useLayoutEffect, useContext, useState } from 'react';
 import { games } from 'constants/GamesConstant'
 import gsap from 'gsap'
@@ -7,7 +7,7 @@ import { useImagePreloader } from 'hooks';
 import GeneralLoader from 'components/GeneralLoader';
 import { useAppNavigate } from 'hooks';
 
-const preloadImages = ["assets/images/background.jpeg","assets/images/background-noise.png", hogwartsSeal, hogwartsEmblem]
+const preloadImages = [background, backGroundNoise, hogwartsSeal, hogwartsEmblem]
 
 const Intro = ({setShowNavBar}) => {
     const navigate = useAppNavigate();
@@ -70,7 +70,7 @@ const Intro = ({setShowNavBar}) => {
                             {games.map((game, index)=>
                                 <p key={index} className="py-2"><b>{index + 1}. {game.trial}</b> - {game.trialText}</p>
                             )}
-                            <p className="pt-20">Upon completing these trials, the Stone shall accept you as its rightful bearer, and your acceptance into its mysteries shall be complete.</p>
+                            <p className="pt-20">Upon completing these trials, the Stone shall accept you as its rightful bearer, and its current whereabouts shall be revealed.</p>
                             <p>We await your success with great anticipation, and trust that you will rise to the occasion with the courage and heart befitting a true keeper of the stone.</p>
                         </div>
                         <div className="mb-10 flex flex-row justify-between items-center">
