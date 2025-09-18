@@ -40,7 +40,7 @@ const InfoBox = ({text, link, btnText, title})=>{
     <div className="info-box neo-brutalism-magic">
         <p className="font-medium sm:text-xl text-center hover:cursor-default">{text}</p>
         {context.getIsGameFinished(title) ? <div className="bg-white border-3 border-amber-500 mx-auto flex w-[90%] items-center justify-center gap-3 rounded-lg px-6 py-3 text-center font-semibold text-amber-500 sm:w-1/2"><CheckCircleIcon aria-hidden="true" className="size-6 text-amber-600" /><p>COMPLETED!</p></div> :
-        <Link to={link} onClick={onClickHandle} className="neo-brutalism-white-button neo-btn-magic bg-white hover:bg-amber-50">
+        <Link to={link} onClick={onClickHandle} className="neo-brutalism-white-button neo-btn-magic bg-white hover:bg-amber-50 hover:scale-110 active:bg-amber-100 active:scale-95">
             {btnText}
             {iconArray[Math.floor(Math.random()* iconArray.length)]}
         </Link>

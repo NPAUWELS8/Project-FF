@@ -107,11 +107,11 @@ const MyHouse = ({house, getImage, houseData, showAllHouses, setShowAllHouses, g
             </div>
             <div className="flex flex-row w-full items-center justify-center gap-20">
                 {showAllHouses ?
-                    <button onClick={hideAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
+                    <button onClick={hideAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 hover:scale-110 active:bg-amber-100 active:scale-95 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">Hide Other</button>
                 :
-                    <button onClick={showAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
+                    <button onClick={showAll} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 hover:scale-110 active:bg-amber-100 active:scale-95 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">See All</button>
                 }
-                <button onClick={continueGaming} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">{`${getGameFinishedCount().count > 0 ? "Continue Gaming" : "Start Gaming"}`}</button>
+                <button onClick={continueGaming} className="xl:w-[15%] lg:w-[25%] w-[50%] neo-brutalism-white-button bg-white hover:bg-amber-50 hover:scale-110 active:bg-amber-100 neo-btn-magic-question hover:cursor-pointer z-20 -mt-5">{`${getGameFinishedCount().count > 0 ? "Continue Gaming" : "Start Gaming"}`}</button>
             </div>
         </>
     )

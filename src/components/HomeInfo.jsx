@@ -59,7 +59,7 @@ const GameCompletion = ({header, text,isShown}) =>{
                 && 
                 <Link 
                     to="/reveal"
-                    className="neo-brutalism-white-button bg-white neo-btn-magic hover:bg-amber-50"
+                    className="neo-brutalism-white-button bg-white neo-btn-magic hover:bg-amber-50 hover:scale-110 active:bg-amber-100 active:scale-95"
                 >Reveal Location
                 <MapPinIcon aria-hidden="true" className="size-6 text-amber-600" />
                 </Link>
