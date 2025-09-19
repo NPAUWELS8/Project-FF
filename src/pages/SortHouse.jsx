@@ -17,7 +17,7 @@ const AnswerButton = ({children, index, question, setAnswered, score, setAnswerT
         if(quiz[question].correct && quiz[question].correct !== option.label){
             setIsCorrect(false);
         } else if(quiz[question].correct){
-            if(correctTries > 0) setAnswerText(option.comment + ` You only needed ${correctTries} attempts to realize your error.`);
+            if(correctTries > 0) setAnswerText(option.comment + ` You only needed ${correctTries} attempts to realize the error of your ways.`);
             setIsCorrect(true);
         }
         setAnswered(true);
@@ -211,15 +211,13 @@ const SortHouse = () => {
 
     function handleClick(){
         if(question < quiz.length - 1 || !isCorrect){
-            if(!isCorrect){
-                setAnswered(false);
-                setAnswerText(null);
+            if(!isCorrect){  
                 setIsCorrectTries(correctTries + 1)
             } else {
                 setQuestion(question + 1);
-                setAnswered(false);
-                setAnswerText(null);
             }
+            setAnswered(false);
+            setAnswerText(null);
         }
         else{
             setFinished(true);
