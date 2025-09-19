@@ -11,12 +11,13 @@ const AnswerButton = ({children, index, question, setAnswered, score, setAnswerT
 
     function handleClick(e){
         const option = quiz[question].options[index];
+        const correctLabel = quiz[question].correct;
         score.current[option.house]++;
         
         setAnswerText(option.comment);
-        if(quiz[question].correct && quiz[question].correct !== option.label){
+        if(correctLabel && correctLabel !== option.label){
             setIsCorrect(false);
-        } else if(quiz[question].correct){
+        } else if(correctLabel){
             if(correctTries > 0) setAnswerText(option.comment + ` You only needed ${correctTries} attempts to realize the error of your ways.`);
             setIsCorrect(true);
         }
